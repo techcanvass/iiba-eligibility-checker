@@ -31,6 +31,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: release-zips
+          include-hidden-files: true
           path: |
             apps/browser-extension/.output/*.zip
             apps/wordpress-plugin/dist/*.zip
