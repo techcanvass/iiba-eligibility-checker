@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.output/
+.wxt/
+apps/wordpress-plugin/assets/build/
+apps/discord-bot/.env
+*.zip
+.DS_Store

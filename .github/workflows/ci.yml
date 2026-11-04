@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+      - run: pnpm typecheck
+      - run: php -l apps/wordpress-plugin/iiba-eligibility-checker.php && php apps/wordpress-plugin/tests/smoke-test.php
+      - run: pnpm build:web
+      - run: pnpm build:ext
+      - run: npx --prefix apps/browser-extension web-ext lint --source-dir apps/browser-extension/.output/firefox-mv3
+      - run: pnpm --filter wordpress-plugin package
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-zips
+          path: |
+            apps/browser-extension/.output/*.zip
+            apps/wordpress-plugin/dist/*.zip

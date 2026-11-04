@@ -1,0 +1,33 @@
+{
+  "name": "iiba-eligibility-checker",
+  "private": true,
+  "version": "1.0.0",
+  "description": "IIBA (ECBA / CCBA / CBAP) eligibility checker — one core engine, shipped as a browser extension, WordPress plugin, Discord bot and web app.",
+  "license": "GPL-2.0-or-later",
+  "packageManager": "pnpm@10.28.0",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "dev:web": "pnpm --filter web-app dev",
+    "dev:ext": "pnpm --filter browser-extension dev",
+    "build:web": "pnpm --filter web-app build",
+    "build:ext": "pnpm --filter browser-extension zip && pnpm --filter browser-extension zip:firefox",
+    "build:wp": "pnpm --filter wordpress-plugin build",
+    "bot:register": "pnpm --filter discord-bot register",
+    "bot:start": "pnpm --filter discord-bot start",
+    "build": "pnpm test && pnpm typecheck && pnpm build:web && pnpm build:ext && pnpm build:wp"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=22.9"
+  }
+}
