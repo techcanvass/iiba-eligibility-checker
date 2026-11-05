@@ -319,7 +319,7 @@ export function CertificationFinder({ rulesUrl, compact, hideIntro, onReport }: 
         <section className="tc-panel" aria-labelledby={`${uid}-h`}>
           <Progress step={2} />
           <h2 id={`${uid}-h`} ref={headingRef} tabIndex={-1}>
-            2. Tell us about your work experience and knowlege for testing
+            2. Tell us about your work experience
           </h2>
           <p className="tc-subtitle">
             Which activities have you personally performed at work? Select all that apply, even if your job title was
