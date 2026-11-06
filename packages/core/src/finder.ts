@@ -9,9 +9,10 @@ import type {
   Recency,
   RuleSet,
 } from "./types";
+import { formatNumber } from "./format";
 import { checkKnowledgeAreas } from "./eligibility";
 
-const fmt = (n: number) => Math.round(n).toLocaleString("en-IN");
+const fmt = formatNumber;
 
 /**
  * Most optimistic "years since last BA activity" for each answer. Using the lower bound

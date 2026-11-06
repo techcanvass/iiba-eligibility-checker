@@ -1,0 +1,13 @@
+{
+  "name": "python-package",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "PyPI package: copies the shared core bundle into the Python package. Python build/test commands are in README.md.",
+  "scripts": {
+    "sync": "pnpm --filter @iiba/core build && node scripts/sync-core.mjs"
+  },
+  "dependencies": {
+    "@iiba/core": "workspace:*"
+  }
+}

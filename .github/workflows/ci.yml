@@ -18,19 +18,44 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: "8.2"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
 
       - run: pnpm install --frozen-lockfile
+
+      # Shared core: unit tests + golden cases (TypeScript)
       - run: pnpm test
       - run: pnpm typecheck
-      - run: php -l apps/wordpress-plugin/iiba-eligibility-checker.php && php apps/wordpress-plugin/tests/smoke-test.php
+
+      # Build every platform from the one core
+      - run: pnpm build:core
       - run: pnpm build:web
       - run: pnpm build:ext
       - run: npx --prefix apps/browser-extension web-ext lint --source-dir apps/browser-extension/.output/firefox-mv3
+      - run: php -l apps/wordpress-plugin/ba-certification-finder.php && php apps/wordpress-plugin/tests/smoke-test.php
       - run: pnpm --filter wordpress-plugin package
+      - run: pnpm build:gws
+      - run: pnpm build:py
+
+      # Built bundles (Python + Apps Script) must give the golden answers too
+      - run: pnpm verify:bundles
+
+      # Python package: same golden cases through V8, then build + metadata check
+      - name: Python tests and build
+        working-directory: apps/python-package
+        run: |
+          python -m pip install --upgrade pip build twine
+          python -m pip install -e ".[test]"
+          python -m pytest -q
+          python -m build
+          python -m twine check dist/*
 
       - uses: actions/upload-artifact@v4
         with:
-          name: release-zips
+          name: release-files
           path: |
             apps/browser-extension/.output/*.zip
             apps/wordpress-plugin/dist/*.zip
+            apps/python-package/dist/*
+            apps/google-workspace/dist/

@@ -16,7 +16,12 @@
     "build:wp": "pnpm --filter wordpress-plugin build",
     "bot:register": "pnpm --filter discord-bot register",
     "bot:start": "pnpm --filter discord-bot start",
-    "build": "pnpm test && pnpm typecheck && pnpm build:web && pnpm build:ext && pnpm build:wp"
+    "build": "pnpm test && pnpm typecheck && pnpm build:core && pnpm build:web && pnpm build:ext && pnpm build:wp && pnpm build:gws && pnpm build:py && pnpm verify:bundles",
+    "golden": "node scripts/update-golden.mjs",
+    "build:core": "pnpm --filter @iiba/core build",
+    "build:gws": "pnpm --filter google-workspace build",
+    "build:py": "pnpm --filter python-package sync",
+    "verify:bundles": "node scripts/verify-bundles.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

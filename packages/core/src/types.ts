@@ -62,9 +62,36 @@ export interface FinderCertDef {
   contactHours?: number;
 }
 
+export interface FinderOption<T extends string | number = string | number> {
+  value: T;
+  label: string;
+}
+
+/** One question shown by every surface (web, extension, WordPress, Python CLI, Workspace). */
+export interface FinderQuestion<T extends string | number = string | number> {
+  label: string;
+  placeholder?: string;
+  hint?: string;
+  /** Pre-selected value; omit to require the user to choose. */
+  default?: T;
+  options: FinderOption<T>[];
+}
+
+export interface FinderQuestions {
+  totalYears: FinderQuestion<number>;
+  background: FinderQuestion<Background>;
+  education: FinderQuestion<Education>;
+  interest: FinderQuestion<Interest>;
+  baYears: FinderQuestion<number>;
+  baShare: FinderQuestion<number>;
+  continuity: FinderQuestion<Continuity>;
+  recent: FinderQuestion<Recency>;
+}
+
 export interface FinderConfig {
   /** Hours per year assumed when turning "years × share" into an indicative estimate. */
   annualHoursEstimate: number;
+  questions: FinderQuestions;
   kaPlainNames: Record<KnowledgeAreaId, string>;
   activities: Array<{ label: string; ka: KnowledgeAreaId }>;
   certifications: FinderCertDef[];

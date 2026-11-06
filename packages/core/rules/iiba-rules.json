@@ -1,16 +1,36 @@
 {
-  "version": "2026.10.2",
-  "lastVerified": "2026-10-31",
+  "version": "2026.11.1",
+  "lastVerified": "2026-11-05",
   "source": "https://www.iiba.org/business-analysis-certifications/certification-handbooks/",
   "note": "VERIFY against the current IIBA Core BA Certification Handbook and PMI-PBA Handbook before each release. Values in 'toVerify' differ between third-party sources.",
-  "toVerify": ["CCBA.knowledgeAreas"],
+  "toVerify": [
+    "CCBA.knowledgeAreas"
+  ],
   "knowledgeAreas": [
-    { "id": "planning", "name": "Business Analysis Planning and Monitoring" },
-    { "id": "elicitation", "name": "Elicitation and Collaboration" },
-    { "id": "lifecycle", "name": "Requirements Life Cycle Management" },
-    { "id": "strategy", "name": "Strategy Analysis" },
-    { "id": "radd", "name": "Requirements Analysis and Design Definition" },
-    { "id": "evaluation", "name": "Solution Evaluation" }
+    {
+      "id": "planning",
+      "name": "Business Analysis Planning and Monitoring"
+    },
+    {
+      "id": "elicitation",
+      "name": "Elicitation and Collaboration"
+    },
+    {
+      "id": "lifecycle",
+      "name": "Requirements Life Cycle Management"
+    },
+    {
+      "id": "strategy",
+      "name": "Strategy Analysis"
+    },
+    {
+      "id": "radd",
+      "name": "Requirements Analysis and Design Definition"
+    },
+    {
+      "id": "evaluation",
+      "name": "Solution Evaluation"
+    }
   ],
   "certifications": [
     {
@@ -36,8 +56,14 @@
       "pdWindowYears": 4,
       "knowledgeAreas": {
         "anyOf": [
-          { "minHoursEach": 900, "count": 2 },
-          { "minHoursEach": 500, "count": 4 }
+          {
+            "minHoursEach": 900,
+            "count": 2
+          },
+          {
+            "minHoursEach": 500,
+            "count": 4
+          }
         ]
       },
       "references": 2,
@@ -53,14 +79,23 @@
       "pdHours": 35,
       "pdWindowYears": 4,
       "knowledgeAreas": {
-        "anyOf": [{ "minHoursEach": 900, "count": 4 }]
+        "anyOf": [
+          {
+            "minHoursEach": 900,
+            "count": 4
+          }
+        ]
       },
       "references": 2,
       "requiresEthicsAgreement": true,
       "courseUrl": "https://www.techcanvass.com/cbap-certification-training"
     }
   ],
-  "pdExcludedTypes": ["self-study", "reading", "work-experience"],
+  "pdExcludedTypes": [
+    "self-study",
+    "reading",
+    "work-experience"
+  ],
   "finder": {
     "annualHoursEstimate": 1600,
     "kaPlainNames": {
@@ -72,16 +107,46 @@
       "evaluation": "Checking whether a solution delivers the expected results"
     },
     "activities": [
-      { "label": "Plan analysis work, coordinate tasks and engage stakeholders", "ka": "planning" },
-      { "label": "Interview users, run workshops or gather feedback", "ka": "elicitation" },
-      { "label": "Document business needs or clarify requirements", "ka": "elicitation" },
-      { "label": "Review changes, trace requirements or prioritize a backlog", "ka": "lifecycle" },
-      { "label": "Study business problems, processes or opportunities", "ka": "strategy" },
-      { "label": "Build business cases, compare options or recommend improvements", "ka": "strategy" },
-      { "label": "Write user stories, acceptance criteria, process models or specifications", "ka": "radd" },
-      { "label": "Review proposed designs or validate requirements with users", "ka": "radd" },
-      { "label": "Test whether a solution meets business needs or measure its benefits", "ka": "evaluation" },
-      { "label": "Track outcomes, user adoption or suggest improvements after delivery", "ka": "evaluation" }
+      {
+        "label": "Plan analysis work, coordinate tasks and engage stakeholders",
+        "ka": "planning"
+      },
+      {
+        "label": "Interview users, run workshops or gather feedback",
+        "ka": "elicitation"
+      },
+      {
+        "label": "Document business needs or clarify requirements",
+        "ka": "elicitation"
+      },
+      {
+        "label": "Review changes, trace requirements or prioritize a backlog",
+        "ka": "lifecycle"
+      },
+      {
+        "label": "Study business problems, processes or opportunities",
+        "ka": "strategy"
+      },
+      {
+        "label": "Build business cases, compare options or recommend improvements",
+        "ka": "strategy"
+      },
+      {
+        "label": "Write user stories, acceptance criteria, process models or specifications",
+        "ka": "radd"
+      },
+      {
+        "label": "Review proposed designs or validate requirements with users",
+        "ka": "radd"
+      },
+      {
+        "label": "Test whether a solution meets business needs or measure its benefits",
+        "ka": "evaluation"
+      },
+      {
+        "label": "Track outcomes, user adoption or suggest improvements after delivery",
+        "ka": "evaluation"
+      }
     ],
     "certifications": [
       {
@@ -132,18 +197,268 @@
         "name": "PMI Professional in Business Analysis",
         "description": "Requires 24, 36 or 60 non-overlapping months of BA experience within the last 8 years, depending on education. Exact months need checking.",
         "url": "https://www.pmi.org/certifications/business-analysis-pba",
-        "monthsByEducation": { "gac": 24, "bachelor": 36, "secondary": 60 },
+        "monthsByEducation": {
+          "gac": 24,
+          "bachelor": 36,
+          "secondary": 60
+        },
         "windowYears": 8,
         "contactHours": 35
       }
     ],
     "interestPriority": {
-      "general": ["CCBA", "CBAP", "ECBA"],
-      "agile": ["AAC", "ECBA"],
-      "data": ["CBDA", "ECBA"],
-      "cyber": ["CCA", "ECBA"],
-      "project": ["PMI-PBA", "ECBA"],
-      "unsure": ["ECBA", "CCBA", "CBAP"]
+      "general": [
+        "CCBA",
+        "CBAP",
+        "ECBA"
+      ],
+      "agile": [
+        "AAC",
+        "ECBA"
+      ],
+      "data": [
+        "CBDA",
+        "ECBA"
+      ],
+      "cyber": [
+        "CCA",
+        "ECBA"
+      ],
+      "project": [
+        "PMI-PBA",
+        "ECBA"
+      ],
+      "unsure": [
+        "ECBA",
+        "CCBA",
+        "CBAP"
+      ]
+    },
+    "questions": {
+      "totalYears": {
+        "label": "Total professional work experience",
+        "placeholder": "Select your experience",
+        "options": [
+          {
+            "value": 0,
+            "label": "Just starting / no experience"
+          },
+          {
+            "value": 1,
+            "label": "Less than 1 year"
+          },
+          {
+            "value": 2,
+            "label": "1–2 years"
+          },
+          {
+            "value": 4,
+            "label": "3–4 years"
+          },
+          {
+            "value": 6,
+            "label": "5–7 years"
+          },
+          {
+            "value": 9,
+            "label": "8–10 years"
+          },
+          {
+            "value": 12,
+            "label": "More than 10 years"
+          }
+        ]
+      },
+      "background": {
+        "label": "Which best describes your background?",
+        "placeholder": "Select your background",
+        "options": [
+          {
+            "value": "ba",
+            "label": "Working as a Business Analyst"
+          },
+          {
+            "value": "it",
+            "label": "IT / Software / Testing / Product"
+          },
+          {
+            "value": "domain",
+            "label": "Non-IT / Operations / Banking / Sales / Other domain"
+          },
+          {
+            "value": "project",
+            "label": "Project Management / Consulting"
+          },
+          {
+            "value": "student",
+            "label": "Student / Fresher / Career break"
+          },
+          {
+            "value": "other",
+            "label": "Other / Not sure"
+          }
+        ]
+      },
+      "education": {
+        "label": "Highest completed education",
+        "default": "bachelor",
+        "options": [
+          {
+            "value": "secondary",
+            "label": "School / Diploma / Associate degree"
+          },
+          {
+            "value": "bachelor",
+            "label": "Bachelor's degree or higher"
+          },
+          {
+            "value": "gac",
+            "label": "Degree from PMI GAC-accredited program"
+          },
+          {
+            "value": "other",
+            "label": "Other / Not sure"
+          }
+        ]
+      },
+      "interest": {
+        "label": "What interests you most?",
+        "default": "unsure",
+        "options": [
+          {
+            "value": "unsure",
+            "label": "Not sure yet"
+          },
+          {
+            "value": "general",
+            "label": "Business Analysis"
+          },
+          {
+            "value": "agile",
+            "label": "Agile / Product"
+          },
+          {
+            "value": "data",
+            "label": "Data Analytics"
+          },
+          {
+            "value": "cyber",
+            "label": "Cybersecurity"
+          },
+          {
+            "value": "project",
+            "label": "Projects / PMI-PBA"
+          }
+        ]
+      },
+      "baYears": {
+        "label": "About how many years have you done these types of activities?",
+        "placeholder": "Select an estimate",
+        "hint": "This is for guidance only; formal applications use documented hours and dates.",
+        "options": [
+          {
+            "value": 0,
+            "label": "I haven't done them yet"
+          },
+          {
+            "value": 0.5,
+            "label": "Less than 1 year"
+          },
+          {
+            "value": 1.5,
+            "label": "1–2 years"
+          },
+          {
+            "value": 3.5,
+            "label": "3–4 years"
+          },
+          {
+            "value": 6,
+            "label": "5–7 years"
+          },
+          {
+            "value": 9,
+            "label": "8–10 years"
+          },
+          {
+            "value": 11,
+            "label": "More than 10 years"
+          }
+        ]
+      },
+      "baShare": {
+        "label": "About how much of your working time involved these activities?",
+        "placeholder": "Select an estimate",
+        "hint": "We use this to estimate relevant experience, not to automatically credit certification hours.",
+        "options": [
+          {
+            "value": 0.2,
+            "label": "Occasionally (under 25%)"
+          },
+          {
+            "value": 0.4,
+            "label": "Part of my role (25–50%)"
+          },
+          {
+            "value": 0.7,
+            "label": "Most of my role (50–80%)"
+          },
+          {
+            "value": 0.9,
+            "label": "Almost all my role (over 80%)"
+          }
+        ]
+      },
+      "continuity": {
+        "label": "Was this work continuous, or did you have career breaks?",
+        "placeholder": "Please select",
+        "hint": "Career breaks do not disqualify you. We only count relevant work done within the required period.",
+        "options": [
+          {
+            "value": "continuous",
+            "label": "Continuous, without significant breaks"
+          },
+          {
+            "value": "breaks",
+            "label": "With one or more breaks"
+          },
+          {
+            "value": "parttime",
+            "label": "Part-time, freelance or varying hours"
+          }
+        ]
+      },
+      "recent": {
+        "label": "When did you last do these activities?",
+        "placeholder": "Please select",
+        "hint": "Recent experience matters for CCBA (7 years), CBAP (10 years), and PMI-PBA (8 years).",
+        "options": [
+          {
+            "value": "current",
+            "label": "I still do them"
+          },
+          {
+            "value": "lt2",
+            "label": "Within the last 2 years"
+          },
+          {
+            "value": "2to7",
+            "label": "2–7 years ago"
+          },
+          {
+            "value": "7to10",
+            "label": "7–10 years ago"
+          },
+          {
+            "value": "over10",
+            "label": "More than 10 years ago"
+          },
+          {
+            "value": "never",
+            "label": "I haven't done these activities"
+          }
+        ]
+      }
     }
   }
 }

@@ -6,3 +6,13 @@ apps/wordpress-plugin/assets/build/
 apps/discord-bot/.env
 *.zip
 .DS_Store
+# Generated copy of the shared core inside the Python package (pnpm --filter python-package sync)
+apps/python-package/src/ba_cert_finder/_assets/
+apps/python-package/dist/
+__pycache__/
+*.egg-info/
+.venv/
+.pytest_cache/
+# Google Workspace add-on build output and personal clasp settings
+apps/google-workspace/build/
+apps/google-workspace/.clasp.json

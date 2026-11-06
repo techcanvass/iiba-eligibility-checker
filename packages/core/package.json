@@ -8,5 +8,11 @@
   "exports": {
     ".": "./src/index.ts",
     "./rules.json": "./rules/iiba-rules.json"
+  },
+  "scripts": {
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "^5.4.11"
   }
 }

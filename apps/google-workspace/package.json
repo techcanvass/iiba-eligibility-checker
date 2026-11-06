@@ -1,0 +1,20 @@
+{
+  "name": "google-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Google Workspace editor add-on (Sheets, Docs, Slides). Builds an Apps Script project in dist/ for clasp.",
+  "scripts": {
+    "build": "pnpm --filter @iiba/core build && vite build && node scripts/assemble.mjs",
+    "push": "pnpm build && clasp push"
+  },
+  "dependencies": {
+    "@iiba/core": "workspace:*",
+    "@iiba/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@google/clasp": "^2.4.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.11"
+  }
+}

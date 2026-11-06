@@ -1,4 +1,4 @@
-import type { CandidateInput, KnowledgeAreaId, RuleSet } from "./types";
+import type { CandidateInput, FinderQuestion, FinderQuestions, KnowledgeAreaId, RuleSet } from "./types";
 import { parseISODate } from "./dates";
 
 export const KNOWLEDGE_AREA_IDS: readonly KnowledgeAreaId[] = [
@@ -102,6 +102,38 @@ export function validateInput(input: CandidateInput): ValidationError[] {
   return errors;
 }
 
+/**
+ * Allowed option values per question. The matching logic branches on these exact values,
+ * so a hosted rules file may relabel or reorder options but not invent new values.
+ */
+const QUESTION_VALUES: Record<keyof FinderQuestions, ((v: unknown) => boolean) | readonly string[]> = {
+  totalYears: (v) => isNonNegNumber(v),
+  background: ["ba", "it", "domain", "project", "student", "other"],
+  education: ["secondary", "bachelor", "gac", "other"],
+  interest: ["unsure", "general", "agile", "data", "cyber", "project"],
+  baYears: (v) => isNonNegNumber(v),
+  baShare: (v) => isNonNegNumber(v) && (v as number) <= 1,
+  continuity: ["continuous", "breaks", "parttime"],
+  recent: ["current", "lt2", "2to7", "7to10", "over10", "never"],
+};
+
+function isValidQuestions(q: unknown): q is FinderQuestions {
+  if (!q || typeof q !== "object") return false;
+  return (Object.keys(QUESTION_VALUES) as (keyof FinderQuestions)[]).every((key) => {
+    const question = (q as Record<string, FinderQuestion>)[key];
+    const allowed = QUESTION_VALUES[key];
+    const ok = (v: unknown) => (typeof allowed === "function" ? allowed(v) : allowed.includes(v as string));
+    return (
+      question &&
+      typeof question.label === "string" &&
+      Array.isArray(question.options) &&
+      question.options.length > 0 &&
+      question.options.every((o) => o && typeof o.label === "string" && ok(o.value)) &&
+      (question.default === undefined || question.options.some((o) => o.value === question.default))
+    );
+  });
+}
+
 /** Type guard used by the rules loader before trusting remote JSON. */
 export function isValidRuleSet(value: unknown): value is RuleSet {
   if (!value || typeof value !== "object") return false;
@@ -112,6 +144,7 @@ export function isValidRuleSet(value: unknown): value is RuleSet {
   const f = r.finder;
   if (
     !f ||
+    !isValidQuestions(f.questions) ||
     !isNonNegNumber(f.annualHoursEstimate) ||
     !Array.isArray(f.activities) ||
     !Array.isArray(f.certifications) ||

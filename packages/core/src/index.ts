@@ -20,3 +20,4 @@ export {
   FinderInputError,
 } from "./finder";
 export type { FinderError } from "./finder";
+export { formatNumber } from "./format";

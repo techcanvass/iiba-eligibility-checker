@@ -8,11 +8,12 @@ import type {
   RequirementResult,
   RuleSet,
 } from "./types";
+import { formatNumber } from "./format";
 import { parseISODate, toISODate, todayISO } from "./dates";
 import { baHoursInWindow, countablePdHours, projectEligibilityDate } from "./calculator";
 import { validateInput } from "./validation";
 
-const fmt = (n: number) => Math.round(n).toLocaleString("en-IN");
+const fmt = formatNumber;
 
 export class EligibilityInputError extends Error {
   constructor(public readonly errors: { field: string; message: string }[]) {

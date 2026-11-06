@@ -5,14 +5,10 @@ import {
   loadRules,
   validateFinderStep1,
   validatePrecise,
-  type Background,
-  type Continuity,
-  type Education,
   type FinderAnswers,
   type FinderError,
+  type FinderQuestion,
   type FinderReport,
-  type Interest,
-  type Recency,
   type RuleSet,
 } from "@iiba/core";
 
@@ -27,106 +23,42 @@ export interface CertificationFinderProps {
   onReport?: (report: FinderReport, answers: FinderAnswers) => void;
 }
 
-type Opt<T extends string | number> = { value: T; label: string };
-
-const TOTAL_YEARS: Opt<number>[] = [
-  { value: 0, label: "Just starting / no experience" },
-  { value: 1, label: "Less than 1 year" },
-  { value: 2, label: "1–2 years" },
-  { value: 4, label: "3–4 years" },
-  { value: 6, label: "5–7 years" },
-  { value: 9, label: "8–10 years" },
-  { value: 12, label: "More than 10 years" },
-];
-const BACKGROUNDS: Opt<Background>[] = [
-  { value: "ba", label: "Working as a Business Analyst" },
-  { value: "it", label: "IT / Software / Testing / Product" },
-  { value: "domain", label: "Non-IT / Operations / Banking / Sales / Other domain" },
-  { value: "project", label: "Project Management / Consulting" },
-  { value: "student", label: "Student / Fresher / Career break" },
-  { value: "other", label: "Other / Not sure" },
-];
-const EDUCATION: Opt<Education>[] = [
-  { value: "secondary", label: "School / Diploma / Associate degree" },
-  { value: "bachelor", label: "Bachelor's degree or higher" },
-  { value: "gac", label: "Degree from PMI GAC-accredited program" },
-  { value: "other", label: "Other / Not sure" },
-];
-const INTERESTS: Opt<Interest>[] = [
-  { value: "unsure", label: "Not sure yet" },
-  { value: "general", label: "Business Analysis" },
-  { value: "agile", label: "Agile / Product" },
-  { value: "data", label: "Data Analytics" },
-  { value: "cyber", label: "Cybersecurity" },
-  { value: "project", label: "Projects / PMI-PBA" },
-];
-const BA_YEARS: Opt<number>[] = [
-  { value: 0, label: "I haven't done them yet" },
-  { value: 0.5, label: "Less than 1 year" },
-  { value: 1.5, label: "1–2 years" },
-  { value: 3.5, label: "3–4 years" },
-  { value: 6, label: "5–7 years" },
-  { value: 9, label: "8–10 years" },
-  { value: 11, label: "More than 10 years" },
-];
-const BA_SHARE: Opt<number>[] = [
-  { value: 0.2, label: "Occasionally (under 25%)" },
-  { value: 0.4, label: "Part of my role (25–50%)" },
-  { value: 0.7, label: "Most of my role (50–80%)" },
-  { value: 0.9, label: "Almost all my role (over 80%)" },
-];
-const CONTINUITY: Opt<Continuity>[] = [
-  { value: "continuous", label: "Continuous, without significant breaks" },
-  { value: "breaks", label: "With one or more breaks" },
-  { value: "parttime", label: "Part-time, freelance or varying hours" },
-];
-const RECENCY: Opt<Recency>[] = [
-  { value: "current", label: "I still do them" },
-  { value: "lt2", label: "Within the last 2 years" },
-  { value: "2to7", label: "2–7 years ago" },
-  { value: "7to10", label: "7–10 years ago" },
-  { value: "over10", label: "More than 10 years ago" },
-  { value: "never", label: "I haven't done these activities" },
-];
-
 let idSeq = 0;
 
 /** Text value of a <select> → typed value, "" → null. Numbers are parsed. */
-function parseOpt<T extends string | number>(opts: Opt<T>[], raw: string): T | null {
-  return opts.find((o) => String(o.value) === raw)?.value ?? null;
+function parseOpt<T extends string | number>(q: FinderQuestion<T>, raw: string): T | null {
+  return q.options.find((o) => String(o.value) === raw)?.value ?? null;
 }
 
 interface SelectProps<T extends string | number> {
   id: string;
-  label: string;
-  opts: Opt<T>[];
+  /** Question definition from the shared rules file (label, options, placeholder, hint). */
+  q: FinderQuestion<T>;
   value: T | null;
   onChange: (v: T | null) => void;
-  placeholder?: string;
-  hint?: string;
   error?: string;
 }
 
-function Select<T extends string | number>({ id, label, opts, value, onChange, placeholder, hint, error }: SelectProps<T>) {
-  const describedBy = [hint && `${id}-hint`, error && `${id}-err`].filter(Boolean).join(" ") || undefined;
+function Select<T extends string | number>({ id, q, value, onChange, error }: SelectProps<T>) {
+  const describedBy = [q.hint && `${id}-hint`, error && `${id}-err`].filter(Boolean).join(" ") || undefined;
   return (
     <div className="tc-field">
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={id}>{q.label}</label>
       <select
         id={id}
         value={value === null ? "" : String(value)}
-        onChange={(e) => onChange(parseOpt(opts, e.target.value))}
+        onChange={(e) => onChange(parseOpt(q, e.target.value))}
         aria-invalid={error ? true : undefined}
         aria-describedby={describedBy}
       >
-        {placeholder !== undefined && <option value="">{placeholder}</option>}
-        {opts.map((o) => (
+        {q.placeholder !== undefined && <option value="">{q.placeholder}</option>}
+        {q.options.map((o) => (
           <option key={String(o.value)} value={String(o.value)}>
             {o.label}
           </option>
         ))}
       </select>
-      {hint && <small id={`${id}-hint`}>{hint}</small>}
+      {q.hint && <small id={`${id}-hint`}>{q.hint}</small>}
       {error && (
         <small id={`${id}-err`} className="tc-error">
           {error}
@@ -144,12 +76,13 @@ const toNum = (s: string): number | null => (s.trim() === "" ? null : Number(s))
 export function CertificationFinder({ rulesUrl, compact, hideIntro, onReport }: CertificationFinderProps) {
   const [uid] = useState(() => `tcf${++idSeq}`);
   const [rules, setRules] = useState<RuleSet>(BUNDLED_RULES);
+  const Q = rules.finder.questions;
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [answers, setAnswers] = useState<FinderAnswers>({
     totalYears: null,
     background: null,
-    education: "bachelor",
-    interest: "unsure",
+    education: BUNDLED_RULES.finder.questions.education.default ?? "other",
+    interest: BUNDLED_RULES.finder.questions.interest.default ?? "unsure",
     activities: [],
     baYears: null,
     baShare: null,
@@ -273,33 +206,27 @@ export function CertificationFinder({ rulesUrl, compact, hideIntro, onReport }: 
           <div className="tc-grid">
             <Select
               id={`${uid}-totalYears`}
-              label="Total professional work experience"
-              opts={TOTAL_YEARS}
+              q={Q.totalYears}
               value={answers.totalYears}
               onChange={(v) => set("totalYears", v)}
-              placeholder="Select your experience"
               error={errFor("totalYears")}
             />
             <Select
               id={`${uid}-background`}
-              label="Which best describes your background?"
-              opts={BACKGROUNDS}
+              q={Q.background}
               value={answers.background}
               onChange={(v) => set("background", v)}
-              placeholder="Select your background"
               error={errFor("background")}
             />
             <Select
               id={`${uid}-education`}
-              label="Highest completed education"
-              opts={EDUCATION}
+              q={Q.education}
               value={answers.education}
               onChange={(v) => set("education", v ?? "other")}
             />
             <Select
               id={`${uid}-interest`}
-              label="What interests you most?"
-              opts={INTERESTS}
+              q={Q.interest}
               value={answers.interest}
               onChange={(v) => set("interest", v ?? "unsure")}
             />
@@ -339,39 +266,27 @@ export function CertificationFinder({ rulesUrl, compact, hideIntro, onReport }: 
           <div className="tc-grid">
             <Select
               id={`${uid}-baYears`}
-              label="About how many years have you done these types of activities?"
-              opts={BA_YEARS}
+              q={Q.baYears}
               value={answers.baYears}
               onChange={(v) => set("baYears", v)}
-              placeholder="Select an estimate"
-              hint="This is for guidance only; formal applications use documented hours and dates."
             />
             <Select
               id={`${uid}-baShare`}
-              label="About how much of your working time involved these activities?"
-              opts={BA_SHARE}
+              q={Q.baShare}
               value={answers.baShare}
               onChange={(v) => set("baShare", v)}
-              placeholder="Select an estimate"
-              hint="We use this to estimate relevant experience, not to automatically credit certification hours."
             />
             <Select
               id={`${uid}-continuity`}
-              label="Was this work continuous, or did you have career breaks?"
-              opts={CONTINUITY}
+              q={Q.continuity}
               value={answers.continuity}
               onChange={(v) => set("continuity", v)}
-              placeholder="Please select"
-              hint="Career breaks do not disqualify you. We only count relevant work done within the required period."
             />
             <Select
               id={`${uid}-recent`}
-              label="When did you last do these activities?"
-              opts={RECENCY}
+              q={Q.recent}
               value={answers.recent}
               onChange={(v) => set("recent", v)}
-              placeholder="Please select"
-              hint="Recent experience matters for CCBA (7 years), CBAP (10 years), and PMI-PBA (8 years)."
             />
           </div>
           <div className="tc-hint">

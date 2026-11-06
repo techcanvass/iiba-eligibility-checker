@@ -1,0 +1,575 @@
+{
+  "_note": "Shared test cases. Every platform (TypeScript, Python, Apps Script) must produce exactly `expected`. Regenerate after an intentional logic change: pnpm golden",
+  "cases": [
+    {
+      "name": "finder: fresh starter",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": 0,
+        "background": "student",
+        "education": "bachelor",
+        "interest": "unsure",
+        "activities": [],
+        "baYears": null,
+        "baShare": null,
+        "continuity": null,
+        "recent": null
+      }
+    },
+    {
+      "name": "finder: experienced current BA, general interest",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": 12,
+        "background": "ba",
+        "education": "bachelor",
+        "interest": "general",
+        "activities": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "baYears": 11,
+        "baShare": 0.9,
+        "continuity": "continuous",
+        "recent": "current"
+      }
+    },
+    {
+      "name": "finder: years capped by window (stopped 2-7 yrs ago)",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": 12,
+        "background": "ba",
+        "education": "bachelor",
+        "interest": "unsure",
+        "activities": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "baYears": 11,
+        "baShare": 0.4,
+        "continuity": null,
+        "recent": "2to7"
+      }
+    },
+    {
+      "name": "finder: last BA work 7-10 years ago",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": 12,
+        "background": "ba",
+        "education": "bachelor",
+        "interest": "unsure",
+        "activities": [
+          0,
+          1,
+          4
+        ],
+        "baYears": 11,
+        "baShare": 0.9,
+        "continuity": null,
+        "recent": "7to10"
+      }
+    },
+    {
+      "name": "finder: career breaks + data interest",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": 6,
+        "background": "ba",
+        "education": "bachelor",
+        "interest": "data",
+        "activities": [
+          1,
+          2
+        ],
+        "baYears": 1.5,
+        "baShare": 0.4,
+        "continuity": "breaks",
+        "recent": "lt2"
+      }
+    },
+    {
+      "name": "finder: agile interest, part-time",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": 6,
+        "background": "ba",
+        "education": "bachelor",
+        "interest": "agile",
+        "activities": [
+          3,
+          6,
+          7
+        ],
+        "baYears": 3.5,
+        "baShare": 0.7,
+        "continuity": "parttime",
+        "recent": "current"
+      }
+    },
+    {
+      "name": "finder: cyber interest",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": 6,
+        "background": "ba",
+        "education": "bachelor",
+        "interest": "cyber",
+        "activities": [],
+        "baYears": null,
+        "baShare": null,
+        "continuity": null,
+        "recent": null
+      }
+    },
+    {
+      "name": "finder: PMI-PBA, GAC degree",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": 6,
+        "background": "ba",
+        "education": "gac",
+        "interest": "project",
+        "activities": [],
+        "baYears": null,
+        "baShare": null,
+        "continuity": null,
+        "recent": null
+      }
+    },
+    {
+      "name": "finder: PMI-PBA, secondary",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": 6,
+        "background": "ba",
+        "education": "secondary",
+        "interest": "project",
+        "activities": [],
+        "baYears": null,
+        "baShare": null,
+        "continuity": null,
+        "recent": null
+      }
+    },
+    {
+      "name": "finder: PMI-PBA, other education",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": 6,
+        "background": "ba",
+        "education": "other",
+        "interest": "project",
+        "activities": [],
+        "baYears": null,
+        "baShare": null,
+        "continuity": null,
+        "recent": null
+      }
+    },
+    {
+      "name": "finder: warnings (BA years > total, never)",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": 2,
+        "background": "ba",
+        "education": "bachelor",
+        "interest": "unsure",
+        "activities": [
+          0
+        ],
+        "baYears": 6,
+        "baShare": null,
+        "continuity": null,
+        "recent": "never"
+      }
+    },
+    {
+      "name": "finder: precise CCBA hours gap",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": 6,
+        "background": "ba",
+        "education": "bachelor",
+        "interest": "unsure",
+        "activities": [],
+        "baYears": null,
+        "baShare": null,
+        "continuity": null,
+        "recent": null,
+        "precise": {
+          "CCBA": {
+            "total": 3000,
+            "ka": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "finder: precise CBAP KA blank",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": 6,
+        "background": "ba",
+        "education": "bachelor",
+        "interest": "unsure",
+        "activities": [],
+        "baYears": null,
+        "baShare": null,
+        "continuity": null,
+        "recent": null,
+        "precise": {
+          "CBAP": {
+            "total": 8000,
+            "ka": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "finder: precise CBAP met",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": 6,
+        "background": "ba",
+        "education": "bachelor",
+        "interest": "unsure",
+        "activities": [],
+        "baYears": null,
+        "baShare": null,
+        "continuity": null,
+        "recent": null,
+        "precise": {
+          "CBAP": {
+            "total": 8000,
+            "ka": [
+              1000,
+              1000,
+              1000,
+              1000,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "finder: precise CBAP KA gap",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": 6,
+        "background": "ba",
+        "education": "bachelor",
+        "interest": "unsure",
+        "activities": [],
+        "baYears": null,
+        "baShare": null,
+        "continuity": null,
+        "recent": null,
+        "precise": {
+          "CBAP": {
+            "total": 8000,
+            "ka": [
+              2000,
+              2000,
+              2000,
+              500,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "finder: precise CCBA alt rule 500x4",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": 6,
+        "background": "ba",
+        "education": "bachelor",
+        "interest": "unsure",
+        "activities": [],
+        "baYears": null,
+        "baShare": null,
+        "continuity": null,
+        "recent": null,
+        "precise": {
+          "CCBA": {
+            "total": 3750,
+            "ka": [
+              600,
+              600,
+              600,
+              600,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "finder: large numbers format (1,00,000)",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": 6,
+        "background": "ba",
+        "education": "bachelor",
+        "interest": "unsure",
+        "activities": [],
+        "baYears": null,
+        "baShare": null,
+        "continuity": null,
+        "recent": null,
+        "precise": {
+          "CBAP": {
+            "total": 0,
+            "ka": [
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "finder error: step 1 missing",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": null,
+        "background": null,
+        "education": "bachelor",
+        "interest": "unsure",
+        "activities": [],
+        "baYears": null,
+        "baShare": null,
+        "continuity": null,
+        "recent": null
+      }
+    },
+    {
+      "name": "finder error: 7yr > 10yr",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": 6,
+        "background": "ba",
+        "education": "bachelor",
+        "interest": "unsure",
+        "activities": [],
+        "baYears": null,
+        "baShare": null,
+        "continuity": null,
+        "recent": null,
+        "precise": {
+          "CCBA": {
+            "total": 5000,
+            "ka": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "CBAP": {
+            "total": 4000,
+            "ka": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "finder error: negative hours",
+      "fn": "buildFinderReport",
+      "input": {
+        "totalYears": 6,
+        "background": "ba",
+        "education": "bachelor",
+        "interest": "unsure",
+        "activities": [],
+        "baYears": null,
+        "baShare": null,
+        "continuity": null,
+        "recent": null,
+        "precise": {
+          "CCBA": {
+            "total": -1,
+            "ka": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "quick: ECBA only",
+      "fn": "checkEligibility",
+      "input": {
+        "asOf": "2026-10-31",
+        "baHours": 1000,
+        "pdHours": 10,
+        "kaHours": {},
+        "agreesToEthics": true
+      }
+    },
+    {
+      "name": "quick: CCBA exact thresholds",
+      "fn": "checkEligibility",
+      "input": {
+        "asOf": "2026-10-31",
+        "baHours": 3750,
+        "pdHours": 21,
+        "kaHours": {
+          "elicitation": 900,
+          "radd": 900
+        },
+        "agreesToEthics": true
+      }
+    },
+    {
+      "name": "quick: CBAP ready",
+      "fn": "checkEligibility",
+      "input": {
+        "asOf": "2026-10-31",
+        "baHours": 7500,
+        "pdHours": 35,
+        "kaHours": {
+          "planning": 900,
+          "elicitation": 900,
+          "radd": 900,
+          "strategy": 900
+        },
+        "agreesToEthics": true
+      }
+    },
+    {
+      "name": "quick: no ethics",
+      "fn": "checkEligibility",
+      "input": {
+        "asOf": "2026-10-31",
+        "baHours": 9000,
+        "pdHours": 40,
+        "kaHours": {},
+        "agreesToEthics": false
+      }
+    },
+    {
+      "name": "quick: references gated",
+      "fn": "checkEligibility",
+      "input": {
+        "asOf": "2026-10-31",
+        "baHours": 4000,
+        "pdHours": 21,
+        "kaHours": {
+          "planning": 900,
+          "radd": 900
+        },
+        "references": 1,
+        "agreesToEthics": true
+      }
+    },
+    {
+      "name": "quick: job history + projection",
+      "fn": "checkEligibility",
+      "input": {
+        "asOf": "2026-10-31",
+        "pdHours": 21,
+        "kaHours": {
+          "planning": 900,
+          "radd": 900
+        },
+        "jobs": [
+          {
+            "start": "2025-10-31",
+            "hoursPerWeek": 40,
+            "baPercent": 100
+          }
+        ],
+        "agreesToEthics": true
+      }
+    },
+    {
+      "name": "quick: PD entries with exclusions",
+      "fn": "checkEligibility",
+      "input": {
+        "asOf": "2026-10-31",
+        "pdEntries": [
+          {
+            "hours": 21,
+            "completedOn": "2026-03-01",
+            "type": "course"
+          },
+          {
+            "hours": 10,
+            "completedOn": "2022-10-30",
+            "type": "course"
+          },
+          {
+            "hours": 8,
+            "completedOn": "2026-01-01",
+            "type": "self-study"
+          }
+        ],
+        "agreesToEthics": true
+      }
+    },
+    {
+      "name": "quick error: impossible date",
+      "fn": "checkEligibility",
+      "input": {
+        "asOf": "2026-02-30",
+        "agreesToEthics": true
+      }
+    }
+  ]
+}
