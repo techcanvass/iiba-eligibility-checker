@@ -12,12 +12,12 @@ export default defineConfig({
     cssCodeSplit: false,
     lib: {
       entry: "src/wp-entry.tsx",
-      name: "IIBAEligibility",
+      name: "BACertificationFinder",
       formats: ["iife"],
-      fileName: () => "iiba-eligibility-checker.js",
+      fileName: () => "ba-certification-finder.js",
     },
     rollupOptions: {
-      output: { assetFileNames: "iiba-eligibility-checker.[ext]" },
+      output: { assetFileNames: "ba-certification-finder.[ext]" },
     },
   },
 });

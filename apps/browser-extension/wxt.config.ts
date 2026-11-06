@@ -6,7 +6,7 @@ export default defineConfig({
   modules: ["@wxt-dev/module-react"],
   manifestVersion: 3, // MV3 for every browser, including Firefox
   manifest: ({ browser }) => ({
-    name: "BA Certification Finder: ECBA, CCBA, CBAP",
+    name: "BA Certification Finder: ECBA, CCBA, CBAP", // Firefox max 45 chars, Chrome max 75
     short_name: "BA Cert Finder",
     description:
       "Find your best-fit Business Analyst certification: ECBA, CCBA, CBAP, CBDA, AAC, CCA or PMI-PBA, based on the work you do.",

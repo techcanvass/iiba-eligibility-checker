@@ -5,4 +5,4 @@
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
-delete_option( 'iiba_ec_settings' );
+delete_option( 'bacf_settings' );

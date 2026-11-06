@@ -2,8 +2,8 @@
 
 Reuse across Chrome Web Store, Edge Add-ons and Firefox AMO.
 
-## Name (≤ 75 chars)
-BA Certification Finder — ECBA, CCBA, CBAP & more
+## Name (≤ 45 chars — Firefox limit; Chrome allows 75)
+BA Certification Finder: ECBA, CCBA, CBAP
 
 ## Short description / summary (≤ 132 chars)
 Find your best-fit Business Analyst certification: ECBA, CCBA, CBAP, CBDA, AAC, CCA or PMI-PBA, based on the work you do.

@@ -54,6 +54,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: release-files
+          include-hidden-files: true # extension zips live in the hidden .output/ folder
           path: |
             apps/browser-extension/.output/*.zip
             apps/wordpress-plugin/dist/*.zip
