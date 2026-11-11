@@ -44,7 +44,7 @@ Suggests suitable Business Analyst certifications (IIBA and PMI-PBA) based on a 
 
 ## Firefox notes for reviewers
 The extension is built with WXT + Vite + React. To reproduce the build from the attached source zip:
-`pnpm install && pnpm --filter browser-extension zip:firefox` (output: `.output/browser-extension-2.0.0-firefox.zip`) (Node 22.9+, pnpm 9+).
+`pnpm install && pnpm --filter browser-extension zip:firefox` (output: `.output/browser-extension-1.0.0-firefox.zip`) (Node 22.9+, pnpm 9+).
 The two `UNSAFE_VAR_ASSIGNMENT` lint warnings are inside the bundled React DOM library, not extension code.
 
 ## Assets needed

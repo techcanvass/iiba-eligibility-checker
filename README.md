@@ -5,8 +5,8 @@ logic is written **once** and shipped to every platform:
 
 | Platform | Folder | Output |
 |---|---|---|
-| Chrome + Microsoft Edge | `apps/browser-extension` | `browser-extension-2.0.0-chrome.zip` (same zip for both stores) |
-| Firefox | `apps/browser-extension` | `browser-extension-2.0.0-firefox.zip` + `-sources.zip` |
+| Chrome + Microsoft Edge | `apps/browser-extension` | `browser-extension-1.0.0-chrome.zip` (same zip for both stores) |
+| Firefox | `apps/browser-extension` | `browser-extension-1.0.0-firefox.zip` + `-sources.zip` |
 | WordPress | `apps/wordpress-plugin` | `dist/ba-certification-finder.zip` |
 | PyPI (Python) | `apps/python-package` | `dist/*.whl` + `dist/*.tar.gz` → `pip install ba-certification-finder` |
 | Google Workspace (Sheets, Docs, Slides) | `apps/google-workspace` | Apps Script project in `dist/` → `clasp push` |
@@ -118,8 +118,8 @@ or fails schema validation, so a bad upload can't break the tool.
 cd apps/browser-extension
 pnpm dev                 # Chrome with hot reload
 pnpm dev:firefox         # Firefox
-pnpm zip                 # → .output/browser-extension-2.0.0-chrome.zip
-pnpm zip:firefox         # → .output/browser-extension-2.0.0-firefox.zip (+ sources zip for AMO)
+pnpm zip                 # → .output/browser-extension-1.0.0-chrome.zip
+pnpm zip:firefox         # → .output/browser-extension-1.0.0-firefox.zip (+ sources zip for AMO)
 npx web-ext lint --source-dir .output/firefox-mv3   # same linter AMO runs
 ```
 
