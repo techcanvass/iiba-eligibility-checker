@@ -9,6 +9,7 @@
 import { cpSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { join, relative, sep } from "node:path";
 import { zipSync } from "fflate";
+import { stageSource } from "./stage-source.mjs";
 
 const slug = "ba-certification-finder";
 const stage = `dist/${slug}`;
@@ -17,28 +18,9 @@ mkdirSync(`${stage}/assets`, { recursive: true });
 for (const f of [`${slug}.php`, "readme.txt", "uninstall.php"]) cpSync(f, `${stage}/${f}`);
 cpSync("assets/build", `${stage}/assets/build`, { recursive: true });
 
-// Readable source for the compiled assets/build/ file.
-const src = `${stage}/source`;
-cpSync("../../packages/core/src", `${src}/packages/core/src`, { recursive: true });
-cpSync("../../packages/core/rules", `${src}/packages/core/rules`, { recursive: true });
-cpSync("../../packages/ui/src", `${src}/packages/ui/src`, { recursive: true });
-cpSync("src", `${src}/apps/wordpress-plugin/src`, { recursive: true });
-cpSync("vite.config.ts", `${src}/apps/wordpress-plugin/vite.config.ts`);
-writeFileSync(
-  `${src}/README.md`,
-  `# Source for assets/build/
-
-assets/build/ba-certification-finder.js is compiled from this TypeScript/React source with Vite
-(the styles are bundled inside it). This folder is not loaded by WordPress.
-
-- packages/core  — certification rules (rules/iiba-rules.json) and matching logic
-- packages/ui    — the finder interface (React) and styles
-- apps/wordpress-plugin/src/wp-entry.tsx — mounts the finder where the shortcode is used
-
-To rebuild from the full project: \`pnpm install\` then \`pnpm --filter wordpress-plugin build\`
-(Node.js 22.9+, pnpm 9+).
-`,
-);
+// Complete, rebuildable source for the compiled assets/build/ file, with pinned
+// dependency versions and build instructions (source/README.md).
+stageSource(`${stage}/source`);
 
 // Collect files with forward-slash paths (the zip standard), rooted at "ba-certification-finder/".
 const entries = {};

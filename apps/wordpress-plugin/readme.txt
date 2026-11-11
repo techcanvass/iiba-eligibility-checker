@@ -4,7 +4,7 @@ Tags: business analysis, certification, cbap, ccba, ecba
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.0.1
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,15 +34,26 @@ Options:
 * `compact="yes"` — tighter spacing for narrow columns.
 * `rules_url="https://…/iiba-rules.json"` — load rules from a hosted file.
 
-The older `[iiba_eligibility_checker]` shortcode from version 1 still works.
-
 = External services =
 
 By default this plugin makes no external requests. If you enter a "Hosted rules URL" in Settings → BA Certification Finder (or the `rules_url` shortcode option), the visitor's browser downloads that JSON file from the URL you set, each time a page with the finder loads. It contains certification thresholds only; no visitor data is sent. The file is hosted by you, so your own site's terms and privacy policy apply.
 
-= Source code =
+= Source code and build instructions =
 
-The files in `assets/build/` are compiled with Vite from the TypeScript/React source included in the plugin's `source/` folder. See `source/README.md` for build instructions.
+This plugin contains one compiled file, `assets/build/ba-certification-finder.js`. Its complete,
+human-readable source is included in the plugin's `source/` folder. That folder holds the
+TypeScript/React code, the exact dependency versions in `pnpm-lock.yaml` and step-by-step build
+instructions in `source/README.md`. WordPress does not load the `source/` folder.
+
+To rebuild the file (Node.js 20+ and pnpm 10):
+
+`cd source && pnpm install --frozen-lockfile && pnpm build`
+
+Third-party libraries bundled into the compiled file (all MIT licensed):
+
+* React 18.3.1 — https://github.com/facebook/react/tree/v18.3.1/packages/react
+* React DOM 18.3.1 — https://github.com/facebook/react/tree/v18.3.1/packages/react-dom
+* Scheduler 0.23.2 — https://github.com/facebook/react/tree/v18.3.1/packages/scheduler
 
 == Installation ==
 
@@ -72,21 +83,5 @@ Yes. Host a copy of `iiba-rules.json` and enter its URL in Settings → BA Certi
 
 == Changelog ==
 
-= 2.0.1 =
-* Fix: finder could appear blank or unstyled on sites using optimisation plugins (WP-Optimize, LiteSpeed Cache, WP Rocket) that delay JavaScript or remove unused CSS. Styles now ship inside the script, and the script asks these plugins not to delay it.
-
-= 2.0.0 =
-* New guided 3-step certification finder covering 7 certifications (ECBA, CCBA, CBAP, CBDA, AAC, CCA, PMI-PBA).
-* New shortcode `[ba_certification_finder]`; the old shortcode still works.
-* Removed the UTM setting.
-
 = 1.0.0 =
-* First release.
-
-== Upgrade Notice ==
-
-= 2.0.1 =
-Fixes a blank or unstyled finder on sites with caching/optimisation plugins.
-
-= 2.0.0 =
-New guided certification finder. Existing shortcodes keep working.
+* Initial release.

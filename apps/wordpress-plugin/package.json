@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "package": "vite build && node scripts/package.mjs"
+    "package": "vite build && node scripts/package.mjs",
+    "source:lock": "node scripts/update-source-lock.mjs",
+    "source:verify": "node scripts/verify-source-build.mjs"
   },
   "dependencies": {
     "@iiba/core": "workspace:*",

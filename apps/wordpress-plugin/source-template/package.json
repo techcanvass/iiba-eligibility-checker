@@ -1,0 +1,14 @@
+{
+  "name": "ba-certification-finder-source",
+  "private": true,
+  "description": "Source code for assets/build/ba-certification-finder.js in the BA Certification Finder WordPress plugin.",
+  "license": "GPL-2.0-or-later",
+  "packageManager": "pnpm@10.28.0",
+  "scripts": {
+    "build": "pnpm --filter wordpress-plugin build"
+  },
+  "devDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

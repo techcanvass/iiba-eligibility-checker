@@ -57,7 +57,7 @@ echo "BA Certification Finder — PHP smoke test\n";
 
 // ---------- Hooks ----------
 check( 'new shortcode registered', ( $GLOBALS['shortcodes']['ba_certification_finder'] ?? null ) === 'bacf_shortcode' );
-check( 'legacy v1 shortcode still registered', ( $GLOBALS['shortcodes']['iiba_eligibility_checker'] ?? null ) === 'bacf_shortcode' );
+check( 'only the one shortcode is registered', array_keys( $GLOBALS['shortcodes'] ) === array( 'ba_certification_finder' ) );
 check( 'assets hooked to wp_enqueue_scripts', in_array( 'bacf_register_assets', $GLOBALS['hooks']['wp_enqueue_scripts'] ?? array(), true ) );
 check( 'settings page hooked to admin_menu', in_array( 'bacf_add_settings_page', $GLOBALS['hooks']['admin_menu'] ?? array(), true ) );
 
@@ -79,8 +79,8 @@ check( 'other scripts untouched', bacf_script_tag( $other, 'jquery' ) === $other
 check( 'WP-Optimize exclusion added', in_array( '/wp-content/plugins/ba-certification-finder/', bacf_wpo_exclusions( array( '/a/' ) ), true ) );
 check( 'WP-Optimize exclusion tolerates bad input', bacf_wpo_exclusions( null ) === array( '/wp-content/plugins/ba-certification-finder/' ) );
 
-$html = bacf_shortcode( array( 'compact' => 'YES', 'hide_intro' => 'true' ), '', 'iiba_eligibility_checker' );
-check( 'legacy tag: compact="YES" → 1', strpos( $html, 'data-compact="1"' ) !== false );
+$html = bacf_shortcode( array( 'compact' => 'YES', 'hide_intro' => 'true' ) );
+check( 'compact="YES" → 1', strpos( $html, 'data-compact="1"' ) !== false );
 check( 'hide_intro="true" → 1', strpos( $html, 'data-hide-intro="1"' ) !== false );
 
 $html = bacf_shortcode( array( 'rules_url' => 'javascript:alert(1)' ) );
@@ -129,6 +129,10 @@ preg_match( '/^\s*\*\s*Plugin URI:\s*(\S+)/m', $php, $pu );
 preg_match( '/^\s*\*\s*Author URI:\s*(\S+)/m', $php, $au );
 check( 'Plugin URI and Author URI are not the same (WordPress.org review rule)', empty( $pu ) || empty( $au ) || $pu[1] !== $au[1] );
 check( 'direct-access guard in main file', strpos( $php, "if ( ! defined( 'ABSPATH' ) )" ) !== false );
+check( 'first WordPress.org release is 1.0.0', '1.0.0' === BACF_VERSION );
+check( 'changelog lists only the released version', 1 === preg_match_all( '/^= \d+\.\d+\.\d+ =$/m', explode( '== Changelog ==', $readme )[1] ) );
+check( 'readme documents source code and bundled libraries', strpos( $readme, '= Source code and build instructions =' ) !== false && strpos( $readme, 'React 18.3.1' ) !== false );
+check( 'readme no longer mentions the old shortcode', strpos( $readme, 'iiba_eligibility_checker' ) === false );
 
 echo "\n$pass passed, $fail failed\n";
 exit( $fail > 0 ? 1 : 0 );

@@ -35,6 +35,8 @@ jobs:
       - run: npx --prefix apps/browser-extension web-ext lint --source-dir apps/browser-extension/.output/firefox-mv3
       - run: php -l apps/wordpress-plugin/ba-certification-finder.php && php apps/wordpress-plugin/tests/smoke-test.php
       - run: pnpm --filter wordpress-plugin package
+      # WordPress.org rule: the shipped source/ folder must rebuild the shipped JS exactly
+      - run: pnpm --filter wordpress-plugin source:verify
       - run: pnpm build:gws
       - run: pnpm build:py
 

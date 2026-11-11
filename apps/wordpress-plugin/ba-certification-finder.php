@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       BA Certification Finder
  * Description:       Guided finder that suggests ECBA, CCBA, CBAP, CBDA, AAC, CCA or PMI-PBA from a visitor's background and work. Shortcode: [ba_certification_finder].
- * Version:           2.0.1
+ * Version:           1.0.0
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Techcanvass
@@ -10,13 +10,15 @@
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       ba-certification-finder
+ *
+ * @package BA_Certification_Finder
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // No direct access.
 }
 
-define( 'BACF_VERSION', '2.0.1' );
+define( 'BACF_VERSION', '1.0.0' );
 define( 'BACF_FILE', __FILE__ );
 define( 'BACF_OPTION', 'bacf_settings' );
 
@@ -38,6 +40,9 @@ function bacf_get_settings() {
  * so the plugin adds nothing to page weight elsewhere. The styles are bundled inside the
  * script and injected when the finder is drawn (see source/apps/wordpress-plugin/src/wp-entry.tsx),
  * so "remove unused CSS" features in optimisation plugins can't strip them.
+ *
+ * The compiled file assets/build/ba-certification-finder.js is built from source. Its full source, pinned dependency
+ * versions and build instructions are in this plugin's source/ folder (see source/README.md).
  */
 function bacf_register_assets() {
 	$dir = plugin_dir_path( BACF_FILE ) . 'assets/build/';
@@ -83,11 +88,13 @@ function bacf_wpo_exclusions( $exclusions ) {
 add_filter( 'wp-optimize-minify-default-exclusions', 'bacf_wpo_exclusions' );
 
 /**
- * [ba_certification_finder compact="no" hide_intro="no" rules_url=""]
+ * Renders the [ba_certification_finder] shortcode.
+ *
+ * Usage: [ba_certification_finder compact="no" hide_intro="no" rules_url=""]
  *
  * @param array|string $atts Shortcode attributes.
  * @param string       $content Unused.
- * @param string       $tag Shortcode tag used (supports the legacy tag too).
+ * @param string       $tag Shortcode tag.
  * @return string
  */
 function bacf_shortcode( $atts, $content = '', $tag = 'ba_certification_finder' ) {
@@ -118,13 +125,12 @@ function bacf_shortcode( $atts, $content = '', $tag = 'ba_certification_finder' 
 	);
 }
 add_shortcode( 'ba_certification_finder', 'bacf_shortcode' );
-// Legacy tag from v1, so pages built with the old shortcode keep working.
-add_shortcode( 'iiba_eligibility_checker', 'bacf_shortcode' );
 
-/* ---------------------------------------------------------------------------
- * Settings page: Settings → BA Certification Finder
- * ------------------------------------------------------------------------ */
+// Settings page: Settings → BA Certification Finder.
 
+/**
+ * Registers the plugin setting, its section and the rules URL field.
+ */
 function bacf_register_settings() {
 	register_setting(
 		'bacf',
@@ -149,6 +155,8 @@ function bacf_register_settings() {
 add_action( 'admin_init', 'bacf_register_settings' );
 
 /**
+ * Sanitizes the saved settings.
+ *
  * @param mixed $input Raw option value.
  * @return array{rules_url:string}
  */
@@ -159,6 +167,9 @@ function bacf_sanitize_settings( $input ) {
 	);
 }
 
+/**
+ * Prints the "Hosted rules URL" field.
+ */
 function bacf_field_rules_url() {
 	$s = bacf_get_settings();
 	printf(
@@ -169,6 +180,9 @@ function bacf_field_rules_url() {
 	);
 }
 
+/**
+ * Adds Settings → BA Certification Finder.
+ */
 function bacf_add_settings_page() {
 	add_options_page(
 		__( 'BA Certification Finder', 'ba-certification-finder' ),
@@ -180,6 +194,9 @@ function bacf_add_settings_page() {
 }
 add_action( 'admin_menu', 'bacf_add_settings_page' );
 
+/**
+ * Renders the settings page.
+ */
 function bacf_render_settings_page() {
 	if ( ! current_user_can( 'manage_options' ) ) {
 		return;
