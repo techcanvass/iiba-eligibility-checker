@@ -9,7 +9,7 @@ export default defineConfig({
     name: "BA Certification Finder: ECBA, CCBA, CBAP", // Firefox max 45 chars, Chrome max 75
     short_name: "BA Cert Finder",
     description:
-      "Find your best-fit Business Analyst certification: ECBA, CCBA, CBAP, CBDA, AAC, CCA or PMI-PBA, based on the work you do.",
+      "Answer a few simple questions about your background and work to find the Business Analyst certification that fits you best.",
     homepage_url: "https://www.techcanvass.com",
     // No permissions: everything runs inside the popup. Minimal permissions = faster store review.
     permissions: [],

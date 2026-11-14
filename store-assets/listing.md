@@ -5,8 +5,8 @@ Reuse across Chrome Web Store, Edge Add-ons and Firefox AMO.
 ## Name (≤ 45 chars — Firefox limit; Chrome allows 75)
 BA Certification Finder: ECBA, CCBA, CBAP
 
-## Short description / summary (≤ 132 chars)
-Find your best-fit Business Analyst certification: ECBA, CCBA, CBAP, CBDA, AAC, CCA or PMI-PBA, based on the work you do.
+## Short description / summary (≤ 132 chars). Do NOT list certification acronyms here or in the description: Chrome rejected that as keyword spam (Yellow Argon)
+Answer a few simple questions about your background and work to find the Business Analyst certification that fits you best.
 
 ## Category
 Chrome/Edge: Education · Firefox: Education / Other
@@ -18,7 +18,7 @@ Not sure which Business Analyst certification fits you? Answer a few plain-langu
 HOW IT WORKS
 1. Tell us about yourself: experience, background, education and what interests you.
 2. Tick the everyday activities you've done (interviewing users, writing user stories, building business cases…), even if your job title was never "Business Analyst".
-3. See your matches across 7 certifications: ECBA, CCBA, CBAP, CBDA, AAC, CCA and PMI-PBA.
+3. See which IIBA and PMI business analysis certifications match your experience.
 
 WHAT YOU GET
 • A status for each certification: no prerequisite, potential match, or what still needs verifying
@@ -32,7 +32,7 @@ Everything runs on your device. No account, no tracking, no data collection, no 
 
 Built by Techcanvass, an IIBA Endorsed Education Provider since 2011.
 
-IIBA®, BABOK®, ECBA™, CCBA®, CBAP®, CBDA®, AAC® and CCA® are trademarks of the International Institute of Business Analysis. PMI-PBA® is a mark of the Project Management Institute. This extension is an independent guide and is not affiliated with or endorsed by IIBA or PMI. Final eligibility is determined by the certification body.
+IIBA® and the IIBA certification names are trademarks of the International Institute of Business Analysis. PMI-PBA® is a mark of the Project Management Institute. This extension is an independent guide and is not affiliated with or endorsed by IIBA or PMI. Final eligibility is determined by the certification body.
 
 ## Chrome "single purpose" statement
 Suggests suitable Business Analyst certifications (IIBA and PMI-PBA) based on a user's background and work experience.
