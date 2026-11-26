@@ -43,105 +43,86 @@ export interface RuleSet {
   knowledgeAreas: KnowledgeAreaDef[];
   certifications: CertificationRule[];
   pdExcludedTypes: string[];
-  finder: FinderConfig;
+  advisor: AdvisorConfig;
 }
 
-// ---------- Certification finder (guided wizard) ----------
+// ---------- Career advisor (guided questions → pathway) ----------
 
-export type FinderCertKind = "open" | "hours" | "knowledge" | "months";
+export type AdvisorExperience = "none" | "lt2" | "2to4" | "5plus";
+export type AdvisorBackground = "nonit" | "it" | "student";
+export type AdvisorGoal =
+  | "career"
+  | "agile"
+  | "data"
+  | "technical"
+  | "ai"
+  | "agents"
+  | "cyber"
+  | "domain"
+  | "unsure";
 
-export interface FinderCertDef {
-  code: string;
-  kind: FinderCertKind;
-  name: string;
-  description: string;
-  url: string;
-  /** kind "months" only (PMI-PBA). */
-  monthsByEducation?: Partial<Record<Education, number>>;
-  windowYears?: number;
-  contactHours?: number;
+/** Follow-up question keys, asked only for some goals. */
+export type AdvisorFollowUp = "agile" | "domain" | "analytics" | "cyber" | "ai";
+
+export interface AdvisorAnswers {
+  experience: AdvisorExperience | null;
+  /** Asked only when experience is "none". */
+  background?: AdvisorBackground | null;
+  /** Asked only when the person has BA experience. */
+  goal?: AdvisorGoal | null;
+  agile?: "agile" | "product" | "both" | null;
+  domain?: "banking" | "insurance" | "health" | "supply" | "telecom" | "unsure" | null;
+  analytics?: "cert" | "hands" | "both" | null;
+  cyber?: "securityba" | "transition" | null;
+  ai?: "productivity" | "agents" | "both" | null;
 }
 
-export interface FinderOption<T extends string | number = string | number> {
-  value: T;
+export interface AdvisorOption {
+  value: string;
   label: string;
 }
 
-/** One question shown by every surface (web, extension, WordPress, Python CLI, Workspace). */
-export interface FinderQuestion<T extends string | number = string | number> {
-  label: string;
-  placeholder?: string;
-  hint?: string;
-  /** Pre-selected value; omit to require the user to choose. */
-  default?: T;
-  options: FinderOption<T>[];
+export interface AdvisorQuestion {
+  title: string;
+  helper: string;
+  options: AdvisorOption[];
 }
 
-export interface FinderQuestions {
-  totalYears: FinderQuestion<number>;
-  background: FinderQuestion<Background>;
-  education: FinderQuestion<Education>;
-  interest: FinderQuestion<Interest>;
-  baYears: FinderQuestion<number>;
-  baShare: FinderQuestion<number>;
-  continuity: FinderQuestion<Continuity>;
-  recent: FinderQuestion<Recency>;
-}
-
-export interface FinderConfig {
-  /** Hours per year assumed when turning "years × share" into an indicative estimate. */
-  annualHoursEstimate: number;
-  questions: FinderQuestions;
-  kaPlainNames: Record<KnowledgeAreaId, string>;
-  activities: Array<{ label: string; ka: KnowledgeAreaId }>;
-  certifications: FinderCertDef[];
-  interestPriority: Record<Interest, string[]>;
-}
-
-export type Background = "ba" | "it" | "domain" | "project" | "student" | "other";
-export type Education = "secondary" | "bachelor" | "gac" | "other";
-export type Interest = "unsure" | "general" | "agile" | "data" | "cyber" | "project";
-export type Continuity = "continuous" | "breaks" | "parttime";
-export type Recency = "current" | "lt2" | "2to7" | "7to10" | "over10" | "never";
-
-/** Optional exact hours for an hours-based cert (CCBA/CBAP). `ka` follows rules.knowledgeAreas order. */
-export interface PreciseHours {
-  total: number | null;
-  ka: Array<number | null>;
-}
-
-export interface FinderAnswers {
-  totalYears: number | null;
-  background: Background | null;
-  education: Education;
-  interest: Interest;
-  /** Indices into finder.activities. */
-  activities: number[];
-  baYears: number | null;
-  baShare: number | null;
-  continuity: Continuity | null;
-  recent: Recency | null;
-  /** Keyed by cert code, e.g. { CCBA: {...}, CBAP: {...} }. */
-  precise?: Partial<Record<string, PreciseHours>>;
-}
-
-export type MatchTone = "good" | "neutral" | "warn";
-
-export interface FinderMatch {
-  code: string;
+export interface AdvisorCourse {
   name: string;
-  description: string;
+  desc: string;
   url: string;
-  status: string;
-  tone: MatchTone;
-  notes: string[];
+  /** Credential is issued by someone else; the link goes to that issuer. */
+  external?: boolean;
+  issuer?: string;
+  issuerUrl?: string;
 }
 
-export interface FinderReport {
-  headline: string;
-  detail: string;
-  warnings: string[];
-  matches: FinderMatch[];
+export interface AdvisorConfig {
+  questions: Record<"experience" | "background" | "agile" | "domain" | "analytics" | "cyber" | "ai", AdvisorQuestion>;
+  /** Goal choices in display order; `hideFor` lists experience brackets that don't see the goal. */
+  goals: Array<{ value: AdvisorGoal; label: string; hideFor?: AdvisorExperience[] }>;
+  courses: Record<string, AdvisorCourse>;
+  sourceLinks: Array<{ label: string; url: string }>;
+}
+
+export type AdvisorCourseRole = "primary" | "also" | "optional";
+
+export interface AdvisorCourseRef extends AdvisorCourse {
+  key: string;
+  role: AdvisorCourseRole;
+}
+
+export interface AdvisorReport {
+  title: string;
+  intro: string;
+  reason: string;
+  roadmap: string[];
+  courses: AdvisorCourseRef[];
+  /** Two short points: market context and credential credibility. */
+  why: string[];
+  /** Eligibility and scope note. */
+  notice: string;
   rulesVersion: string;
 }
 

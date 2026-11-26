@@ -1,16 +1,13 @@
-"""BA Certification Finder — find the right Business Analyst certification.
+"""BA Certification Advisor — find the right Business Analysis path.
 
 Uses the same rules engine as the Techcanvass browser extension and WordPress plugin::
 
     from ba_cert_finder import find_certifications
 
-    report = find_certifications({
-        "totalYears": 6, "background": "ba", "education": "bachelor", "interest": "general",
-        "activities": [0, 1, 4, 6], "baYears": 6, "baShare": 0.7,
-        "continuity": "continuous", "recent": "current",
-    })
-    for m in report["matches"]:
-        print(m["code"], "-", m["status"])
+    report = find_certifications({"experience": "2to4", "goal": "agile", "agile": "both"})
+    print(report["title"])
+    for course in report["courses"]:
+        print(course["role"], "-", course["name"])
 """
 
 from __future__ import annotations
@@ -57,7 +54,10 @@ class EligibilityInputError(BACertFinderError):
     """Raised by :func:`check_eligibility` for invalid input."""
 
 
-_ERRORS = {"FinderInputError": FinderInputError, "EligibilityInputError": EligibilityInputError}
+_ERRORS = {
+    "AdvisorInputError": FinderInputError,
+    "EligibilityInputError": EligibilityInputError,
+}
 
 
 def _run(fn: str, payload: Mapping[str, Any], rules: Mapping[str, Any] | None) -> dict:
@@ -69,17 +69,19 @@ def _run(fn: str, payload: Mapping[str, Any], rules: Mapping[str, Any] | None) -
 
 
 def find_certifications(answers: Mapping[str, Any], *, rules: Mapping[str, Any] | None = None) -> dict:
-    """Guided finder: suggest certifications from background and work activities.
+    """Guided advisor: recommend a certification path, roadmap and courses.
 
-    ``answers`` keys: totalYears, background, education, interest, activities (indices into
-    ``bundled_rules()["finder"]["activities"]``), baYears, baShare, continuity, recent and
-    optionally ``precise`` (exact CCBA/CBAP hours). Allowed values for each question are in
-    ``bundled_rules()["finder"]["questions"]``.
+    ``answers`` keys: ``experience`` (always); ``background`` when experience is ``"none"``;
+    otherwise ``goal`` plus the follow-up that goes with it (``agile`` for goal ``agile``,
+    ``domain``, ``analytics`` for goal ``data``, ``cyber``, ``ai`` for goals ``ai`` and
+    ``agents``). Allowed values are in ``bundled_rules()["advisor"]["questions"]`` and
+    ``["goals"]``.
 
-    Returns a report with ``headline``, ``detail``, ``warnings`` and ``matches`` (one per
-    certification, each with ``code``, ``status``, ``tone`` and ``notes``).
+    Returns a report with ``title``, ``intro``, ``reason``, ``roadmap`` (list of steps),
+    ``courses`` (each with ``key``, ``name``, ``url`` and ``role`` of ``primary``, ``also`` or
+    ``optional``), ``why`` (two points) and ``notice``.
     """
-    return _run("buildFinderReport", answers, rules)
+    return _run("buildAdvisorReport", answers, rules)
 
 
 def check_eligibility(candidate: Mapping[str, Any], *, rules: Mapping[str, Any] | None = None) -> dict:

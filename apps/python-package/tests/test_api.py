@@ -6,22 +6,27 @@ import pytest
 
 import ba_cert_finder as bcf
 
-ANSWERS = {
-    "totalYears": 6, "background": "ba", "education": "bachelor", "interest": "general",
-    "activities": [0, 1, 4, 6], "baYears": 6, "baShare": 0.7, "continuity": "continuous", "recent": "current",
-}
+ANSWERS = {"experience": "2to4", "goal": "agile", "agile": "both"}
 
 
-def test_find_certifications_returns_all_seven():
+def test_find_certifications_returns_a_pathway():
     report = bcf.find_certifications(ANSWERS)
-    assert [m["code"] for m in report["matches"]][:3] == ["CCBA", "CBAP", "ECBA"]
-    assert len(report["matches"]) == 7
+    assert report["title"] == "Your recommended path: Agile Analysis + Product Ownership"
+    assert [c["key"] for c in report["courses"]] == ["aac", "cpoa", "cspo", "pspo", "ccba"]
+    assert report["courses"][0]["role"] == "primary"
+    assert len(report["roadmap"]) == 5 and len(report["why"]) == 2
+
+
+def test_beginner_path_needs_only_a_background():
+    report = bcf.find_certifications({"experience": "none", "background": "student"})
+    assert [c["key"] for c in report["courses"]] == ["ecba", "domain"]
 
 
 def test_finder_error_has_field_details():
     with pytest.raises(bcf.FinderInputError) as e:
-        bcf.find_certifications({**ANSWERS, "totalYears": None})
-    assert e.value.errors[0]["field"] == "totalYears"
+        bcf.find_certifications({"experience": "2to4", "goal": "agile"})
+    assert e.value.errors[0]["field"] == "agile"
+    assert issubclass(bcf.FinderInputError, ValueError)
 
 
 def test_check_eligibility_and_error_type():
@@ -40,9 +45,9 @@ def test_bundled_rules_is_a_copy():
 
 def test_custom_rules_are_used():
     rules = bcf.bundled_rules()
-    rules["finder"]["certifications"][0]["description"] = "Custom ECBA text"
-    report = bcf.find_certifications({**ANSWERS, "interest": "unsure"}, rules=rules)
-    assert report["matches"][0]["description"] == "Custom ECBA text"
+    rules["advisor"]["courses"]["ecba"]["name"] = "Custom ECBA course"
+    report = bcf.find_certifications({"experience": "none", "background": "it"}, rules=rules)
+    assert report["courses"][0]["name"] == "Custom ECBA course"
 
 
 def test_thread_safe_concurrent_calls():
@@ -50,7 +55,7 @@ def test_thread_safe_concurrent_calls():
 
     def work():
         try:
-            results.append(bcf.find_certifications(ANSWERS)["matches"][0]["code"])
+            results.append(bcf.find_certifications(ANSWERS)["courses"][0]["key"])
         except Exception as exc:  # pragma: no cover
             errors.append(exc)
 
@@ -59,7 +64,7 @@ def test_thread_safe_concurrent_calls():
         t.start()
     for t in threads:
         t.join()
-    assert not errors and results == ["CCBA"] * 8
+    assert not errors and results == ["aac"] * 8
 
 
 @pytest.fixture

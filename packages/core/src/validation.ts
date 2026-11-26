@@ -1,4 +1,4 @@
-import type { CandidateInput, FinderQuestion, FinderQuestions, KnowledgeAreaId, RuleSet } from "./types";
+import type { AdvisorConfig, CandidateInput, KnowledgeAreaId, RuleSet } from "./types";
 import { parseISODate } from "./dates";
 
 export const KNOWLEDGE_AREA_IDS: readonly KnowledgeAreaId[] = [
@@ -103,35 +103,72 @@ export function validateInput(input: CandidateInput): ValidationError[] {
 }
 
 /**
- * Allowed option values per question. The matching logic branches on these exact values,
- * so a hosted rules file may relabel or reorder options but not invent new values.
+ * Allowed option values per question. The advisor logic branches on these exact values,
+ * so a hosted rules file may relabel or reorder options but not invent new ones.
  */
-const QUESTION_VALUES: Record<keyof FinderQuestions, ((v: unknown) => boolean) | readonly string[]> = {
-  totalYears: (v) => isNonNegNumber(v),
-  background: ["ba", "it", "domain", "project", "student", "other"],
-  education: ["secondary", "bachelor", "gac", "other"],
-  interest: ["unsure", "general", "agile", "data", "cyber", "project"],
-  baYears: (v) => isNonNegNumber(v),
-  baShare: (v) => isNonNegNumber(v) && (v as number) <= 1,
-  continuity: ["continuous", "breaks", "parttime"],
-  recent: ["current", "lt2", "2to7", "7to10", "over10", "never"],
+const ADVISOR_VALUES: Record<keyof AdvisorConfig["questions"], readonly string[]> = {
+  experience: ["none", "lt2", "2to4", "5plus"],
+  background: ["nonit", "it", "student"],
+  agile: ["agile", "product", "both"],
+  domain: ["banking", "insurance", "health", "supply", "telecom", "unsure"],
+  analytics: ["cert", "hands", "both"],
+  cyber: ["securityba", "transition"],
+  ai: ["productivity", "agents", "both"],
 };
 
-function isValidQuestions(q: unknown): q is FinderQuestions {
-  if (!q || typeof q !== "object") return false;
-  return (Object.keys(QUESTION_VALUES) as (keyof FinderQuestions)[]).every((key) => {
-    const question = (q as Record<string, FinderQuestion>)[key];
-    const allowed = QUESTION_VALUES[key];
-    const ok = (v: unknown) => (typeof allowed === "function" ? allowed(v) : allowed.includes(v as string));
+const GOAL_VALUES = ["career", "agile", "data", "technical", "ai", "agents", "cyber", "domain", "unsure"];
+const EXPERIENCE_VALUES = ADVISOR_VALUES.experience;
+
+/** Course keys the advisor logic can recommend; a hosted file must define all of them. */
+const REQUIRED_COURSES = [
+  "ecba", "ccba", "cbap", "aac", "cpoa", "cbda", "analytics", "technical",
+  "aiba", "agents", "domain", "cspo", "pspo", "catalog",
+];
+
+const isUrl = (v: unknown) => typeof v === "string" && /^https:\/\//.test(v);
+
+function isValidAdvisor(f: unknown): f is AdvisorConfig {
+  if (!f || typeof f !== "object") return false;
+  const a = f as Partial<AdvisorConfig>;
+  if (!a.questions || !Array.isArray(a.goals) || !a.courses || !Array.isArray(a.sourceLinks)) return false;
+
+  const questionsOk = (Object.keys(ADVISOR_VALUES) as (keyof AdvisorConfig["questions"])[]).every((key) => {
+    const q = a.questions![key];
+    const allowed = ADVISOR_VALUES[key];
     return (
-      question &&
-      typeof question.label === "string" &&
-      Array.isArray(question.options) &&
-      question.options.length > 0 &&
-      question.options.every((o) => o && typeof o.label === "string" && ok(o.value)) &&
-      (question.default === undefined || question.options.some((o) => o.value === question.default))
+      q &&
+      typeof q.title === "string" &&
+      typeof q.helper === "string" &&
+      Array.isArray(q.options) &&
+      // Every allowed value needs an option, or some answers could never be chosen.
+      allowed.every((v) => q.options.some((o) => o?.value === v)) &&
+      q.options.every((o) => o && typeof o.label === "string" && allowed.includes(o.value))
     );
   });
+  if (!questionsOk) return false;
+
+  const goalsOk =
+    a.goals.every(
+      (g) =>
+        g &&
+        typeof g.label === "string" &&
+        GOAL_VALUES.includes(g.value) &&
+        (g.hideFor === undefined || (Array.isArray(g.hideFor) && g.hideFor.every((x) => EXPERIENCE_VALUES.includes(x)))),
+    ) && GOAL_VALUES.every((v) => a.goals!.some((g) => g.value === v));
+  if (!goalsOk) return false;
+
+  const courses = a.courses as Record<string, unknown>;
+  const coursesOk = REQUIRED_COURSES.every((key) => {
+    const c = courses[key] as Record<string, unknown> | undefined;
+    return (
+      c &&
+      typeof c.name === "string" &&
+      typeof c.desc === "string" &&
+      isUrl(c.url) &&
+      (c.issuerUrl === undefined || isUrl(c.issuerUrl))
+    );
+  });
+  return coursesOk && a.sourceLinks.every((l) => l && typeof l.label === "string" && isUrl(l.url));
 }
 
 /** Type guard used by the rules loader before trusting remote JSON. */
@@ -141,28 +178,7 @@ export function isValidRuleSet(value: unknown): value is RuleSet {
   if (typeof r.version !== "string" || !Array.isArray(r.certifications)) return false;
   if (!Array.isArray(r.knowledgeAreas) || !Array.isArray(r.pdExcludedTypes)) return false;
 
-  const f = r.finder;
-  if (
-    !f ||
-    !isValidQuestions(f.questions) ||
-    !isNonNegNumber(f.annualHoursEstimate) ||
-    !Array.isArray(f.activities) ||
-    !Array.isArray(f.certifications) ||
-    !f.interestPriority ||
-    !f.kaPlainNames ||
-    !f.activities.every((a) => a && typeof a.label === "string" && KNOWLEDGE_AREA_IDS.includes(a.ka)) ||
-    !f.certifications.every(
-      (c) =>
-        c &&
-        typeof c.code === "string" &&
-        typeof c.url === "string" &&
-        ["open", "hours", "knowledge", "months"].includes(c.kind) &&
-        // Every hours-based finder cert needs a matching hour rule.
-        (c.kind !== "hours" || r.certifications!.some((rc) => rc?.code === c.code)),
-    )
-  ) {
-    return false;
-  }
+  if (!isValidAdvisor(r.advisor)) return false;
 
   return r.certifications.every(
     (c) =>

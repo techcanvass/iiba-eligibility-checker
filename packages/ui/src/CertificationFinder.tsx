@@ -1,14 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import {
+  ADVISOR_FOLLOW_UPS,
   BUNDLED_RULES,
-  buildFinderReport,
+  advisorStepCount,
+  buildAdvisorReport,
+  goalsFor,
   loadRules,
-  validateFinderStep1,
-  validatePrecise,
-  type FinderAnswers,
-  type FinderError,
-  type FinderQuestion,
-  type FinderReport,
+  nextAdvisorStage,
+  type AdvisorAnswers,
+  type AdvisorFollowUp,
+  type AdvisorReport,
+  type AdvisorStage,
   type RuleSet,
 } from "@iiba/core";
 
@@ -20,83 +22,32 @@ export interface CertificationFinderProps {
   /** Hide the page title + intro (e.g. when the host page already has one). */
   hideIntro?: boolean;
   /** Called with every result — hook analytics or lead capture here. */
-  onReport?: (report: FinderReport, answers: FinderAnswers) => void;
+  onReport?: (report: AdvisorReport, answers: AdvisorAnswers) => void;
 }
 
-let idSeq = 0;
+type QuestionStage = Exclude<AdvisorStage, "result">;
 
-/** Text value of a <select> → typed value, "" → null. Numbers are parsed. */
-function parseOpt<T extends string | number>(q: FinderQuestion<T>, raw: string): T | null {
-  return q.options.find((o) => String(o.value) === raw)?.value ?? null;
+const EMPTY: AdvisorAnswers = { experience: null };
+
+/** Answer keys that belong to later questions and must be cleared when an earlier one changes. */
+function clearDownstream(stage: QuestionStage, a: AdvisorAnswers): AdvisorAnswers {
+  const next = { ...a };
+  if (stage === "experience") {
+    delete next.background;
+    delete next.goal;
+  }
+  if (stage === "experience" || stage === "goal") {
+    for (const k of ADVISOR_FOLLOW_UPS) delete next[k];
+  }
+  return next;
 }
-
-interface SelectProps<T extends string | number> {
-  id: string;
-  /** Question definition from the shared rules file (label, options, placeholder, hint). */
-  q: FinderQuestion<T>;
-  value: T | null;
-  onChange: (v: T | null) => void;
-  error?: string;
-}
-
-function Select<T extends string | number>({ id, q, value, onChange, error }: SelectProps<T>) {
-  const describedBy = [q.hint && `${id}-hint`, error && `${id}-err`].filter(Boolean).join(" ") || undefined;
-  return (
-    <div className="tc-field">
-      <label htmlFor={id}>{q.label}</label>
-      <select
-        id={id}
-        value={value === null ? "" : String(value)}
-        onChange={(e) => onChange(parseOpt(q, e.target.value))}
-        aria-invalid={error ? true : undefined}
-        aria-describedby={describedBy}
-      >
-        {q.placeholder !== undefined && <option value="">{q.placeholder}</option>}
-        {q.options.map((o) => (
-          <option key={String(o.value)} value={String(o.value)}>
-            {o.label}
-          </option>
-        ))}
-      </select>
-      {q.hint && <small id={`${id}-hint`}>{q.hint}</small>}
-      {error && (
-        <small id={`${id}-err`} className="tc-error">
-          {error}
-        </small>
-      )}
-    </div>
-  );
-}
-
-/** Hours inputs are kept as strings so the user can clear a field. */
-type HourStrings = { total: string; ka: string[] };
-const emptyHours = (n: number): HourStrings => ({ total: "", ka: Array(n).fill("") });
-const toNum = (s: string): number | null => (s.trim() === "" ? null : Number(s));
 
 export function CertificationFinder({ rulesUrl, compact, hideIntro, onReport }: CertificationFinderProps) {
-  const [uid] = useState(() => `tcf${++idSeq}`);
   const [rules, setRules] = useState<RuleSet>(BUNDLED_RULES);
-  const Q = rules.finder.questions;
-  const [step, setStep] = useState<1 | 2 | 3>(1);
-  const [answers, setAnswers] = useState<FinderAnswers>({
-    totalYears: null,
-    background: null,
-    education: BUNDLED_RULES.finder.questions.education.default ?? "other",
-    interest: BUNDLED_RULES.finder.questions.interest.default ?? "unsure",
-    activities: [],
-    baYears: null,
-    baShare: null,
-    continuity: null,
-    recent: null,
-  });
-  const [errors, setErrors] = useState<FinderError[]>([]);
-  const [report, setReport] = useState<FinderReport | null>(null);
-
-  const hourCerts = rules.certifications
-    .filter((c) => c.workHours > 0)
-    .sort((a, b) => a.workWindowYears - b.workWindowYears);
-  const [hours, setHours] = useState<Record<string, HourStrings>>({});
-  const [preciseOpen, setPreciseOpen] = useState(false);
+  const [answers, setAnswers] = useState<AdvisorAnswers>(EMPTY);
+  const [history, setHistory] = useState<QuestionStage[]>([]);
+  const [stage, setStage] = useState<AdvisorStage>("experience");
+  const [report, setReport] = useState<AdvisorReport | null>(null);
 
   const rootRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -113,390 +64,322 @@ export function CertificationFinder({ rulesUrl, compact, hideIntro, onReport }: 
     };
   }, [rulesUrl]);
 
-  // On step change: bring the panel into view and move focus to its heading (screen readers).
+  // On every screen change: bring the panel into view and move focus to its heading (screen readers).
   useEffect(() => {
     if (firstRender.current) {
       firstRender.current = false;
       return;
     }
     const root = rootRef.current;
-    if (root && root.getBoundingClientRect().top < 0) {
-      root.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+    if (root && root.getBoundingClientRect().top < 0) root.scrollIntoView({ behavior: "smooth", block: "start" });
     headingRef.current?.focus({ preventScroll: true });
-  }, [step]);
+  }, [stage]);
 
-  const set = <K extends keyof FinderAnswers>(key: K, value: FinderAnswers[K]) => {
-    setAnswers((a) => ({ ...a, [key]: value }));
-    setErrors((errs) => errs.filter((e) => e.field !== key));
+  const Q = rules.advisor.questions;
+  const total = advisorStepCount(answers);
+  const done = stage === "result";
+
+  const choose = (value: string) => {
+    if (stage === "result") return;
+    const key = stage as keyof AdvisorAnswers;
+    setAnswers((a) => ({ ...clearDownstream(stage, a), [key]: value }) as AdvisorAnswers);
   };
-  const errFor = (field: string) => errors.find((e) => e.field === field)?.message;
 
-  const toggleActivity = (i: number) =>
-    set(
-      "activities",
-      answers.activities.includes(i) ? answers.activities.filter((x) => x !== i) : [...answers.activities, i].sort((a, b) => a - b),
-    );
-
-  const goToStep2 = () => {
-    const errs = validateFinderStep1(answers);
-    setErrors(errs);
-    if (errs.length) {
-      document.getElementById(`${uid}-${errs[0]!.field}`)?.focus();
-      return;
+  const next = () => {
+    if (stage === "result" || !answers[stage as keyof AdvisorAnswers]) return;
+    const n = nextAdvisorStage(stage, answers);
+    setHistory((h) => [...h, stage as QuestionStage]);
+    setStage(n);
+    if (n === "result") {
+      const r = buildAdvisorReport(answers as AdvisorAnswers, rules);
+      setReport(r);
+      onReport?.(r, answers);
     }
-    setStep(2);
   };
 
-  const preciseFromInputs = (): FinderAnswers["precise"] => {
-    const p: NonNullable<FinderAnswers["precise"]> = {};
-    for (const c of hourCerts) {
-      const h = hours[c.code];
-      if (!h) continue;
-      const total = toNum(h.total);
-      const ka = h.ka.map(toNum);
-      if (total !== null || ka.some((v) => v !== null)) p[c.code] = { total, ka };
-    }
-    return Object.keys(p).length ? p : undefined;
+  const back = () => {
+    const prev = history[history.length - 1];
+    if (!prev) return;
+    setHistory((h) => h.slice(0, -1));
+    setStage(prev);
   };
 
-  const showResults = (withPrecise: boolean) => {
-    const final: FinderAnswers = { ...answers, precise: withPrecise ? preciseFromInputs() : undefined };
-    if (withPrecise) {
-      const errs = validatePrecise(final.precise, rules);
-      setErrors(errs);
-      if (errs.length) return;
-    }
-    const r = buildFinderReport(final, rules);
-    setReport(r);
-    onReport?.(r, final);
-    if (step !== 3) setStep(3);
+  const restart = () => {
+    setAnswers(EMPTY);
+    setHistory([]);
+    setStage("experience");
+    setReport(null);
   };
 
-  const setHour = (code: string, index: number | "total", value: string) => {
-    setHours((prev) => {
-      const cur = prev[code] ?? emptyHours(rules.knowledgeAreas.length);
-      const next =
-        index === "total" ? { ...cur, total: value } : { ...cur, ka: cur.ka.map((v, i) => (i === index ? value : v)) };
-      return { ...prev, [code]: next };
-    });
-  };
+  const label = (list: { value: string; label: string }[], v: string | null | undefined) =>
+    list.find((o) => o.value === v)?.label ?? "Not selected";
+  const goals = goalsFor(rules, answers.experience);
+  const followUp = ADVISOR_FOLLOW_UPS.find((k) => answers[k]);
 
-  const preciseErrors = errors.filter((e) => hourCerts.some((c) => e.field.startsWith(`${c.code}.`)));
+  const summary: Array<[string, string]> = [
+    ["BA experience", label(Q.experience.options, answers.experience)],
+    [
+      "Professional background",
+      answers.experience === "none"
+        ? label(Q.background.options, answers.background)
+        : answers.experience
+          ? "Working with hands-on BA responsibilities"
+          : "Not selected",
+    ],
+    [
+      "Career goal",
+      answers.experience === "none" ? "Transition into a BA role" : label(rules.advisor.goals, answers.goal),
+    ],
+    ["Specialization", followUp ? label(Q[followUp as AdvisorFollowUp].options, answers[followUp]) : "—"],
+  ];
+
+  const pct = done ? 100 : Math.round((history.length / total) * 100);
 
   return (
     <div ref={rootRef} className={compact ? "tc-finder is-compact" : "tc-finder"}>
       {!hideIntro && (
         <div className="tc-intro">
-          <h1>Find your Business Analyst certification</h1>
+          <h1>Find the right Business Analysis path</h1>
           <p>
-            Tell us about your background and the work you do. We’ll suggest suitable certifications before asking
-            about training.
+            Tell us about your experience and career goals. Get a personalized certification recommendation, a
+            practical skills roadmap, and relevant Techcanvass courses.
           </p>
         </div>
       )}
 
-      {step === 1 && (
-        <section className="tc-panel" aria-labelledby={`${uid}-h`}>
-          <Progress step={1} />
-          <h2 id={`${uid}-h`} ref={headingRef} tabIndex={-1}>
-            1. Tell us about yourself
-          </h2>
-          <p className="tc-subtitle">You don’t need to know certification terminology.</p>
-          <div className="tc-grid">
-            <Select
-              id={`${uid}-totalYears`}
-              q={Q.totalYears}
-              value={answers.totalYears}
-              onChange={(v) => set("totalYears", v)}
-              error={errFor("totalYears")}
+      <div className="tc-layout">
+        <div className="tc-panel">
+          {!done && (
+            <QuestionView
+              key={stage}
+              stage={stage}
+              rules={rules}
+              goals={goals}
+              value={answers[stage as keyof AdvisorAnswers] as string | null | undefined}
+              step={history.length + 1}
+              isLast={nextAdvisorStage(stage, answers) === "result"}
+              canBack={history.length > 0}
+              headingRef={headingRef}
+              onChoose={choose}
+              onNext={next}
+              onBack={back}
             />
-            <Select
-              id={`${uid}-background`}
-              q={Q.background}
-              value={answers.background}
-              onChange={(v) => set("background", v)}
-              error={errFor("background")}
-            />
-            <Select
-              id={`${uid}-education`}
-              q={Q.education}
-              value={answers.education}
-              onChange={(v) => set("education", v ?? "other")}
-            />
-            <Select
-              id={`${uid}-interest`}
-              q={Q.interest}
-              value={answers.interest}
-              onChange={(v) => set("interest", v ?? "unsure")}
-            />
-          </div>
-          <div className="tc-hint">
-            ECBA has no mandatory work-experience requirement, including for people switching from non-IT careers.
-          </div>
-          <div className="tc-actions">
-            <button type="button" className="tc-primary" onClick={goToStep2}>
-              Continue →
-            </button>
-          </div>
-        </section>
-      )}
+          )}
 
-      {step === 2 && (
-        <section className="tc-panel" aria-labelledby={`${uid}-h`}>
-          <Progress step={2} />
-          <h2 id={`${uid}-h`} ref={headingRef} tabIndex={-1}>
-            2. Tell us about your work experience
-          </h2>
-          <p className="tc-subtitle">
-            Which activities have you personally performed at work? Select all that apply, even if your job title was
-            not “Business Analyst”.
-          </p>
-          <fieldset className="tc-chips">
-            <legend className="tc-sr-only">Activities you have performed</legend>
-            {rules.finder.activities.map((act, i) => (
-              <label key={act.label} className="tc-chip">
-                <input type="checkbox" checked={answers.activities.includes(i)} onChange={() => toggleActivity(i)} />
-                <span>
-                  <strong>{act.label}</strong>
-                </span>
-              </label>
-            ))}
-          </fieldset>
-          <div className="tc-grid">
-            <Select
-              id={`${uid}-baYears`}
-              q={Q.baYears}
-              value={answers.baYears}
-              onChange={(v) => set("baYears", v)}
+          {done && report && (
+            <ResultView
+              report={report}
+              rules={rules}
+              compact={!!compact}
+              headingRef={headingRef}
+              onEdit={back}
+              onRestart={restart}
             />
-            <Select
-              id={`${uid}-baShare`}
-              q={Q.baShare}
-              value={answers.baShare}
-              onChange={(v) => set("baShare", v)}
-            />
-            <Select
-              id={`${uid}-continuity`}
-              q={Q.continuity}
-              value={answers.continuity}
-              onChange={(v) => set("continuity", v)}
-            />
-            <Select
-              id={`${uid}-recent`}
-              q={Q.recent}
-              value={answers.recent}
-              onChange={(v) => set("recent", v)}
-            />
-          </div>
-          <div className="tc-hint">
-            If you have had breaks or your BA work varied by role, the results will show what needs verification rather
-            than assuming all employment was relevant.
-          </div>
-          <div className="tc-actions">
-            <button type="button" onClick={() => setStep(1)}>
-              ← Back
-            </button>
-            <button type="button" className="tc-primary" onClick={() => showResults(false)}>
-              See my certification matches →
-            </button>
-          </div>
-        </section>
-      )}
+          )}
+        </div>
 
-      {step === 3 && report && (
-        <section className="tc-panel" aria-labelledby={`${uid}-h`}>
-          <Progress step={2} />
-          <h2 id={`${uid}-h`} ref={headingRef} tabIndex={-1}>
-            Your certification matches
-          </h2>
-          <p className="tc-subtitle">
-            Based on what you do and when you did it. This is an initial assessment, not an official eligibility
-            approval.
-          </p>
-
-          <div className="tc-banner" aria-live="polite">
-            <strong>{report.headline}</strong>
-            <p className="tc-fine">{report.detail}</p>
-            {report.warnings.map((w) => (
-              <p key={w} className="tc-warning">
-                {w}
-              </p>
-            ))}
-          </div>
-
-          <div className="tc-resultgrid">
-            {report.matches.map((m) => (
-              <article key={m.code} className="tc-result">
-                <h3>
-                  {m.code}
-                  <span className={`tc-pill ${m.tone === "neutral" ? "" : m.tone}`}>{m.status}</span>
-                </h3>
-                <strong>{m.name}</strong>
-                <p>{m.description}</p>
-                {m.notes.length > 0 && (
-                  <ul>
-                    {m.notes.map((n) => (
-                      <li key={n}>{n}</li>
-                    ))}
-                  </ul>
-                )}
-                <a href={m.url} target="_blank" rel="noopener noreferrer">
-                  Official certification details ↗
-                </a>
-              </article>
-            ))}
-          </div>
-
-          <div className="tc-advanced">
-            <details
-              open={preciseOpen || preciseErrors.length > 0}
-              onToggle={(e) => setPreciseOpen((e.currentTarget as HTMLDetailsElement).open)}
+        {!compact && (
+          <aside className="tc-aside" aria-label="Your advisor profile">
+            <h3>Your advisor profile</h3>
+            <div
+              className="tc-progressbar"
+              role="progressbar"
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={pct}
             >
-              <summary>Want a more precise CCBA / CBAP eligibility check? (Optional)</summary>
-              <p>
-                Enter estimated qualifying BA work hours within each period, plus the type of work involved. The exact
-                hours and their BABOK distribution are needed before eligibility can be confirmed.
-              </p>
-              <div className="tc-grid">
-                {hourCerts.map((c) => (
-                  <HourInput
-                    key={c.code}
-                    id={`${uid}-${c.code}-total`}
-                    label={`BA activity hours within the last ${c.workWindowYears} years`}
-                    placeholder={`e.g., ${c.workHours}`}
-                    value={hours[c.code]?.total ?? ""}
-                    onChange={(v) => setHour(c.code, "total", v)}
-                    error={errFor(`${c.code}.total`)}
-                  />
-                ))}
+              <span style={{ width: `${pct}%` }} />
+            </div>
+            <p className="tc-small">
+              {done ? "Advisor complete" : `Question ${history.length + 1} of ${total} (some paths are shorter)`}
+            </p>
+            {summary.map(([k, v]) => (
+              <div className="tc-meta" key={k}>
+                <span className="tc-meta-label">{k}</span>
+                <strong>{v}</strong>
               </div>
-              {hourCerts.map((c) => (
-                <div key={c.code}>
-                  <h3>
-                    Activity hours within the last {c.workWindowYears} years ({c.code})
-                  </h3>
-                  <div className="tc-hours">
-                    {rules.knowledgeAreas.map((ka, i) => (
-                      <HourInput
-                        key={ka.id}
-                        id={`${uid}-${c.code}-ka-${i}`}
-                        label={rules.finder.kaPlainNames[ka.id]}
-                        title={ka.name}
-                        placeholder="Hours (optional)"
-                        value={hours[c.code]?.ka[i] ?? ""}
-                        onChange={(v) => setHour(c.code, i, v)}
-                        error={errFor(`${c.code}.ka.${i}`)}
-                      />
-                    ))}
-                  </div>
-                  {errFor(`${c.code}.ka`) && <p className="tc-error">{errFor(`${c.code}.ka`)}</p>}
-                </div>
-              ))}
-              <div className="tc-actions">
-                <button type="button" className="tc-primary" onClick={() => showResults(true)}>
-                  Update assessment
-                </button>
-              </div>
-            </details>
-          </div>
+            ))}
+            <span className="tc-pill">Personalized recommendations</span>
+          </aside>
+        )}
+      </div>
 
-          <div className="tc-advanced">
-            <details>
-              <summary>After choosing a certification: training and application requirements</summary>
-              <p>Training is a next step, not something you need to have completed to discover your best-fit certification.</p>
-              <ul>
-                {hourCerts.map((c) => (
-                  <li key={c.code}>
-                    <strong>{c.code}:</strong> {c.pdHours} hours of qualifying professional development within{" "}
-                    {c.pdWindowYears} years
-                    {c.references > 0 ? `, plus ${c.references === 2 ? "two" : c.references} qualifying references` : ""}.
-                  </li>
-                ))}
-                <li>
-                  <strong>PMI-PBA:</strong> 35 contact hours of qualifying BA education, and the relevant experience
-                  threshold for your education pathway.
-                </li>
-                <li>
-                  <strong>ECBA, AAC, CBDA and CCA:</strong> No mandatory training-hour prerequisite.
-                </li>
-              </ul>
-              <p className="tc-fine">
-                Training and references are required at the application stage where applicable. This tool deliberately
-                checks experience and certification fit first.
-              </p>
-            </details>
-          </div>
+      {compact && !done && (
+        <div className="tc-progressbar tc-progressbar-compact" aria-hidden="true">
+          <span style={{ width: `${pct}%` }} />
+        </div>
+      )}
+    </div>
+  );
+}
 
-          <div className="tc-actions">
-            <button type="button" onClick={() => setStep(2)}>
-              ← Edit experience
+interface QuestionViewProps {
+  stage: QuestionStage;
+  rules: RuleSet;
+  goals: ReturnType<typeof goalsFor>;
+  value: string | null | undefined;
+  step: number;
+  isLast: boolean;
+  canBack: boolean;
+  headingRef: React.RefObject<HTMLHeadingElement>;
+  onChoose: (v: string) => void;
+  onNext: () => void;
+  onBack: () => void;
+}
+
+function QuestionView({ stage, rules, goals, value, step, isLast, canBack, headingRef, onChoose, onNext, onBack }: QuestionViewProps) {
+  const q = stage === "goal" ? undefined : rules.advisor.questions[stage];
+  const options = stage === "goal" ? goals : (q?.options ?? []);
+  const title = stage === "goal" ? "What is your next career goal?" : (q?.title ?? "");
+  const helper = stage === "goal" ? "Choose the outcome that matters most to you right now." : (q?.helper ?? "");
+
+  return (
+    <section aria-labelledby="tc-q-title">
+      <div className="tc-eyebrow">Question {step} · Your career profile</div>
+      <h2 className="tc-question" id="tc-q-title" tabIndex={-1} ref={headingRef}>
+        {title}
+      </h2>
+      <p className="tc-helper">{helper}</p>
+
+      <div className="tc-options" role="radiogroup" aria-label="Choose one answer">
+        {options.map((o, i) => {
+          const selected = value === o.value;
+          return (
+            <button
+              key={o.value}
+              type="button"
+              role="radio"
+              aria-checked={selected}
+              className={selected ? "tc-option is-selected" : "tc-option"}
+              onClick={() => onChoose(o.value)}
+            >
+              <span className="tc-letter" aria-hidden="true">
+                {String.fromCharCode(65 + i)}
+              </span>
+              <span>{o.label}</span>
             </button>
-            {!compact && (
-              <button type="button" className="tc-primary" onClick={() => window.print()}>
-                Print / Save results
-              </button>
-            )}
+          );
+        })}
+      </div>
+
+      <div className="tc-actions">
+        <button
+          type="button"
+          className="tc-btn tc-secondary"
+          onClick={onBack}
+          disabled={!canBack}
+          style={{ visibility: canBack ? "visible" : "hidden" }}
+        >
+          ← Back
+        </button>
+        <button type="button" className="tc-btn tc-primary" onClick={onNext} disabled={!value}>
+          {isLast ? "See my recommendations →" : "Continue →"}
+        </button>
+      </div>
+    </section>
+  );
+}
+
+const ROLE_FLAG = { primary: "Primary recommendation", also: "Also recommended", optional: "Optional / complementary" } as const;
+
+interface ResultViewProps {
+  report: AdvisorReport;
+  rules: RuleSet;
+  compact: boolean;
+  headingRef: React.RefObject<HTMLHeadingElement>;
+  onEdit: () => void;
+  onRestart: () => void;
+}
+
+function ResultView({ report, rules, compact, headingRef, onEdit, onRestart }: ResultViewProps) {
+  return (
+    <section className="tc-results" aria-labelledby="tc-r-title">
+      <div className="tc-eyebrow">Your personalized BA career pathway</div>
+      <h2 className="tc-result-title" id="tc-r-title" tabIndex={-1} ref={headingRef}>
+        {report.title}
+      </h2>
+      <p className="tc-lead">{report.intro}</p>
+
+      <div className="tc-card">
+        <h3>Your step-by-step learning roadmap</h3>
+        <ol>
+          {report.roadmap.map((t) => (
+            <li key={t}>{t}</li>
+          ))}
+        </ol>
+      </div>
+
+      <div className="tc-card">
+        <h3>Recommended certification and courses</h3>
+        {report.courses.map((c) => (
+          <div className="tc-course" key={c.key}>
+            <div>
+              <span className="tc-flag">{ROLE_FLAG[c.role]}</span>
+              <h4>{c.name}</h4>
+              <p>{c.desc}</p>
+              {c.issuerUrl && (
+                <div className="tc-issuer">
+                  <a href={c.issuerUrl} target="_blank" rel="noopener noreferrer">
+                    View credential at {c.issuer} ↗
+                  </a>
+                </div>
+              )}
+            </div>
+            <a className="tc-course-link" href={c.url} target="_blank" rel="noopener noreferrer">
+              {c.external ? "Official issuer ↗" : "Explore course ↗"}
+            </a>
           </div>
-        </section>
-      )}
+        ))}
+      </div>
 
-      <p className="tc-footer">
-        Independent guidance based on published IIBA and PMI criteria; final eligibility is determined by the
-        certification body. Your answers stay in your browser and are not submitted anywhere.{" "}
-        <a href="https://www.iiba.org/business-analysis-certifications/certification-handbooks/" target="_blank" rel="noopener noreferrer">
-          IIBA handbook
-        </a>{" "}
-        ·{" "}
-        <a href="https://www.pmi.org/certifications/business-analysis-pba" target="_blank" rel="noopener noreferrer">
-          PMI-PBA
-        </a>
+      <div className="tc-card">
+        <h3>Why this recommendation?</h3>
+        <p className="tc-reason">{report.reason}</p>
+        <ul className="tc-why">
+          {report.why.map((t) => (
+            <li key={t}>{t}</li>
+          ))}
+        </ul>
+        <p className="tc-source-note">
+          Market context is indicative, not a guarantee of hiring demand. Credential recognition varies by employer
+          and country.{" "}
+          {rules.advisor.sourceLinks.map((l, i) => (
+            <span key={l.url}>
+              {i > 0 && " · "}
+              <a href={l.url} target="_blank" rel="noopener noreferrer">
+                {l.label} ↗
+              </a>
+            </span>
+          ))}
+        </p>
+      </div>
+
+      <div className="tc-card">
+        <h3>Eligibility &amp; scope</h3>
+        <div className="tc-caution">{report.notice}</div>
+      </div>
+
+      <div className="tc-actions tc-no-print">
+        <button type="button" className="tc-btn tc-secondary" onClick={onEdit}>
+          ← Review answers
+        </button>
+        <div className="tc-actions-right">
+          {!compact && (
+            <button type="button" className="tc-btn tc-secondary" onClick={() => window.print()}>
+              Print / Save PDF
+            </button>
+          )}
+          <button type="button" className="tc-btn tc-primary" onClick={onRestart}>
+            Start again ↻
+          </button>
+        </div>
+      </div>
+
+      <p className="tc-footnote">
+        Recommendations are guidance, not a guarantee of exam eligibility, admission, or employment. IIBA issues
+        ECBA, CCBA, CBAP, AAC, CBDA and CPOA credentials; Techcanvass provides relevant preparation/training. Confirm
+        current official eligibility and requirements before applying.
       </p>
-    </div>
-  );
-}
-
-function Progress({ step }: { step: 1 | 2 }) {
-  return (
-    <div className="tc-progress" role="img" aria-label={`Step ${step} of 2`}>
-      <i className="on" />
-      <i className={step === 2 ? "on" : ""} />
-    </div>
-  );
-}
-
-interface HourInputProps {
-  id: string;
-  label: string;
-  title?: string;
-  placeholder: string;
-  value: string;
-  onChange: (v: string) => void;
-  error?: string;
-}
-
-function HourInput({ id, label, title, placeholder, value, onChange, error }: HourInputProps) {
-  return (
-    <div className="tc-field">
-      <label htmlFor={id} title={title}>
-        {label}
-      </label>
-      <input
-        id={id}
-        type="number"
-        min={0}
-        inputMode="numeric"
-        placeholder={placeholder}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        aria-invalid={error ? true : undefined}
-        aria-describedby={error ? `${id}-err` : undefined}
-      />
-      {error && (
-        <small id={`${id}-err`} className="tc-error">
-          {error}
-        </small>
-      )}
-    </div>
+    </section>
   );
 }

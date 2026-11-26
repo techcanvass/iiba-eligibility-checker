@@ -1,6 +1,6 @@
 """Command-line interface: ``ba-cert-finder``.
 
-    ba-cert-finder                      guided finder (asks the same questions as the website)
+    ba-cert-finder                      guided advisor (asks the same questions as the website)
     ba-cert-finder find answers.json    report for saved answers ("-" reads stdin)
     ba-cert-finder check --ba-hours 5000 --pd-hours 35 --ka planning=900 --ka radd=900
     ba-cert-finder questions            questions and allowed values, as JSON
@@ -18,9 +18,8 @@ from typing import Any, Callable, TextIO
 
 from . import BACertFinderError, __version__, check_eligibility, find_certifications, load_rules
 
-TONE = {"good": "✓", "neutral": "•", "warn": "!"}
-STEP1 = ("totalYears", "background", "education", "interest")
-STEP2 = ("baYears", "baShare", "continuity", "recent")
+ROLE = {"primary": "PRIMARY RECOMMENDATION", "also": "ALSO RECOMMENDED", "optional": "OPTIONAL / COMPLEMENTARY"}
+FOLLOW_UP = {"agile": "agile", "domain": "domain", "data": "analytics", "cyber": "cyber", "ai": "ai", "agents": "ai"}
 
 
 class _IO:
@@ -57,56 +56,34 @@ def _choose(io: _IO, key: str, q: dict, required: bool) -> Any:
         io.say("  Please enter one of the numbers above." if raw else "  This question is required.")
 
 
-def _choose_many(io: _IO, items: list[str]) -> list[int]:
-    io.say()
-    io.say("Which activities have you personally performed at work? (Select all that apply, even if")
-    io.say('your job title was not "Business Analyst".)')
-    for i, label in enumerate(items, 1):
-        io.say(f"  {i:>2}. {label}")
-    while True:
-        raw = io.ask("Numbers separated by commas, e.g. 1,3,7  [Enter = none]: ")
-        if raw == "":
-            return []
-        parts = [p.strip() for p in raw.replace(" ", ",").split(",") if p.strip()]
-        if parts and all(p.isdigit() and 1 <= int(p) <= len(items) for p in parts):
-            return sorted({int(p) - 1 for p in parts})
-        io.say(f"  Use numbers between 1 and {len(items)}.")
-
-
-def _ask_hours(io: _IO, prompt: str) -> float | None:
-    while True:
-        raw = io.ask(prompt)
-        if raw == "":
-            return None
-        try:
-            value = float(raw.replace(",", ""))
-        except ValueError:
-            value = -1
-        if value >= 0:
-            return int(value) if value.is_integer() else value
-        io.say("  Please enter a number of hours (0 or more), or press Enter to skip.")
-
-
 def _print_report(io: _IO, report: dict) -> None:
     io.say()
     io.say("=" * 72)
-    io.say("Your certification matches")
+    io.say(report["title"])
     io.say("=" * 72)
-    io.say(report["headline"])
-    io.say(report["detail"])
-    for w in report["warnings"]:
-        io.say(f"! {w}")
-    for m in report["matches"]:
-        io.say()
-        io.say(f"{TONE.get(m['tone'], '•')} {m['code']} — {m['status']}")
-        io.say(f"  {m['name']}")
-        io.say(f"  {m['description']}")
-        for note in m["notes"]:
-            io.say(f"   - {note}")
-        io.say(f"  Official details: {m['url']}")
+    io.say(report["intro"])
     io.say()
-    io.say("Independent guidance based on published IIBA and PMI criteria; final eligibility is")
-    io.say(f"determined by the certification body. Rules v{report['rulesVersion']}.")
+    io.say("Your step-by-step learning roadmap")
+    for i, step in enumerate(report["roadmap"], 1):
+        io.say(f"  {i}. {step}")
+    io.say()
+    io.say("Recommended certification and courses")
+    for c in report["courses"]:
+        io.say(f"  [{ROLE[c['role']]}] {c['name']}")
+        io.say(f"    {c['desc']}")
+        if c.get("issuerUrl"):
+            io.say(f"    Credential at {c['issuer']}: {c['issuerUrl']}")
+        io.say(f"    {c['url']}")
+    io.say()
+    io.say("Why this recommendation?")
+    io.say(f"  {report['reason']}")
+    for point in report["why"]:
+        io.say(f"  - {point}")
+    io.say()
+    io.say(f"Eligibility & scope: {report['notice']}")
+    io.say()
+    io.say("Recommendations are guidance, not a guarantee of exam eligibility, admission or employment.")
+    io.say(f"Confirm current official requirements before applying. Rules v{report['rulesVersion']}.")
 
 
 def _print_check(io: _IO, report: dict) -> None:
@@ -122,40 +99,26 @@ def _print_check(io: _IO, report: dict) -> None:
             io.say(f"   Work-hours rule met around {r['projectedEligibleOn']} at your current pace.")
 
 
-def _interactive(io: _IO, rules: dict) -> int:
-    f = rules["finder"]
-    qs = f["questions"]
-    io.say("BA Certification Finder — find your Business Analyst certification")
-    io.say("Step 1 of 2: Tell us about yourself")
-    answers: dict[str, Any] = {k: _choose(io, k, qs[k], required=k in ("totalYears", "background")) for k in STEP1}
-    io.say()
-    io.say("Step 2 of 2: Tell us about your work experience")
-    answers["activities"] = _choose_many(io, [a["label"] for a in f["activities"]])
-    for k in STEP2:
-        answers[k] = _choose(io, k, qs[k], required=False)
-    _print_report(io, find_certifications(answers, rules=rules))
+def _ask(io: _IO, q: dict, options: list[dict] | None = None) -> str:
+    """Ask one advisor question; the title, helper text and options all come from the rules."""
+    return _choose(io, "", {"label": q["title"], "hint": q["helper"], "options": options or q["options"]}, required=True)
 
-    hour_certs = sorted((c for c in rules["certifications"] if c["workHours"] > 0), key=lambda c: c["workWindowYears"])
-    if io.ask("\nWant a more precise CCBA / CBAP check with your exact hours? [y/N]: ").lower() not in ("y", "yes"):
-        return 0
-    precise: dict[str, Any] = {}
-    for c in hour_certs:
-        io.say()
-        total = _ask_hours(io, f"BA activity hours within the last {c['workWindowYears']} years ({c['code']}) [Enter = skip]: ")
-        ka = []
-        if total is not None:
-            io.say("  Hours per work area (Enter = 0):")
-            for area in rules["knowledgeAreas"]:
-                v = _ask_hours(io, f"    {f['kaPlainNames'][area['id']]}: ")
-                ka.append(0 if v is None else v)
-        precise[c["code"]] = {"total": total, "ka": ka or [None] * len(rules["knowledgeAreas"])}
-    try:
-        _print_report(io, find_certifications({**answers, "precise": precise}, rules=rules))
-    except BACertFinderError as e:
-        io.say()
-        for err in e.errors or [{"message": str(e)}]:
-            io.say(f"! {err['message']}")
-        return 2
+
+def _interactive(io: _IO, rules: dict) -> int:
+    a = rules["advisor"]
+    qs = a["questions"]
+    io.say("BA Certification Advisor — find the right Business Analysis path")
+    answers: dict[str, Any] = {"experience": _ask(io, qs["experience"])}
+    if answers["experience"] == "none":
+        answers["background"] = _ask(io, qs["background"])
+    else:
+        goals = [g for g in a["goals"] if answers["experience"] not in g.get("hideFor", [])]
+        answers["goal"] = _ask(io, {"title": "What is your next career goal?",
+                                    "helper": "Choose the outcome that matters most to you right now."}, goals)
+        follow = FOLLOW_UP.get(answers["goal"])
+        if follow:
+            answers[follow] = _ask(io, qs[follow])
+    _print_report(io, find_certifications(answers, rules=rules))
     return 0
 
 
@@ -207,8 +170,8 @@ def main(argv: list[str] | None = None, stdin: TextIO | None = None, stdout: Tex
 
     try:
         if args.command == "questions":
-            f = rules["finder"]
-            emit({"questions": f["questions"], "activities": [a["label"] for a in f["activities"]],
+            a = rules["advisor"]
+            emit({"questions": a["questions"], "goals": a["goals"],
                   "knowledgeAreas": rules["knowledgeAreas"], "rulesVersion": rules["version"]})
             return 0
         if args.command == "find":

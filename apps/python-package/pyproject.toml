@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "ba-certification-finder"
 version = "1.0.0"
-description = "Find the right Business Analyst certification (ECBA, CCBA, CBAP, CBDA, AAC, CCA, PMI-PBA). Same rules engine as the Techcanvass browser extension and WordPress plugin."
+description = "Get a personalized Business Analysis career path: certification, skills roadmap and courses. Same rules engine as the Techcanvass browser extension and WordPress plugin."
 readme = "README.md"
 requires-python = ">=3.10"
 license = "GPL-2.0-or-later"

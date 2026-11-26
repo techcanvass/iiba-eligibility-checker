@@ -13,11 +13,13 @@ export { loadRules, BUNDLED_RULES, compareVersions } from "./rules-loader";
 export type { LoadRulesOptions, LoadedRules } from "./rules-loader";
 export { parseISODate, toISODate, todayISO } from "./dates";
 export {
-  buildFinderReport,
-  validateFinderStep1,
-  validatePrecise,
-  yearsInWindow,
-  FinderInputError,
-} from "./finder";
-export type { FinderError } from "./finder";
+  ADVISOR_FOLLOW_UPS,
+  AdvisorInputError,
+  advisorStepCount,
+  buildAdvisorReport,
+  goalsFor,
+  nextAdvisorStage,
+  validateAdvisorAnswers,
+} from "./advisor";
+export type { AdvisorError, AdvisorStage } from "./advisor";
 export { formatNumber } from "./format";

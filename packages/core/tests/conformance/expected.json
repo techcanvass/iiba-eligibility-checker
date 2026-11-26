@@ -1,1473 +1,1321 @@
 {
-  "rulesVersion": "2026.11.1",
+  "rulesVersion": "2026.11.2",
   "results": {
-    "finder: fresh starter": {
+    "advisor: no experience, nonit": {
       "value": {
-        "headline": "You can consider ECBA now. Select any activities you have performed to get better suggestions.",
-        "detail": "Approximate time in role cannot be equated with qualifying BA hours. Experience from older periods is not automatically counted.",
-        "warnings": [],
-        "matches": [
+        "title": "Your recommended path: BA foundation + ECBA",
+        "intro": "Use your industry experience as a strength and develop the technical and analytical skills needed to move into Business Analysis.",
+        "reason": "ECBA plus practical BA skills suits everyone who is starting out in Business Analysis. Domain training is an optional add-on, especially if you already have industry experience.",
+        "roadmap": [
+          "Learn SDLC concepts, information systems, Agile and basic software delivery.",
+          "Strengthen core BA techniques: stakeholder elicitation, requirements, business process models and solution evaluation.",
+          "Practice with Jira, MS Visio and structured requirement documents.",
+          "Learn API fundamentals and how integrations work.",
+          "Practice AI-assisted BA tasks, reviewing outputs for correctness and confidentiality.",
+          "Complete at least two practical BA projects with documentation and tools.",
+          "Build a portfolio and prepare a BA-focused résumé and interviews.",
+          "Prepare for the IIBA ECBA exam and confirm current examination requirements."
+        ],
+        "courses": [
           {
-            "code": "ECBA",
-            "name": "Entry Certificate in Business Analysis",
-            "description": "A strong starting point for people entering business analysis, including career changers and experienced professionals transitioning into BA.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ecba/",
-            "status": "No experience prerequisite",
-            "tone": "good",
-            "notes": [
-              "No minimum BA experience or mandatory training-hour requirement."
-            ]
+            "key": "ecba",
+            "name": "BA Skills + ECBA Certification Training",
+            "desc": "BA fundamentals, practical tools, project work and ECBA exam preparation.",
+            "url": "https://www.techcanvass.com/Courses/business-analyst-training",
+            "role": "primary"
           },
           {
-            "code": "CCBA",
-            "name": "Certification of Capability in Business Analysis",
-            "description": "Requires 3,750 BA work hours in the last 7 years, with specified knowledge-area distribution.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ccba/",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 3,750 hours within the last 7 years. This is not a formal rejection.",
-              "Later: 21 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBAP",
-            "name": "Certified Business Analysis Professional",
-            "description": "Requires 7,500 BA work hours in the last 10 years, including at least 900 hours in each of 4 BABOK areas.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cbap",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 7,500 hours within the last 10 years. This is not a formal rejection.",
-              "Later: 35 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBDA",
-            "name": "Certification in Business Data Analytics",
-            "description": "For professionals using data to inform business decisions; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/business-data-analytics-certification/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "AAC",
-            "name": "Agile Analysis Certification",
-            "description": "For professionals interested in Agile and product delivery; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/agile-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "CCA",
-            "name": "Certificate in Cybersecurity Analysis",
-            "description": "For professionals interested in cybersecurity analysis; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cybersecurity-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "PMI-PBA",
-            "name": "PMI Professional in Business Analysis",
-            "description": "Requires 24, 36 or 60 non-overlapping months of BA experience within the last 8 years, depending on education. Exact months need checking.",
-            "url": "https://www.pmi.org/certifications/business-analysis-pba",
-            "status": "Experience verification needed",
-            "tone": "neutral",
-            "notes": [
-              "Education-based experience requirement: 36 qualifying months in the last 8 years. Work periods must not overlap.",
-              "After selecting this certification: 35 qualifying contact hours of BA education."
-            ]
+            "key": "domain",
+            "name": "Domain Training Courses",
+            "desc": "Banking, payments, insurance, healthcare, capital markets, supply chain and more.",
+            "url": "https://techcanvass.com/Courses/domain-training-courses",
+            "role": "optional"
           }
         ],
-        "rulesVersion": "2026.11.1"
+        "why": [
+          "Market demand: Requirements, stakeholder communication, process analysis and solution evaluation are core BA skills across digital transformation and software-delivery roles.",
+          "Credibility: ECBA, CCBA and CBAP are issued by IIBA. ECBA is an entry-level option; CCBA and CBAP signal progressively more experienced BA practice, subject to IIBA eligibility rules."
+        ],
+        "notice": "ECBA is an entry-level IIBA credential. The actual ECBA exam/credential is issued by IIBA, not Techcanvass. If you are transitioning from a non-IT field, allow extra time for SDLC and systems fundamentals.",
+        "rulesVersion": "2026.11.2"
       }
     },
-    "finder: experienced current BA, general interest": {
+    "advisor: no experience, it": {
       "value": {
-        "headline": "You selected 10 everyday work activities spanning 6 of 6 analysis areas. These activities can be relevant even without a Business Analyst job title.",
-        "detail": "Approximate time in role cannot be equated with qualifying BA hours. Experience from older periods is not automatically counted.",
-        "warnings": [],
-        "matches": [
+        "title": "Your recommended path: BA foundation + ECBA",
+        "intro": "You already have exposure to IT systems and the SDLC. Add core BA skills, tools, portfolio projects and an entry-level credential to support a BA transition.",
+        "reason": "ECBA plus practical BA skills suits everyone who is starting out in Business Analysis. Domain training is an optional add-on, especially if you already have industry experience.",
+        "roadmap": [
+          "Refresh SDLC, software delivery and the BA role as needed.",
+          "Strengthen core BA techniques: stakeholder elicitation, requirements, business process models and solution evaluation.",
+          "Practice with Jira, MS Visio and structured requirement documents.",
+          "Learn API fundamentals and how integrations work.",
+          "Practice AI-assisted BA tasks, reviewing outputs for correctness and confidentiality.",
+          "Complete at least two practical BA projects with documentation and tools.",
+          "Build a portfolio and prepare a BA-focused résumé and interviews.",
+          "Prepare for the IIBA ECBA exam and confirm current examination requirements."
+        ],
+        "courses": [
           {
-            "code": "CCBA",
-            "name": "Certification of Capability in Business Analysis",
-            "description": "Requires 3,750 BA work hours in the last 7 years, with specified knowledge-area distribution.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ccba/",
-            "status": "Potential match — verify hours",
-            "tone": "neutral",
-            "notes": [
-              "Your estimated experience may be sufficient; documented hours and work-area distribution need verification.",
-              "Later: 21 professional-development hours in the last 4 years and 2 references."
-            ]
+            "key": "ecba",
+            "name": "BA Skills + ECBA Certification Training",
+            "desc": "BA fundamentals, practical tools, project work and ECBA exam preparation.",
+            "url": "https://www.techcanvass.com/Courses/business-analyst-training",
+            "role": "primary"
           },
           {
-            "code": "CBAP",
-            "name": "Certified Business Analysis Professional",
-            "description": "Requires 7,500 BA work hours in the last 10 years, including at least 900 hours in each of 4 BABOK areas.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cbap",
-            "status": "Potential match — verify hours",
-            "tone": "neutral",
-            "notes": [
-              "Your estimated experience may be sufficient; documented hours and work-area distribution need verification.",
-              "Later: 35 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "ECBA",
-            "name": "Entry Certificate in Business Analysis",
-            "description": "A strong starting point for people entering business analysis, including career changers and experienced professionals transitioning into BA.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ecba/",
-            "status": "No experience prerequisite",
-            "tone": "good",
-            "notes": [
-              "No minimum BA experience or mandatory training-hour requirement."
-            ]
-          },
-          {
-            "code": "CBDA",
-            "name": "Certification in Business Data Analytics",
-            "description": "For professionals using data to inform business decisions; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/business-data-analytics-certification/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "AAC",
-            "name": "Agile Analysis Certification",
-            "description": "For professionals interested in Agile and product delivery; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/agile-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "CCA",
-            "name": "Certificate in Cybersecurity Analysis",
-            "description": "For professionals interested in cybersecurity analysis; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cybersecurity-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "PMI-PBA",
-            "name": "PMI Professional in Business Analysis",
-            "description": "Requires 24, 36 or 60 non-overlapping months of BA experience within the last 8 years, depending on education. Exact months need checking.",
-            "url": "https://www.pmi.org/certifications/business-analysis-pba",
-            "status": "Experience verification needed",
-            "tone": "neutral",
-            "notes": [
-              "Education-based experience requirement: 36 qualifying months in the last 8 years. Work periods must not overlap.",
-              "After selecting this certification: 35 qualifying contact hours of BA education."
-            ]
+            "key": "domain",
+            "name": "Domain Training Courses",
+            "desc": "Banking, payments, insurance, healthcare, capital markets, supply chain and more.",
+            "url": "https://techcanvass.com/Courses/domain-training-courses",
+            "role": "optional"
           }
         ],
-        "rulesVersion": "2026.11.1"
+        "why": [
+          "Market demand: Requirements, stakeholder communication, process analysis and solution evaluation are core BA skills across digital transformation and software-delivery roles.",
+          "Credibility: ECBA, CCBA and CBAP are issued by IIBA. ECBA is an entry-level option; CCBA and CBAP signal progressively more experienced BA practice, subject to IIBA eligibility rules."
+        ],
+        "notice": "ECBA is an entry-level IIBA credential. The actual ECBA exam/credential is issued by IIBA, not Techcanvass. If you are transitioning from a non-IT field, allow extra time for SDLC and systems fundamentals.",
+        "rulesVersion": "2026.11.2"
       }
     },
-    "finder: years capped by window (stopped 2-7 yrs ago)": {
+    "advisor: no experience, student": {
       "value": {
-        "headline": "You selected 10 everyday work activities spanning 6 of 6 analysis areas. These activities can be relevant even without a Business Analyst job title.",
-        "detail": "Approximate time in role cannot be equated with qualifying BA hours. Experience from older periods is not automatically counted.",
-        "warnings": [],
-        "matches": [
+        "title": "Your recommended path: BA foundation + ECBA",
+        "intro": "As a student or fresher, start with BA fundamentals and demonstrable project work before seeking entry-level BA positions.",
+        "reason": "ECBA plus practical BA skills suits everyone who is starting out in Business Analysis. Domain training is an optional add-on, especially if you already have industry experience.",
+        "roadmap": [
+          "Learn SDLC concepts, information systems, Agile and basic software delivery.",
+          "Strengthen core BA techniques: stakeholder elicitation, requirements, business process models and solution evaluation.",
+          "Practice with Jira, MS Visio and structured requirement documents.",
+          "Learn API fundamentals and how integrations work.",
+          "Practice AI-assisted BA tasks, reviewing outputs for correctness and confidentiality.",
+          "Complete at least two practical BA projects with documentation and tools.",
+          "Build a portfolio and prepare a BA-focused résumé and interviews.",
+          "Prepare for the IIBA ECBA exam and confirm current examination requirements."
+        ],
+        "courses": [
           {
-            "code": "ECBA",
-            "name": "Entry Certificate in Business Analysis",
-            "description": "A strong starting point for people entering business analysis, including career changers and experienced professionals transitioning into BA.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ecba/",
-            "status": "No experience prerequisite",
-            "tone": "good",
-            "notes": [
-              "No minimum BA experience or mandatory training-hour requirement."
-            ]
+            "key": "ecba",
+            "name": "BA Skills + ECBA Certification Training",
+            "desc": "BA fundamentals, practical tools, project work and ECBA exam preparation.",
+            "url": "https://www.techcanvass.com/Courses/business-analyst-training",
+            "role": "primary"
           },
           {
-            "code": "CCBA",
-            "name": "Certification of Capability in Business Analysis",
-            "description": "Requires 3,750 BA work hours in the last 7 years, with specified knowledge-area distribution.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ccba/",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 3,750 hours within the last 7 years. This is not a formal rejection.",
-              "Later: 21 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBAP",
-            "name": "Certified Business Analysis Professional",
-            "description": "Requires 7,500 BA work hours in the last 10 years, including at least 900 hours in each of 4 BABOK areas.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cbap",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 7,500 hours within the last 10 years. This is not a formal rejection.",
-              "Later: 35 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBDA",
-            "name": "Certification in Business Data Analytics",
-            "description": "For professionals using data to inform business decisions; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/business-data-analytics-certification/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "AAC",
-            "name": "Agile Analysis Certification",
-            "description": "For professionals interested in Agile and product delivery; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/agile-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "CCA",
-            "name": "Certificate in Cybersecurity Analysis",
-            "description": "For professionals interested in cybersecurity analysis; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cybersecurity-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "PMI-PBA",
-            "name": "PMI Professional in Business Analysis",
-            "description": "Requires 24, 36 or 60 non-overlapping months of BA experience within the last 8 years, depending on education. Exact months need checking.",
-            "url": "https://www.pmi.org/certifications/business-analysis-pba",
-            "status": "Experience verification needed",
-            "tone": "neutral",
-            "notes": [
-              "Education-based experience requirement: 36 qualifying months in the last 8 years. Work periods must not overlap.",
-              "After selecting this certification: 35 qualifying contact hours of BA education."
-            ]
+            "key": "domain",
+            "name": "Domain Training Courses",
+            "desc": "Banking, payments, insurance, healthcare, capital markets, supply chain and more.",
+            "url": "https://techcanvass.com/Courses/domain-training-courses",
+            "role": "optional"
           }
         ],
-        "rulesVersion": "2026.11.1"
+        "why": [
+          "Market demand: Requirements, stakeholder communication, process analysis and solution evaluation are core BA skills across digital transformation and software-delivery roles.",
+          "Credibility: ECBA, CCBA and CBAP are issued by IIBA. ECBA is an entry-level option; CCBA and CBAP signal progressively more experienced BA practice, subject to IIBA eligibility rules."
+        ],
+        "notice": "ECBA is an entry-level IIBA credential. The actual ECBA exam/credential is issued by IIBA, not Techcanvass. If you are transitioning from a non-IT field, allow extra time for SDLC and systems fundamentals.",
+        "rulesVersion": "2026.11.2"
       }
     },
-    "finder: last BA work 7-10 years ago": {
+    "advisor: lt2, goal career": {
       "value": {
-        "headline": "You selected 3 everyday work activities spanning 3 of 6 analysis areas. These activities can be relevant even without a Business Analyst job title.",
-        "detail": "Approximate time in role cannot be equated with qualifying BA hours. Experience from older periods is not automatically counted.",
-        "warnings": [],
-        "matches": [
+        "title": "Your recommended path: ECBA and applied BA skills",
+        "intro": "As a early-career BA, focus on advancing your current BA capability while preparing for the next appropriate credential.",
+        "reason": "Your experience bracket suggests ECBA as a certification to explore; eligibility for CCBA/CBAP requires verified work hours and other IIBA conditions, not years alone.",
+        "roadmap": [
+          "Map your current responsibilities to BABOK knowledge areas.",
+          "Identify experience, skills and evidence gaps for your intended BA role.",
+          "Improve elicitation, analysis, process modeling, solution evaluation and stakeholder management.",
+          "Apply techniques to a live initiative or documented portfolio case study.",
+          "Check IIBA eligibility and pursue the right exam preparation path."
+        ],
+        "courses": [
           {
-            "code": "ECBA",
-            "name": "Entry Certificate in Business Analysis",
-            "description": "A strong starting point for people entering business analysis, including career changers and experienced professionals transitioning into BA.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ecba/",
-            "status": "No experience prerequisite",
-            "tone": "good",
-            "notes": [
-              "No minimum BA experience or mandatory training-hour requirement."
-            ]
+            "key": "ecba",
+            "name": "BA Skills + ECBA Certification Training",
+            "desc": "BA fundamentals, practical tools, project work and ECBA exam preparation.",
+            "url": "https://www.techcanvass.com/Courses/business-analyst-training",
+            "role": "primary"
           },
           {
-            "code": "CCBA",
-            "name": "Certification of Capability in Business Analysis",
-            "description": "Requires 3,750 BA work hours in the last 7 years, with specified knowledge-area distribution.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ccba/",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 3,750 hours within the last 7 years. This is not a formal rejection.",
-              "Later: 21 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBAP",
-            "name": "Certified Business Analysis Professional",
-            "description": "Requires 7,500 BA work hours in the last 10 years, including at least 900 hours in each of 4 BABOK areas.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cbap",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 7,500 hours within the last 10 years. This is not a formal rejection.",
-              "Later: 35 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBDA",
-            "name": "Certification in Business Data Analytics",
-            "description": "For professionals using data to inform business decisions; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/business-data-analytics-certification/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "AAC",
-            "name": "Agile Analysis Certification",
-            "description": "For professionals interested in Agile and product delivery; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/agile-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "CCA",
-            "name": "Certificate in Cybersecurity Analysis",
-            "description": "For professionals interested in cybersecurity analysis; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cybersecurity-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "PMI-PBA",
-            "name": "PMI Professional in Business Analysis",
-            "description": "Requires 24, 36 or 60 non-overlapping months of BA experience within the last 8 years, depending on education. Exact months need checking.",
-            "url": "https://www.pmi.org/certifications/business-analysis-pba",
-            "status": "Experience verification needed",
-            "tone": "neutral",
-            "notes": [
-              "Education-based experience requirement: 36 qualifying months in the last 8 years. Work periods must not overlap.",
-              "After selecting this certification: 35 qualifying contact hours of BA education."
-            ]
+            "key": "aiba",
+            "name": "AI Certification for Business Analysts",
+            "desc": "Use GenAI and AI tools across analysis, elicitation and documentation.",
+            "url": "https://www.techcanvass.com/Courses/AI-Certification-for-Business-Analysts",
+            "role": "optional"
           }
         ],
-        "rulesVersion": "2026.11.1"
+        "why": [
+          "Market demand: Requirements, stakeholder communication, process analysis and solution evaluation are core BA skills across digital transformation and software-delivery roles.",
+          "Credibility: ECBA, CCBA and CBAP are issued by IIBA. ECBA is an entry-level option; CCBA and CBAP signal progressively more experienced BA practice, subject to IIBA eligibility rules."
+        ],
+        "notice": "For early-career professionals, ECBA is typically a sensible general BA credential to explore. Specialty certificates may also be suitable depending on role and preparation.",
+        "rulesVersion": "2026.11.2"
       }
     },
-    "finder: career breaks + data interest": {
+    "advisor: lt2, goal technical": {
       "value": {
-        "headline": "You selected 2 everyday work activities spanning 1 of 6 analysis areas. These activities can be relevant even without a Business Analyst job title.",
-        "detail": "Career breaks noted. Approximate time in role cannot be equated with qualifying BA hours. Experience from older periods is not automatically counted.",
-        "warnings": [],
-        "matches": [
+        "title": "Your recommended path: Technical Business Analyst",
+        "intro": "Become more effective at translating business needs into systems, data, API and integration requirements.",
+        "reason": "Techcanvass offers a Technical Business Analyst course focused on the systems and technology capabilities needed in technical BA roles.",
+        "roadmap": [
+          "Consolidate requirements engineering, process modeling and stakeholder management.",
+          "Learn SQL, data modeling, data mapping and database fundamentals.",
+          "Understand REST APIs, integration concepts and how to test interface requirements.",
+          "Build basic systems/cloud and security-awareness skills.",
+          "Document a technical BA case study with use cases, API flows and acceptance criteria."
+        ],
+        "courses": [
           {
-            "code": "CBDA",
-            "name": "Certification in Business Data Analytics",
-            "description": "For professionals using data to inform business decisions; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/business-data-analytics-certification/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
+            "key": "technical",
+            "name": "Technical Business Analyst Course",
+            "desc": "APIs, SQL, systems, cloud fundamentals and AI-enabled technical BA work.",
+            "url": "https://www.techcanvass.com/Courses/technical-business-analyst-course",
+            "role": "primary"
           },
           {
-            "code": "ECBA",
-            "name": "Entry Certificate in Business Analysis",
-            "description": "A strong starting point for people entering business analysis, including career changers and experienced professionals transitioning into BA.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ecba/",
-            "status": "No experience prerequisite",
-            "tone": "good",
-            "notes": [
-              "No minimum BA experience or mandatory training-hour requirement."
-            ]
-          },
-          {
-            "code": "CCBA",
-            "name": "Certification of Capability in Business Analysis",
-            "description": "Requires 3,750 BA work hours in the last 7 years, with specified knowledge-area distribution.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ccba/",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 3,750 hours within the last 7 years. This is not a formal rejection.",
-              "Later: 21 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBAP",
-            "name": "Certified Business Analysis Professional",
-            "description": "Requires 7,500 BA work hours in the last 10 years, including at least 900 hours in each of 4 BABOK areas.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cbap",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 7,500 hours within the last 10 years. This is not a formal rejection.",
-              "Later: 35 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "AAC",
-            "name": "Agile Analysis Certification",
-            "description": "For professionals interested in Agile and product delivery; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/agile-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "CCA",
-            "name": "Certificate in Cybersecurity Analysis",
-            "description": "For professionals interested in cybersecurity analysis; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cybersecurity-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "PMI-PBA",
-            "name": "PMI Professional in Business Analysis",
-            "description": "Requires 24, 36 or 60 non-overlapping months of BA experience within the last 8 years, depending on education. Exact months need checking.",
-            "url": "https://www.pmi.org/certifications/business-analysis-pba",
-            "status": "Experience verification needed",
-            "tone": "neutral",
-            "notes": [
-              "Education-based experience requirement: 36 qualifying months in the last 8 years. Work periods must not overlap.",
-              "After selecting this certification: 35 qualifying contact hours of BA education."
-            ]
+            "key": "ecba",
+            "name": "BA Skills + ECBA Certification Training",
+            "desc": "BA fundamentals, practical tools, project work and ECBA exam preparation.",
+            "url": "https://www.techcanvass.com/Courses/business-analyst-training",
+            "role": "optional"
           }
         ],
-        "rulesVersion": "2026.11.1"
+        "why": [
+          "Market demand: Systems integration, APIs, data flows and technical requirements are recurring capabilities for technology-facing BA roles; demonstrable project work supports job readiness.",
+          "Credibility: Technical BA training is a practical skills pathway rather than a separately issued IIBA credential. Pair it with an appropriate BA certification if external credential recognition is your priority."
+        ],
+        "notice": "For early-career professionals, ECBA is typically a sensible general BA credential to explore. Specialty certificates may also be suitable depending on role and preparation.",
+        "rulesVersion": "2026.11.2"
       }
     },
-    "finder: agile interest, part-time": {
+    "advisor: lt2, goal unsure": {
       "value": {
-        "headline": "You selected 3 everyday work activities spanning 2 of 6 analysis areas. These activities can be relevant even without a Business Analyst job title.",
-        "detail": "Variable working hours noted. Approximate time in role cannot be equated with qualifying BA hours. Experience from older periods is not automatically counted.",
-        "warnings": [],
-        "matches": [
+        "title": "Your recommended path: Strengthen your BA foundation",
+        "intro": "Start with the certification that fits your experience stage, then sample specialization topics before committing.",
+        "reason": "A broad BA credential provides a useful starting point when your specialist career direction is not yet clear.",
+        "roadmap": [
+          "Review your experience against BA roles and certification eligibility.",
+          "Complete a BABOK-aligned skills gap review.",
+          "Explore short sample projects in Agile, technical BA, analytics and AI.",
+          "Choose the specialization best aligned with your work opportunities.",
+          "Prepare for the certification supported by your verified experience."
+        ],
+        "courses": [
           {
-            "code": "AAC",
-            "name": "Agile Analysis Certification",
-            "description": "For professionals interested in Agile and product delivery; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/agile-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
+            "key": "ecba",
+            "name": "BA Skills + ECBA Certification Training",
+            "desc": "BA fundamentals, practical tools, project work and ECBA exam preparation.",
+            "url": "https://www.techcanvass.com/Courses/business-analyst-training",
+            "role": "primary"
           },
           {
-            "code": "ECBA",
-            "name": "Entry Certificate in Business Analysis",
-            "description": "A strong starting point for people entering business analysis, including career changers and experienced professionals transitioning into BA.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ecba/",
-            "status": "No experience prerequisite",
-            "tone": "good",
-            "notes": [
-              "No minimum BA experience or mandatory training-hour requirement."
-            ]
+            "key": "aiba",
+            "name": "AI Certification for Business Analysts",
+            "desc": "Use GenAI and AI tools across analysis, elicitation and documentation.",
+            "url": "https://www.techcanvass.com/Courses/AI-Certification-for-Business-Analysts",
+            "role": "optional"
           },
           {
-            "code": "CCBA",
-            "name": "Certification of Capability in Business Analysis",
-            "description": "Requires 3,750 BA work hours in the last 7 years, with specified knowledge-area distribution.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ccba/",
-            "status": "Potential match — verify hours",
-            "tone": "neutral",
-            "notes": [
-              "Your estimated experience may be sufficient; documented hours and work-area distribution need verification.",
-              "Later: 21 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBAP",
-            "name": "Certified Business Analysis Professional",
-            "description": "Requires 7,500 BA work hours in the last 10 years, including at least 900 hours in each of 4 BABOK areas.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cbap",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 7,500 hours within the last 10 years. This is not a formal rejection.",
-              "Later: 35 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBDA",
-            "name": "Certification in Business Data Analytics",
-            "description": "For professionals using data to inform business decisions; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/business-data-analytics-certification/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "CCA",
-            "name": "Certificate in Cybersecurity Analysis",
-            "description": "For professionals interested in cybersecurity analysis; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cybersecurity-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "PMI-PBA",
-            "name": "PMI Professional in Business Analysis",
-            "description": "Requires 24, 36 or 60 non-overlapping months of BA experience within the last 8 years, depending on education. Exact months need checking.",
-            "url": "https://www.pmi.org/certifications/business-analysis-pba",
-            "status": "Experience verification needed",
-            "tone": "neutral",
-            "notes": [
-              "Education-based experience requirement: 36 qualifying months in the last 8 years. Work periods must not overlap.",
-              "After selecting this certification: 35 qualifying contact hours of BA education."
-            ]
+            "key": "catalog",
+            "name": "Explore all Business Analyst Courses",
+            "desc": "Compare available Techcanvass BA learning paths.",
+            "url": "https://www.techcanvass.com/Courses/Courses-for-Business-Analysts",
+            "role": "optional"
           }
         ],
-        "rulesVersion": "2026.11.1"
+        "why": [
+          "Market demand: Requirements, stakeholder communication, process analysis and solution evaluation are core BA skills across digital transformation and software-delivery roles.",
+          "Credibility: ECBA, CCBA and CBAP are issued by IIBA. ECBA is an entry-level option; CCBA and CBAP signal progressively more experienced BA practice, subject to IIBA eligibility rules."
+        ],
+        "notice": "For early-career professionals, ECBA is typically a sensible general BA credential to explore. Specialty certificates may also be suitable depending on role and preparation.",
+        "rulesVersion": "2026.11.2"
       }
     },
-    "finder: cyber interest": {
+    "advisor: 2to4, goal career": {
       "value": {
-        "headline": "You can consider ECBA now. Select any activities you have performed to get better suggestions.",
-        "detail": "Approximate time in role cannot be equated with qualifying BA hours. Experience from older periods is not automatically counted.",
-        "warnings": [],
-        "matches": [
+        "title": "Your recommended path: CCBA and applied BA skills",
+        "intro": "As a developing BA professional, focus on advancing your current BA capability while preparing for the next appropriate credential.",
+        "reason": "Your experience bracket suggests CCBA as a certification to explore; eligibility for CCBA/CBAP requires verified work hours and other IIBA conditions, not years alone.",
+        "roadmap": [
+          "Map your current responsibilities to BABOK knowledge areas.",
+          "Identify experience, skills and evidence gaps for your intended BA role.",
+          "Improve elicitation, analysis, process modeling, solution evaluation and stakeholder management.",
+          "Apply techniques to a live initiative or documented portfolio case study.",
+          "Check IIBA eligibility and pursue the right exam preparation path."
+        ],
+        "courses": [
           {
-            "code": "CCA",
-            "name": "Certificate in Cybersecurity Analysis",
-            "description": "For professionals interested in cybersecurity analysis; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cybersecurity-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "primary"
           },
           {
-            "code": "ECBA",
-            "name": "Entry Certificate in Business Analysis",
-            "description": "A strong starting point for people entering business analysis, including career changers and experienced professionals transitioning into BA.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ecba/",
-            "status": "No experience prerequisite",
-            "tone": "good",
-            "notes": [
-              "No minimum BA experience or mandatory training-hour requirement."
-            ]
-          },
-          {
-            "code": "CCBA",
-            "name": "Certification of Capability in Business Analysis",
-            "description": "Requires 3,750 BA work hours in the last 7 years, with specified knowledge-area distribution.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ccba/",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 3,750 hours within the last 7 years. This is not a formal rejection.",
-              "Later: 21 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBAP",
-            "name": "Certified Business Analysis Professional",
-            "description": "Requires 7,500 BA work hours in the last 10 years, including at least 900 hours in each of 4 BABOK areas.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cbap",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 7,500 hours within the last 10 years. This is not a formal rejection.",
-              "Later: 35 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBDA",
-            "name": "Certification in Business Data Analytics",
-            "description": "For professionals using data to inform business decisions; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/business-data-analytics-certification/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "AAC",
-            "name": "Agile Analysis Certification",
-            "description": "For professionals interested in Agile and product delivery; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/agile-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "PMI-PBA",
-            "name": "PMI Professional in Business Analysis",
-            "description": "Requires 24, 36 or 60 non-overlapping months of BA experience within the last 8 years, depending on education. Exact months need checking.",
-            "url": "https://www.pmi.org/certifications/business-analysis-pba",
-            "status": "Experience verification needed",
-            "tone": "neutral",
-            "notes": [
-              "Education-based experience requirement: 36 qualifying months in the last 8 years. Work periods must not overlap.",
-              "After selecting this certification: 35 qualifying contact hours of BA education."
-            ]
+            "key": "aiba",
+            "name": "AI Certification for Business Analysts",
+            "desc": "Use GenAI and AI tools across analysis, elicitation and documentation.",
+            "url": "https://www.techcanvass.com/Courses/AI-Certification-for-Business-Analysts",
+            "role": "optional"
           }
         ],
-        "rulesVersion": "2026.11.1"
+        "why": [
+          "Market demand: Requirements, stakeholder communication, process analysis and solution evaluation are core BA skills across digital transformation and software-delivery roles.",
+          "Credibility: ECBA, CCBA and CBAP are issued by IIBA. ECBA is an entry-level option; CCBA and CBAP signal progressively more experienced BA practice, subject to IIBA eligibility rules."
+        ],
+        "notice": "CCBA requires at least 3,750 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Two years of employment alone does not establish eligibility. If you are not yet eligible, build experience and consider ECBA or specialty learning in the meantime.",
+        "rulesVersion": "2026.11.2"
       }
     },
-    "finder: PMI-PBA, GAC degree": {
+    "advisor: 2to4, goal technical": {
       "value": {
-        "headline": "You can consider ECBA now. Select any activities you have performed to get better suggestions.",
-        "detail": "Approximate time in role cannot be equated with qualifying BA hours. Experience from older periods is not automatically counted.",
-        "warnings": [],
-        "matches": [
+        "title": "Your recommended path: Technical Business Analyst",
+        "intro": "Become more effective at translating business needs into systems, data, API and integration requirements.",
+        "reason": "Techcanvass offers a Technical Business Analyst course focused on the systems and technology capabilities needed in technical BA roles.",
+        "roadmap": [
+          "Consolidate requirements engineering, process modeling and stakeholder management.",
+          "Learn SQL, data modeling, data mapping and database fundamentals.",
+          "Understand REST APIs, integration concepts and how to test interface requirements.",
+          "Build basic systems/cloud and security-awareness skills.",
+          "Document a technical BA case study with use cases, API flows and acceptance criteria."
+        ],
+        "courses": [
           {
-            "code": "PMI-PBA",
-            "name": "PMI Professional in Business Analysis",
-            "description": "Requires 24, 36 or 60 non-overlapping months of BA experience within the last 8 years, depending on education. Exact months need checking.",
-            "url": "https://www.pmi.org/certifications/business-analysis-pba",
-            "status": "Experience verification needed",
-            "tone": "neutral",
-            "notes": [
-              "Education-based experience requirement: 24 qualifying months in the last 8 years. Work periods must not overlap.",
-              "After selecting this certification: 35 qualifying contact hours of BA education."
-            ]
+            "key": "technical",
+            "name": "Technical Business Analyst Course",
+            "desc": "APIs, SQL, systems, cloud fundamentals and AI-enabled technical BA work.",
+            "url": "https://www.techcanvass.com/Courses/technical-business-analyst-course",
+            "role": "primary"
           },
           {
-            "code": "ECBA",
-            "name": "Entry Certificate in Business Analysis",
-            "description": "A strong starting point for people entering business analysis, including career changers and experienced professionals transitioning into BA.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ecba/",
-            "status": "No experience prerequisite",
-            "tone": "good",
-            "notes": [
-              "No minimum BA experience or mandatory training-hour requirement."
-            ]
-          },
-          {
-            "code": "CCBA",
-            "name": "Certification of Capability in Business Analysis",
-            "description": "Requires 3,750 BA work hours in the last 7 years, with specified knowledge-area distribution.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ccba/",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 3,750 hours within the last 7 years. This is not a formal rejection.",
-              "Later: 21 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBAP",
-            "name": "Certified Business Analysis Professional",
-            "description": "Requires 7,500 BA work hours in the last 10 years, including at least 900 hours in each of 4 BABOK areas.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cbap",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 7,500 hours within the last 10 years. This is not a formal rejection.",
-              "Later: 35 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBDA",
-            "name": "Certification in Business Data Analytics",
-            "description": "For professionals using data to inform business decisions; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/business-data-analytics-certification/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "AAC",
-            "name": "Agile Analysis Certification",
-            "description": "For professionals interested in Agile and product delivery; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/agile-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "CCA",
-            "name": "Certificate in Cybersecurity Analysis",
-            "description": "For professionals interested in cybersecurity analysis; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cybersecurity-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "optional"
           }
         ],
-        "rulesVersion": "2026.11.1"
+        "why": [
+          "Market demand: Systems integration, APIs, data flows and technical requirements are recurring capabilities for technology-facing BA roles; demonstrable project work supports job readiness.",
+          "Credibility: Technical BA training is a practical skills pathway rather than a separately issued IIBA credential. Pair it with an appropriate BA certification if external credential recognition is your priority."
+        ],
+        "notice": "CCBA requires at least 3,750 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Two years of employment alone does not establish eligibility. If you are not yet eligible, build experience and consider ECBA or specialty learning in the meantime.",
+        "rulesVersion": "2026.11.2"
       }
     },
-    "finder: PMI-PBA, secondary": {
+    "advisor: 2to4, goal unsure": {
       "value": {
-        "headline": "You can consider ECBA now. Select any activities you have performed to get better suggestions.",
-        "detail": "Approximate time in role cannot be equated with qualifying BA hours. Experience from older periods is not automatically counted.",
-        "warnings": [],
-        "matches": [
+        "title": "Your recommended path: Strengthen your BA foundation",
+        "intro": "Start with the certification that fits your experience stage, then sample specialization topics before committing.",
+        "reason": "A broad BA credential provides a useful starting point when your specialist career direction is not yet clear.",
+        "roadmap": [
+          "Review your experience against BA roles and certification eligibility.",
+          "Complete a BABOK-aligned skills gap review.",
+          "Explore short sample projects in Agile, technical BA, analytics and AI.",
+          "Choose the specialization best aligned with your work opportunities.",
+          "Prepare for the certification supported by your verified experience."
+        ],
+        "courses": [
           {
-            "code": "PMI-PBA",
-            "name": "PMI Professional in Business Analysis",
-            "description": "Requires 24, 36 or 60 non-overlapping months of BA experience within the last 8 years, depending on education. Exact months need checking.",
-            "url": "https://www.pmi.org/certifications/business-analysis-pba",
-            "status": "Experience verification needed",
-            "tone": "neutral",
-            "notes": [
-              "Education-based experience requirement: 60 qualifying months in the last 8 years. Work periods must not overlap.",
-              "After selecting this certification: 35 qualifying contact hours of BA education."
-            ]
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "primary"
           },
           {
-            "code": "ECBA",
-            "name": "Entry Certificate in Business Analysis",
-            "description": "A strong starting point for people entering business analysis, including career changers and experienced professionals transitioning into BA.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ecba/",
-            "status": "No experience prerequisite",
-            "tone": "good",
-            "notes": [
-              "No minimum BA experience or mandatory training-hour requirement."
-            ]
+            "key": "aiba",
+            "name": "AI Certification for Business Analysts",
+            "desc": "Use GenAI and AI tools across analysis, elicitation and documentation.",
+            "url": "https://www.techcanvass.com/Courses/AI-Certification-for-Business-Analysts",
+            "role": "optional"
           },
           {
-            "code": "CCBA",
-            "name": "Certification of Capability in Business Analysis",
-            "description": "Requires 3,750 BA work hours in the last 7 years, with specified knowledge-area distribution.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ccba/",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 3,750 hours within the last 7 years. This is not a formal rejection.",
-              "Later: 21 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBAP",
-            "name": "Certified Business Analysis Professional",
-            "description": "Requires 7,500 BA work hours in the last 10 years, including at least 900 hours in each of 4 BABOK areas.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cbap",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 7,500 hours within the last 10 years. This is not a formal rejection.",
-              "Later: 35 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBDA",
-            "name": "Certification in Business Data Analytics",
-            "description": "For professionals using data to inform business decisions; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/business-data-analytics-certification/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "AAC",
-            "name": "Agile Analysis Certification",
-            "description": "For professionals interested in Agile and product delivery; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/agile-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "CCA",
-            "name": "Certificate in Cybersecurity Analysis",
-            "description": "For professionals interested in cybersecurity analysis; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cybersecurity-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
+            "key": "catalog",
+            "name": "Explore all Business Analyst Courses",
+            "desc": "Compare available Techcanvass BA learning paths.",
+            "url": "https://www.techcanvass.com/Courses/Courses-for-Business-Analysts",
+            "role": "optional"
           }
         ],
-        "rulesVersion": "2026.11.1"
+        "why": [
+          "Market demand: Requirements, stakeholder communication, process analysis and solution evaluation are core BA skills across digital transformation and software-delivery roles.",
+          "Credibility: ECBA, CCBA and CBAP are issued by IIBA. ECBA is an entry-level option; CCBA and CBAP signal progressively more experienced BA practice, subject to IIBA eligibility rules."
+        ],
+        "notice": "CCBA requires at least 3,750 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Two years of employment alone does not establish eligibility. If you are not yet eligible, build experience and consider ECBA or specialty learning in the meantime.",
+        "rulesVersion": "2026.11.2"
       }
     },
-    "finder: PMI-PBA, other education": {
+    "advisor: 5plus, goal career": {
       "value": {
-        "headline": "You can consider ECBA now. Select any activities you have performed to get better suggestions.",
-        "detail": "Approximate time in role cannot be equated with qualifying BA hours. Experience from older periods is not automatically counted.",
-        "warnings": [],
-        "matches": [
+        "title": "Your recommended path: CBAP and applied BA skills",
+        "intro": "As a experienced BA professional, focus on advancing your current BA capability while preparing for the next appropriate credential.",
+        "reason": "Your experience bracket suggests CBAP as a certification to explore; eligibility for CCBA/CBAP requires verified work hours and other IIBA conditions, not years alone.",
+        "roadmap": [
+          "Map your current responsibilities to BABOK knowledge areas.",
+          "Identify experience, skills and evidence gaps for your intended BA role.",
+          "Improve elicitation, analysis, process modeling, solution evaluation and stakeholder management.",
+          "Apply techniques to a live initiative or documented portfolio case study.",
+          "Check IIBA eligibility and pursue the right exam preparation path."
+        ],
+        "courses": [
           {
-            "code": "PMI-PBA",
-            "name": "PMI Professional in Business Analysis",
-            "description": "Requires 24, 36 or 60 non-overlapping months of BA experience within the last 8 years, depending on education. Exact months need checking.",
-            "url": "https://www.pmi.org/certifications/business-analysis-pba",
-            "status": "Experience verification needed",
-            "tone": "neutral",
-            "notes": [
-              "Education-based experience requirement: confirm your education pathway in the last 8 years. Work periods must not overlap.",
-              "After selecting this certification: 35 qualifying contact hours of BA education."
-            ]
+            "key": "cbap",
+            "name": "IIBA CBAP Certification Training",
+            "desc": "Advanced BA certification preparation for experienced practitioners.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CBAP-Certification-training",
+            "role": "primary"
           },
           {
-            "code": "ECBA",
-            "name": "Entry Certificate in Business Analysis",
-            "description": "A strong starting point for people entering business analysis, including career changers and experienced professionals transitioning into BA.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ecba/",
-            "status": "No experience prerequisite",
-            "tone": "good",
-            "notes": [
-              "No minimum BA experience or mandatory training-hour requirement."
-            ]
-          },
-          {
-            "code": "CCBA",
-            "name": "Certification of Capability in Business Analysis",
-            "description": "Requires 3,750 BA work hours in the last 7 years, with specified knowledge-area distribution.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ccba/",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 3,750 hours within the last 7 years. This is not a formal rejection.",
-              "Later: 21 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBAP",
-            "name": "Certified Business Analysis Professional",
-            "description": "Requires 7,500 BA work hours in the last 10 years, including at least 900 hours in each of 4 BABOK areas.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cbap",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 7,500 hours within the last 10 years. This is not a formal rejection.",
-              "Later: 35 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBDA",
-            "name": "Certification in Business Data Analytics",
-            "description": "For professionals using data to inform business decisions; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/business-data-analytics-certification/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "AAC",
-            "name": "Agile Analysis Certification",
-            "description": "For professionals interested in Agile and product delivery; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/agile-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "CCA",
-            "name": "Certificate in Cybersecurity Analysis",
-            "description": "For professionals interested in cybersecurity analysis; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cybersecurity-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
+            "key": "aiba",
+            "name": "AI Certification for Business Analysts",
+            "desc": "Use GenAI and AI tools across analysis, elicitation and documentation.",
+            "url": "https://www.techcanvass.com/Courses/AI-Certification-for-Business-Analysts",
+            "role": "optional"
           }
         ],
-        "rulesVersion": "2026.11.1"
+        "why": [
+          "Market demand: Requirements, stakeholder communication, process analysis and solution evaluation are core BA skills across digital transformation and software-delivery roles.",
+          "Credibility: ECBA, CCBA and CBAP are issued by IIBA. ECBA is an entry-level option; CCBA and CBAP signal progressively more experienced BA practice, subject to IIBA eligibility rules."
+        ],
+        "notice": "CBAP requires at least 7,500 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Five calendar years by itself does not prove eligibility; consider CCBA if your verified hours better align.",
+        "rulesVersion": "2026.11.2"
       }
     },
-    "finder: warnings (BA years > total, never)": {
+    "advisor: 5plus, goal unsure": {
       "value": {
-        "headline": "You selected 1 everyday work activity spanning 1 of 6 analysis areas. These activities can be relevant even without a Business Analyst job title.",
-        "detail": "Approximate time in role cannot be equated with qualifying BA hours. Experience from older periods is not automatically counted.",
-        "warnings": [
-          "You entered more years of these activities than your total work experience. Please check both answers.",
-          "You said you haven't done these activities, but selected some. Update “When did you last do these activities?” for better matches."
+        "title": "Your recommended path: Strengthen your BA foundation",
+        "intro": "Start with the certification that fits your experience stage, then sample specialization topics before committing.",
+        "reason": "A broad BA credential provides a useful starting point when your specialist career direction is not yet clear.",
+        "roadmap": [
+          "Review your experience against BA roles and certification eligibility.",
+          "Complete a BABOK-aligned skills gap review.",
+          "Explore short sample projects in Agile, technical BA, analytics and AI.",
+          "Choose the specialization best aligned with your work opportunities.",
+          "Prepare for the certification supported by your verified experience."
         ],
-        "matches": [
+        "courses": [
           {
-            "code": "ECBA",
-            "name": "Entry Certificate in Business Analysis",
-            "description": "A strong starting point for people entering business analysis, including career changers and experienced professionals transitioning into BA.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ecba/",
-            "status": "No experience prerequisite",
-            "tone": "good",
-            "notes": [
-              "No minimum BA experience or mandatory training-hour requirement."
-            ]
+            "key": "cbap",
+            "name": "IIBA CBAP Certification Training",
+            "desc": "Advanced BA certification preparation for experienced practitioners.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CBAP-Certification-training",
+            "role": "primary"
           },
           {
-            "code": "CCBA",
-            "name": "Certification of Capability in Business Analysis",
-            "description": "Requires 3,750 BA work hours in the last 7 years, with specified knowledge-area distribution.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ccba/",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 3,750 hours within the last 7 years. This is not a formal rejection.",
-              "Later: 21 professional-development hours in the last 4 years and 2 references."
-            ]
+            "key": "aiba",
+            "name": "AI Certification for Business Analysts",
+            "desc": "Use GenAI and AI tools across analysis, elicitation and documentation.",
+            "url": "https://www.techcanvass.com/Courses/AI-Certification-for-Business-Analysts",
+            "role": "optional"
           },
           {
-            "code": "CBAP",
-            "name": "Certified Business Analysis Professional",
-            "description": "Requires 7,500 BA work hours in the last 10 years, including at least 900 hours in each of 4 BABOK areas.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cbap",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 7,500 hours within the last 10 years. This is not a formal rejection.",
-              "Later: 35 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBDA",
-            "name": "Certification in Business Data Analytics",
-            "description": "For professionals using data to inform business decisions; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/business-data-analytics-certification/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "AAC",
-            "name": "Agile Analysis Certification",
-            "description": "For professionals interested in Agile and product delivery; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/agile-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "CCA",
-            "name": "Certificate in Cybersecurity Analysis",
-            "description": "For professionals interested in cybersecurity analysis; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cybersecurity-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "PMI-PBA",
-            "name": "PMI Professional in Business Analysis",
-            "description": "Requires 24, 36 or 60 non-overlapping months of BA experience within the last 8 years, depending on education. Exact months need checking.",
-            "url": "https://www.pmi.org/certifications/business-analysis-pba",
-            "status": "Experience verification needed",
-            "tone": "neutral",
-            "notes": [
-              "Education-based experience requirement: 36 qualifying months in the last 8 years. Work periods must not overlap.",
-              "After selecting this certification: 35 qualifying contact hours of BA education."
-            ]
+            "key": "catalog",
+            "name": "Explore all Business Analyst Courses",
+            "desc": "Compare available Techcanvass BA learning paths.",
+            "url": "https://www.techcanvass.com/Courses/Courses-for-Business-Analysts",
+            "role": "optional"
           }
         ],
-        "rulesVersion": "2026.11.1"
+        "why": [
+          "Market demand: Requirements, stakeholder communication, process analysis and solution evaluation are core BA skills across digital transformation and software-delivery roles.",
+          "Credibility: ECBA, CCBA and CBAP are issued by IIBA. ECBA is an entry-level option; CCBA and CBAP signal progressively more experienced BA practice, subject to IIBA eligibility rules."
+        ],
+        "notice": "CBAP requires at least 7,500 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Five calendar years by itself does not prove eligibility; consider CCBA if your verified hours better align.",
+        "rulesVersion": "2026.11.2"
       }
     },
-    "finder: precise CCBA hours gap": {
+    "advisor: 2to4, goal agile (agile)": {
       "value": {
-        "headline": "You can consider ECBA now. Select any activities you have performed to get better suggestions.",
-        "detail": "Approximate time in role cannot be equated with qualifying BA hours. Experience from older periods is not automatically counted.",
-        "warnings": [],
-        "matches": [
+        "title": "Your recommended path: Agile BA (AAC)",
+        "intro": "Build confidence in Agile delivery and/or product ownership with a focused IIBA specialty path.",
+        "reason": "AAC aligns to Agile analysis; CPOA aligns to product ownership and value delivery. The best one depends on your desired role.",
+        "roadmap": [
+          "Learn Agile principles, Scrum roles, ceremonies and iterative delivery.",
+          "Practice writing user stories, acceptance criteria and managing a backlog.",
+          "Apply Agile analysis at strategy, initiative and delivery horizons.",
+          "Use the learning in a cross-functional project or simulated product.",
+          "Compare CPOA, CSPO and PSPO I by learning style and career goals, then prepare for your chosen certification."
+        ],
+        "courses": [
           {
-            "code": "ECBA",
-            "name": "Entry Certificate in Business Analysis",
-            "description": "A strong starting point for people entering business analysis, including career changers and experienced professionals transitioning into BA.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ecba/",
-            "status": "No experience prerequisite",
-            "tone": "good",
-            "notes": [
-              "No minimum BA experience or mandatory training-hour requirement."
-            ]
+            "key": "aac",
+            "name": "IIBA Agile Analysis Certification (AAC) Training",
+            "desc": "Agile analysis practices, horizons, and AAC exam preparation.",
+            "url": "https://www.techcanvass.com/Courses/Agile-Analysis-Certification-Course-IIBA",
+            "role": "primary"
           },
           {
-            "code": "CCBA",
-            "name": "Certification of Capability in Business Analysis",
-            "description": "Requires 3,750 BA work hours in the last 7 years, with specified knowledge-area distribution.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ccba/",
-            "status": "Experience hours gap",
-            "tone": "warn",
-            "notes": [
-              "750 more qualifying hours needed within 7 years.",
-              "Later: 21 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBAP",
-            "name": "Certified Business Analysis Professional",
-            "description": "Requires 7,500 BA work hours in the last 10 years, including at least 900 hours in each of 4 BABOK areas.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cbap",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 7,500 hours within the last 10 years. This is not a formal rejection.",
-              "Later: 35 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBDA",
-            "name": "Certification in Business Data Analytics",
-            "description": "For professionals using data to inform business decisions; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/business-data-analytics-certification/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "AAC",
-            "name": "Agile Analysis Certification",
-            "description": "For professionals interested in Agile and product delivery; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/agile-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "CCA",
-            "name": "Certificate in Cybersecurity Analysis",
-            "description": "For professionals interested in cybersecurity analysis; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cybersecurity-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "PMI-PBA",
-            "name": "PMI Professional in Business Analysis",
-            "description": "Requires 24, 36 or 60 non-overlapping months of BA experience within the last 8 years, depending on education. Exact months need checking.",
-            "url": "https://www.pmi.org/certifications/business-analysis-pba",
-            "status": "Experience verification needed",
-            "tone": "neutral",
-            "notes": [
-              "Education-based experience requirement: 36 qualifying months in the last 8 years. Work periods must not overlap.",
-              "After selecting this certification: 35 qualifying contact hours of BA education."
-            ]
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "optional"
           }
         ],
-        "rulesVersion": "2026.11.1"
+        "why": [
+          "Market demand: Agile teams need analysts who can clarify user needs, shape backlogs and work closely with delivery teams; practice with user stories and acceptance criteria is valuable.",
+          "Credibility: IIBA-AAC is an official specialty credential from the International Institute of Business Analysis, making it relevant to analysts seeking to demonstrate Agile analysis knowledge."
+        ],
+        "notice": "CCBA requires at least 3,750 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Two years of employment alone does not establish eligibility. If you are not yet eligible, build experience and consider ECBA or specialty learning in the meantime.",
+        "rulesVersion": "2026.11.2"
       }
     },
-    "finder: precise CBAP KA blank": {
+    "advisor: 2to4, goal agile (product)": {
       "value": {
-        "headline": "You can consider ECBA now. Select any activities you have performed to get better suggestions.",
-        "detail": "Approximate time in role cannot be equated with qualifying BA hours. Experience from older periods is not automatically counted.",
-        "warnings": [],
-        "matches": [
+        "title": "Your recommended path: Product Ownership (CPOA)",
+        "intro": "Build confidence in Agile delivery and/or product ownership with a focused IIBA specialty path.",
+        "reason": "AAC aligns to Agile analysis; CPOA aligns to product ownership and value delivery. The best one depends on your desired role.",
+        "roadmap": [
+          "Learn Agile principles, Scrum roles, ceremonies and iterative delivery.",
+          "Practice writing user stories, acceptance criteria and managing a backlog.",
+          "Practice customer discovery, prioritization, product vision and roadmap decisions.",
+          "Use the learning in a cross-functional project or simulated product.",
+          "Compare CPOA, CSPO and PSPO I by learning style and career goals, then prepare for your chosen certification."
+        ],
+        "courses": [
           {
-            "code": "ECBA",
-            "name": "Entry Certificate in Business Analysis",
-            "description": "A strong starting point for people entering business analysis, including career changers and experienced professionals transitioning into BA.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ecba/",
-            "status": "No experience prerequisite",
-            "tone": "good",
-            "notes": [
-              "No minimum BA experience or mandatory training-hour requirement."
-            ]
+            "key": "cpoa",
+            "name": "CPOA Certification Training",
+            "desc": "Product discovery, backlog, stakeholder alignment and product ownership analysis.",
+            "url": "https://techcanvass.com/Courses/product-owner-course",
+            "issuer": "IIBA",
+            "issuerUrl": "https://www.iiba.org/business-analysis-certifications/certificate-in-product-ownership-analysis-iiba-cpoa/",
+            "role": "primary"
           },
           {
-            "code": "CCBA",
-            "name": "Certification of Capability in Business Analysis",
-            "description": "Requires 3,750 BA work hours in the last 7 years, with specified knowledge-area distribution.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ccba/",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 3,750 hours within the last 7 years. This is not a formal rejection.",
-              "Later: 21 professional-development hours in the last 4 years and 2 references."
-            ]
+            "key": "cspo",
+            "name": "Certified Scrum Product Owner (CSPO)",
+            "desc": "Scrum Alliance credential: trainer-led Scrum Product Owner learning and certification.",
+            "url": "https://www.scrumalliance.org/get-certified/product-owner-track/certified-Scrum-product-owner",
+            "external": true,
+            "issuer": "Scrum Alliance",
+            "role": "optional"
           },
           {
-            "code": "CBAP",
-            "name": "Certified Business Analysis Professional",
-            "description": "Requires 7,500 BA work hours in the last 10 years, including at least 900 hours in each of 4 BABOK areas.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cbap",
-            "status": "Verify knowledge-area hours",
-            "tone": "neutral",
-            "notes": [
-              "You appear to meet the total-hour threshold. Enter hours for all 6 work areas (use 0 for areas you haven't worked in) to verify the distribution.",
-              "Later: 35 professional-development hours in the last 4 years and 2 references."
-            ]
+            "key": "pspo",
+            "name": "Professional Scrum Product Owner I (PSPO I)",
+            "desc": "Scrum.org credential: assessment-based validation of Scrum and Product Owner knowledge.",
+            "url": "https://www.scrum.org/assessments/professional-scrum-product-owner-i-certification",
+            "external": true,
+            "issuer": "Scrum.org",
+            "role": "optional"
           },
           {
-            "code": "CBDA",
-            "name": "Certification in Business Data Analytics",
-            "description": "For professionals using data to inform business decisions; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/business-data-analytics-certification/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "AAC",
-            "name": "Agile Analysis Certification",
-            "description": "For professionals interested in Agile and product delivery; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/agile-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "CCA",
-            "name": "Certificate in Cybersecurity Analysis",
-            "description": "For professionals interested in cybersecurity analysis; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cybersecurity-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "PMI-PBA",
-            "name": "PMI Professional in Business Analysis",
-            "description": "Requires 24, 36 or 60 non-overlapping months of BA experience within the last 8 years, depending on education. Exact months need checking.",
-            "url": "https://www.pmi.org/certifications/business-analysis-pba",
-            "status": "Experience verification needed",
-            "tone": "neutral",
-            "notes": [
-              "Education-based experience requirement: 36 qualifying months in the last 8 years. Work periods must not overlap.",
-              "After selecting this certification: 35 qualifying contact hours of BA education."
-            ]
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "optional"
           }
         ],
-        "rulesVersion": "2026.11.1"
+        "why": [
+          "Market demand: Product Owner roles emphasize Agile/Scrum delivery, backlog prioritization, customer value and stakeholder alignment. Recent job-posting datasets identify Agile as a frequent requirement; hands-on product examples remain important.",
+          "Credibility: IIBA-CPOA is issued by IIBA and focuses on product ownership analysis. CSPO is issued by Scrum Alliance through an approved trainer-led course; PSPO I is issued by Scrum.org through a knowledge assessment. These are established issuer-led credentials, but employer preference varies."
+        ],
+        "notice": "CCBA requires at least 3,750 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Two years of employment alone does not establish eligibility. If you are not yet eligible, build experience and consider ECBA or specialty learning in the meantime.",
+        "rulesVersion": "2026.11.2"
       }
     },
-    "finder: precise CBAP met": {
+    "advisor: 2to4, goal agile (both)": {
       "value": {
-        "headline": "You can consider ECBA now. Select any activities you have performed to get better suggestions.",
-        "detail": "Approximate time in role cannot be equated with qualifying BA hours. Experience from older periods is not automatically counted.",
-        "warnings": [],
-        "matches": [
+        "title": "Your recommended path: Agile Analysis + Product Ownership",
+        "intro": "Build confidence in Agile delivery and/or product ownership with a focused IIBA specialty path.",
+        "reason": "AAC aligns to Agile analysis; CPOA aligns to product ownership and value delivery. The best one depends on your desired role.",
+        "roadmap": [
+          "Learn Agile principles, Scrum roles, ceremonies and iterative delivery.",
+          "Practice writing user stories, acceptance criteria and managing a backlog.",
+          "Practice customer discovery, prioritization, product vision and roadmap decisions.",
+          "Use the learning in a cross-functional project or simulated product.",
+          "Compare CPOA, CSPO and PSPO I by learning style and career goals, then prepare for your chosen certification."
+        ],
+        "courses": [
           {
-            "code": "ECBA",
-            "name": "Entry Certificate in Business Analysis",
-            "description": "A strong starting point for people entering business analysis, including career changers and experienced professionals transitioning into BA.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ecba/",
-            "status": "No experience prerequisite",
-            "tone": "good",
-            "notes": [
-              "No minimum BA experience or mandatory training-hour requirement."
-            ]
+            "key": "aac",
+            "name": "IIBA Agile Analysis Certification (AAC) Training",
+            "desc": "Agile analysis practices, horizons, and AAC exam preparation.",
+            "url": "https://www.techcanvass.com/Courses/Agile-Analysis-Certification-Course-IIBA",
+            "role": "primary"
           },
           {
-            "code": "CCBA",
-            "name": "Certification of Capability in Business Analysis",
-            "description": "Requires 3,750 BA work hours in the last 7 years, with specified knowledge-area distribution.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ccba/",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 3,750 hours within the last 7 years. This is not a formal rejection.",
-              "Later: 21 professional-development hours in the last 4 years and 2 references."
-            ]
+            "key": "cpoa",
+            "name": "CPOA Certification Training",
+            "desc": "Product discovery, backlog, stakeholder alignment and product ownership analysis.",
+            "url": "https://techcanvass.com/Courses/product-owner-course",
+            "issuer": "IIBA",
+            "issuerUrl": "https://www.iiba.org/business-analysis-certifications/certificate-in-product-ownership-analysis-iiba-cpoa/",
+            "role": "also"
           },
           {
-            "code": "CBAP",
-            "name": "Certified Business Analysis Professional",
-            "description": "Requires 7,500 BA work hours in the last 10 years, including at least 900 hours in each of 4 BABOK areas.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cbap",
-            "status": "Experience thresholds indicated",
-            "tone": "good",
-            "notes": [
-              "Work-hour and knowledge-area thresholds appear met; training, references and application evidence still need checking.",
-              "Later: 35 professional-development hours in the last 4 years and 2 references."
-            ]
+            "key": "cspo",
+            "name": "Certified Scrum Product Owner (CSPO)",
+            "desc": "Scrum Alliance credential: trainer-led Scrum Product Owner learning and certification.",
+            "url": "https://www.scrumalliance.org/get-certified/product-owner-track/certified-Scrum-product-owner",
+            "external": true,
+            "issuer": "Scrum Alliance",
+            "role": "optional"
           },
           {
-            "code": "CBDA",
-            "name": "Certification in Business Data Analytics",
-            "description": "For professionals using data to inform business decisions; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/business-data-analytics-certification/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
+            "key": "pspo",
+            "name": "Professional Scrum Product Owner I (PSPO I)",
+            "desc": "Scrum.org credential: assessment-based validation of Scrum and Product Owner knowledge.",
+            "url": "https://www.scrum.org/assessments/professional-scrum-product-owner-i-certification",
+            "external": true,
+            "issuer": "Scrum.org",
+            "role": "optional"
           },
           {
-            "code": "AAC",
-            "name": "Agile Analysis Certification",
-            "description": "For professionals interested in Agile and product delivery; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/agile-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "CCA",
-            "name": "Certificate in Cybersecurity Analysis",
-            "description": "For professionals interested in cybersecurity analysis; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cybersecurity-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "PMI-PBA",
-            "name": "PMI Professional in Business Analysis",
-            "description": "Requires 24, 36 or 60 non-overlapping months of BA experience within the last 8 years, depending on education. Exact months need checking.",
-            "url": "https://www.pmi.org/certifications/business-analysis-pba",
-            "status": "Experience verification needed",
-            "tone": "neutral",
-            "notes": [
-              "Education-based experience requirement: 36 qualifying months in the last 8 years. Work periods must not overlap.",
-              "After selecting this certification: 35 qualifying contact hours of BA education."
-            ]
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "optional"
           }
         ],
-        "rulesVersion": "2026.11.1"
+        "why": [
+          "Market demand: Product Owner roles emphasize Agile/Scrum delivery, backlog prioritization, customer value and stakeholder alignment. Recent job-posting datasets identify Agile as a frequent requirement; hands-on product examples remain important.",
+          "Credibility: IIBA-CPOA is issued by IIBA and focuses on product ownership analysis. CSPO is issued by Scrum Alliance through an approved trainer-led course; PSPO I is issued by Scrum.org through a knowledge assessment. These are established issuer-led credentials, but employer preference varies."
+        ],
+        "notice": "CCBA requires at least 3,750 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Two years of employment alone does not establish eligibility. If you are not yet eligible, build experience and consider ECBA or specialty learning in the meantime.",
+        "rulesVersion": "2026.11.2"
       }
     },
-    "finder: precise CBAP KA gap": {
+    "advisor: 2to4, goal domain (banking)": {
       "value": {
-        "headline": "You can consider ECBA now. Select any activities you have performed to get better suggestions.",
-        "detail": "Approximate time in role cannot be equated with qualifying BA hours. Experience from older periods is not automatically counted.",
-        "warnings": [],
-        "matches": [
+        "title": "Your recommended path: Domain-specialist BA",
+        "intro": "Strengthen your industry vocabulary, business processes, rules and stakeholder context in banking, payments or capital markets.",
+        "reason": "Techcanvass offers domain training across banking, payments, insurance, healthcare, capital markets, supply chain and related areas.",
+        "roadmap": [
+          "Choose a target domain aligned with your experience and BA opportunities.",
+          "Learn the industry operating model, key processes, regulatory context and terminology.",
+          "Model a core domain workflow and the related business rules.",
+          "Produce requirements and a portfolio case study within that domain.",
+          "Combine industry specialization with your appropriate BA certification."
+        ],
+        "courses": [
           {
-            "code": "ECBA",
-            "name": "Entry Certificate in Business Analysis",
-            "description": "A strong starting point for people entering business analysis, including career changers and experienced professionals transitioning into BA.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ecba/",
-            "status": "No experience prerequisite",
-            "tone": "good",
-            "notes": [
-              "No minimum BA experience or mandatory training-hour requirement."
-            ]
+            "key": "domain",
+            "name": "Domain Training Courses",
+            "desc": "Banking, payments, insurance, healthcare, capital markets, supply chain and more.",
+            "url": "https://techcanvass.com/Courses/domain-training-courses",
+            "role": "primary"
           },
           {
-            "code": "CCBA",
-            "name": "Certification of Capability in Business Analysis",
-            "description": "Requires 3,750 BA work hours in the last 7 years, with specified knowledge-area distribution.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ccba/",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 3,750 hours within the last 7 years. This is not a formal rejection.",
-              "Later: 21 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBAP",
-            "name": "Certified Business Analysis Professional",
-            "description": "Requires 7,500 BA work hours in the last 10 years, including at least 900 hours in each of 4 BABOK areas.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cbap",
-            "status": "Knowledge-area gap",
-            "tone": "warn",
-            "notes": [
-              "Your entered distribution does not meet the requirement: 1 more knowledge area(s) with 900+ hours needed.",
-              "Later: 35 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBDA",
-            "name": "Certification in Business Data Analytics",
-            "description": "For professionals using data to inform business decisions; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/business-data-analytics-certification/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "AAC",
-            "name": "Agile Analysis Certification",
-            "description": "For professionals interested in Agile and product delivery; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/agile-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "CCA",
-            "name": "Certificate in Cybersecurity Analysis",
-            "description": "For professionals interested in cybersecurity analysis; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cybersecurity-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "PMI-PBA",
-            "name": "PMI Professional in Business Analysis",
-            "description": "Requires 24, 36 or 60 non-overlapping months of BA experience within the last 8 years, depending on education. Exact months need checking.",
-            "url": "https://www.pmi.org/certifications/business-analysis-pba",
-            "status": "Experience verification needed",
-            "tone": "neutral",
-            "notes": [
-              "Education-based experience requirement: 36 qualifying months in the last 8 years. Work periods must not overlap.",
-              "After selecting this certification: 35 qualifying contact hours of BA education."
-            ]
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "optional"
           }
         ],
-        "rulesVersion": "2026.11.1"
+        "why": [
+          "Market demand: Industry knowledge helps analysts interpret workflows, regulations and stakeholder needs in specialized sectors such as banking, healthcare or insurance.",
+          "Credibility: Domain Training Courses provide specialization; they are learning programs, not a substitute for independently issued BA credentials such as ECBA, CCBA or CBAP."
+        ],
+        "notice": "CCBA requires at least 3,750 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Two years of employment alone does not establish eligibility. If you are not yet eligible, build experience and consider ECBA or specialty learning in the meantime.",
+        "rulesVersion": "2026.11.2"
       }
     },
-    "finder: precise CCBA alt rule 500x4": {
+    "advisor: 2to4, goal domain (insurance)": {
       "value": {
-        "headline": "You can consider ECBA now. Select any activities you have performed to get better suggestions.",
-        "detail": "Approximate time in role cannot be equated with qualifying BA hours. Experience from older periods is not automatically counted.",
-        "warnings": [],
-        "matches": [
+        "title": "Your recommended path: Domain-specialist BA",
+        "intro": "Strengthen your industry vocabulary, business processes, rules and stakeholder context in insurance.",
+        "reason": "Techcanvass offers domain training across banking, payments, insurance, healthcare, capital markets, supply chain and related areas.",
+        "roadmap": [
+          "Choose a target domain aligned with your experience and BA opportunities.",
+          "Learn the industry operating model, key processes, regulatory context and terminology.",
+          "Model a core domain workflow and the related business rules.",
+          "Produce requirements and a portfolio case study within that domain.",
+          "Combine industry specialization with your appropriate BA certification."
+        ],
+        "courses": [
           {
-            "code": "ECBA",
-            "name": "Entry Certificate in Business Analysis",
-            "description": "A strong starting point for people entering business analysis, including career changers and experienced professionals transitioning into BA.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ecba/",
-            "status": "No experience prerequisite",
-            "tone": "good",
-            "notes": [
-              "No minimum BA experience or mandatory training-hour requirement."
-            ]
+            "key": "domain",
+            "name": "Domain Training Courses",
+            "desc": "Banking, payments, insurance, healthcare, capital markets, supply chain and more.",
+            "url": "https://techcanvass.com/Courses/domain-training-courses",
+            "role": "primary"
           },
           {
-            "code": "CCBA",
-            "name": "Certification of Capability in Business Analysis",
-            "description": "Requires 3,750 BA work hours in the last 7 years, with specified knowledge-area distribution.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ccba/",
-            "status": "Experience thresholds indicated",
-            "tone": "good",
-            "notes": [
-              "Work-hour and knowledge-area thresholds appear met; training, references and application evidence still need checking.",
-              "Later: 21 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBAP",
-            "name": "Certified Business Analysis Professional",
-            "description": "Requires 7,500 BA work hours in the last 10 years, including at least 900 hours in each of 4 BABOK areas.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cbap",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 7,500 hours within the last 10 years. This is not a formal rejection.",
-              "Later: 35 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBDA",
-            "name": "Certification in Business Data Analytics",
-            "description": "For professionals using data to inform business decisions; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/business-data-analytics-certification/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "AAC",
-            "name": "Agile Analysis Certification",
-            "description": "For professionals interested in Agile and product delivery; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/agile-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "CCA",
-            "name": "Certificate in Cybersecurity Analysis",
-            "description": "For professionals interested in cybersecurity analysis; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cybersecurity-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "PMI-PBA",
-            "name": "PMI Professional in Business Analysis",
-            "description": "Requires 24, 36 or 60 non-overlapping months of BA experience within the last 8 years, depending on education. Exact months need checking.",
-            "url": "https://www.pmi.org/certifications/business-analysis-pba",
-            "status": "Experience verification needed",
-            "tone": "neutral",
-            "notes": [
-              "Education-based experience requirement: 36 qualifying months in the last 8 years. Work periods must not overlap.",
-              "After selecting this certification: 35 qualifying contact hours of BA education."
-            ]
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "optional"
           }
         ],
-        "rulesVersion": "2026.11.1"
+        "why": [
+          "Market demand: Industry knowledge helps analysts interpret workflows, regulations and stakeholder needs in specialized sectors such as banking, healthcare or insurance.",
+          "Credibility: Domain Training Courses provide specialization; they are learning programs, not a substitute for independently issued BA credentials such as ECBA, CCBA or CBAP."
+        ],
+        "notice": "CCBA requires at least 3,750 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Two years of employment alone does not establish eligibility. If you are not yet eligible, build experience and consider ECBA or specialty learning in the meantime.",
+        "rulesVersion": "2026.11.2"
       }
     },
-    "finder: large numbers format (1,00,000)": {
+    "advisor: 2to4, goal domain (health)": {
       "value": {
-        "headline": "You can consider ECBA now. Select any activities you have performed to get better suggestions.",
-        "detail": "Approximate time in role cannot be equated with qualifying BA hours. Experience from older periods is not automatically counted.",
-        "warnings": [],
-        "matches": [
+        "title": "Your recommended path: Domain-specialist BA",
+        "intro": "Strengthen your industry vocabulary, business processes, rules and stakeholder context in us healthcare.",
+        "reason": "Techcanvass offers domain training across banking, payments, insurance, healthcare, capital markets, supply chain and related areas.",
+        "roadmap": [
+          "Choose a target domain aligned with your experience and BA opportunities.",
+          "Learn the industry operating model, key processes, regulatory context and terminology.",
+          "Model a core domain workflow and the related business rules.",
+          "Produce requirements and a portfolio case study within that domain.",
+          "Combine industry specialization with your appropriate BA certification."
+        ],
+        "courses": [
           {
-            "code": "ECBA",
-            "name": "Entry Certificate in Business Analysis",
-            "description": "A strong starting point for people entering business analysis, including career changers and experienced professionals transitioning into BA.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ecba/",
-            "status": "No experience prerequisite",
-            "tone": "good",
-            "notes": [
-              "No minimum BA experience or mandatory training-hour requirement."
-            ]
+            "key": "domain",
+            "name": "Domain Training Courses",
+            "desc": "Banking, payments, insurance, healthcare, capital markets, supply chain and more.",
+            "url": "https://techcanvass.com/Courses/domain-training-courses",
+            "role": "primary"
           },
           {
-            "code": "CCBA",
-            "name": "Certification of Capability in Business Analysis",
-            "description": "Requires 3,750 BA work hours in the last 7 years, with specified knowledge-area distribution.",
-            "url": "https://www.iiba.org/business-analysis-certifications/ccba/",
-            "status": "May need more experience",
-            "tone": "warn",
-            "notes": [
-              "Your broad answers do not yet indicate 3,750 hours within the last 7 years. This is not a formal rejection.",
-              "Later: 21 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBAP",
-            "name": "Certified Business Analysis Professional",
-            "description": "Requires 7,500 BA work hours in the last 10 years, including at least 900 hours in each of 4 BABOK areas.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cbap",
-            "status": "Experience hours gap",
-            "tone": "warn",
-            "notes": [
-              "7,500 more qualifying hours needed within 10 years.",
-              "Later: 35 professional-development hours in the last 4 years and 2 references."
-            ]
-          },
-          {
-            "code": "CBDA",
-            "name": "Certification in Business Data Analytics",
-            "description": "For professionals using data to inform business decisions; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/business-data-analytics-certification/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "AAC",
-            "name": "Agile Analysis Certification",
-            "description": "For professionals interested in Agile and product delivery; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/agile-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "CCA",
-            "name": "Certificate in Cybersecurity Analysis",
-            "description": "For professionals interested in cybersecurity analysis; no mandatory work-experience threshold.",
-            "url": "https://www.iiba.org/business-analysis-certifications/cybersecurity-analysis/",
-            "status": "Knowledge-based",
-            "tone": "good",
-            "notes": []
-          },
-          {
-            "code": "PMI-PBA",
-            "name": "PMI Professional in Business Analysis",
-            "description": "Requires 24, 36 or 60 non-overlapping months of BA experience within the last 8 years, depending on education. Exact months need checking.",
-            "url": "https://www.pmi.org/certifications/business-analysis-pba",
-            "status": "Experience verification needed",
-            "tone": "neutral",
-            "notes": [
-              "Education-based experience requirement: 36 qualifying months in the last 8 years. Work periods must not overlap.",
-              "After selecting this certification: 35 qualifying contact hours of BA education."
-            ]
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "optional"
           }
         ],
-        "rulesVersion": "2026.11.1"
+        "why": [
+          "Market demand: Industry knowledge helps analysts interpret workflows, regulations and stakeholder needs in specialized sectors such as banking, healthcare or insurance.",
+          "Credibility: Domain Training Courses provide specialization; they are learning programs, not a substitute for independently issued BA credentials such as ECBA, CCBA or CBAP."
+        ],
+        "notice": "CCBA requires at least 3,750 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Two years of employment alone does not establish eligibility. If you are not yet eligible, build experience and consider ECBA or specialty learning in the meantime.",
+        "rulesVersion": "2026.11.2"
       }
     },
-    "finder error: step 1 missing": {
+    "advisor: 2to4, goal domain (supply)": {
+      "value": {
+        "title": "Your recommended path: Domain-specialist BA",
+        "intro": "Strengthen your industry vocabulary, business processes, rules and stakeholder context in supply chain / logistics.",
+        "reason": "Techcanvass offers domain training across banking, payments, insurance, healthcare, capital markets, supply chain and related areas.",
+        "roadmap": [
+          "Choose a target domain aligned with your experience and BA opportunities.",
+          "Learn the industry operating model, key processes, regulatory context and terminology.",
+          "Model a core domain workflow and the related business rules.",
+          "Produce requirements and a portfolio case study within that domain.",
+          "Combine industry specialization with your appropriate BA certification."
+        ],
+        "courses": [
+          {
+            "key": "domain",
+            "name": "Domain Training Courses",
+            "desc": "Banking, payments, insurance, healthcare, capital markets, supply chain and more.",
+            "url": "https://techcanvass.com/Courses/domain-training-courses",
+            "role": "primary"
+          },
+          {
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "optional"
+          }
+        ],
+        "why": [
+          "Market demand: Industry knowledge helps analysts interpret workflows, regulations and stakeholder needs in specialized sectors such as banking, healthcare or insurance.",
+          "Credibility: Domain Training Courses provide specialization; they are learning programs, not a substitute for independently issued BA credentials such as ECBA, CCBA or CBAP."
+        ],
+        "notice": "CCBA requires at least 3,750 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Two years of employment alone does not establish eligibility. If you are not yet eligible, build experience and consider ECBA or specialty learning in the meantime.",
+        "rulesVersion": "2026.11.2"
+      }
+    },
+    "advisor: 2to4, goal domain (telecom)": {
+      "value": {
+        "title": "Your recommended path: Domain-specialist BA",
+        "intro": "Strengthen your industry vocabulary, business processes, rules and stakeholder context in telecom / crm / e-commerce.",
+        "reason": "Techcanvass offers domain training across banking, payments, insurance, healthcare, capital markets, supply chain and related areas.",
+        "roadmap": [
+          "Choose a target domain aligned with your experience and BA opportunities.",
+          "Learn the industry operating model, key processes, regulatory context and terminology.",
+          "Model a core domain workflow and the related business rules.",
+          "Produce requirements and a portfolio case study within that domain.",
+          "Combine industry specialization with your appropriate BA certification."
+        ],
+        "courses": [
+          {
+            "key": "domain",
+            "name": "Domain Training Courses",
+            "desc": "Banking, payments, insurance, healthcare, capital markets, supply chain and more.",
+            "url": "https://techcanvass.com/Courses/domain-training-courses",
+            "role": "primary"
+          },
+          {
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "optional"
+          }
+        ],
+        "why": [
+          "Market demand: Industry knowledge helps analysts interpret workflows, regulations and stakeholder needs in specialized sectors such as banking, healthcare or insurance.",
+          "Credibility: Domain Training Courses provide specialization; they are learning programs, not a substitute for independently issued BA credentials such as ECBA, CCBA or CBAP."
+        ],
+        "notice": "CCBA requires at least 3,750 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Two years of employment alone does not establish eligibility. If you are not yet eligible, build experience and consider ECBA or specialty learning in the meantime.",
+        "rulesVersion": "2026.11.2"
+      }
+    },
+    "advisor: 2to4, goal domain (unsure)": {
+      "value": {
+        "title": "Your recommended path: Domain-specialist BA",
+        "intro": "Strengthen your industry vocabulary, business processes, rules and stakeholder context.",
+        "reason": "Techcanvass offers domain training across banking, payments, insurance, healthcare, capital markets, supply chain and related areas.",
+        "roadmap": [
+          "Choose a target domain aligned with your experience and BA opportunities.",
+          "Learn the industry operating model, key processes, regulatory context and terminology.",
+          "Model a core domain workflow and the related business rules.",
+          "Produce requirements and a portfolio case study within that domain.",
+          "Combine industry specialization with your appropriate BA certification."
+        ],
+        "courses": [
+          {
+            "key": "domain",
+            "name": "Domain Training Courses",
+            "desc": "Banking, payments, insurance, healthcare, capital markets, supply chain and more.",
+            "url": "https://techcanvass.com/Courses/domain-training-courses",
+            "role": "primary"
+          },
+          {
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "optional"
+          }
+        ],
+        "why": [
+          "Market demand: Industry knowledge helps analysts interpret workflows, regulations and stakeholder needs in specialized sectors such as banking, healthcare or insurance.",
+          "Credibility: Domain Training Courses provide specialization; they are learning programs, not a substitute for independently issued BA credentials such as ECBA, CCBA or CBAP."
+        ],
+        "notice": "CCBA requires at least 3,750 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Two years of employment alone does not establish eligibility. If you are not yet eligible, build experience and consider ECBA or specialty learning in the meantime.",
+        "rulesVersion": "2026.11.2"
+      }
+    },
+    "advisor: lt2, goal data (cert)": {
+      "value": {
+        "title": "Your recommended path: Business Data Analytics",
+        "intro": "Combine business problem framing with analytics capability and evidence-based decision-making.",
+        "reason": "CBDA is designed around business data analytics competencies, while Techcanvass Data Analytics & AI is a practical, tool-focused learning option.",
+        "roadmap": [
+          "Translate business problems into research questions and measurable KPIs.",
+          "Learn to source, clean and assess data quality.",
+          "Build practical SQL, reporting and Power BI skills.",
+          "Present actionable recommendations with a portfolio analytics project.",
+          "If pursuing CBDA, prepare against the IIBA business data analytics domains."
+        ],
+        "courses": [
+          {
+            "key": "cbda",
+            "name": "IIBA CBDA Certification Training",
+            "desc": "Business data analytics competencies and CBDA exam preparation.",
+            "url": "https://www.techcanvass.com/Courses/Certification-Business-Data-Analytics-CBDA-Training",
+            "role": "primary"
+          },
+          {
+            "key": "ecba",
+            "name": "BA Skills + ECBA Certification Training",
+            "desc": "BA fundamentals, practical tools, project work and ECBA exam preparation.",
+            "url": "https://www.techcanvass.com/Courses/business-analyst-training",
+            "role": "optional"
+          }
+        ],
+        "why": [
+          "Market demand: Employers value professionals who can turn business questions into measurable insights, communicate findings and work with data tools such as SQL and reporting platforms.",
+          "Credibility: IIBA-CBDA is an issuer-backed business data analytics certification; practical analytics courses demonstrate applied capability but are not interchangeable with a professional certification."
+        ],
+        "notice": "For early-career professionals, ECBA is typically a sensible general BA credential to explore. Specialty certificates may also be suitable depending on role and preparation.",
+        "rulesVersion": "2026.11.2"
+      }
+    },
+    "advisor: lt2, goal data (hands)": {
+      "value": {
+        "title": "Your recommended path: Business Data Analytics",
+        "intro": "Combine business problem framing with analytics capability and evidence-based decision-making.",
+        "reason": "CBDA is designed around business data analytics competencies, while Techcanvass Data Analytics & AI is a practical, tool-focused learning option.",
+        "roadmap": [
+          "Translate business problems into research questions and measurable KPIs.",
+          "Learn to source, clean and assess data quality.",
+          "Build practical SQL, reporting and Power BI skills.",
+          "Present actionable recommendations with a portfolio analytics project.",
+          "If pursuing CBDA, prepare against the IIBA business data analytics domains."
+        ],
+        "courses": [
+          {
+            "key": "analytics",
+            "name": "Data Analytics & AI Certification Training",
+            "desc": "Hands-on SQL, Power BI, analytics and applied AI skills.",
+            "url": "https://www.techcanvass.com/Courses/data-analytics-certification-course",
+            "role": "primary"
+          },
+          {
+            "key": "ecba",
+            "name": "BA Skills + ECBA Certification Training",
+            "desc": "BA fundamentals, practical tools, project work and ECBA exam preparation.",
+            "url": "https://www.techcanvass.com/Courses/business-analyst-training",
+            "role": "optional"
+          }
+        ],
+        "why": [
+          "Market demand: Employers value professionals who can turn business questions into measurable insights, communicate findings and work with data tools such as SQL and reporting platforms.",
+          "Credibility: IIBA-CBDA is an issuer-backed business data analytics certification; practical analytics courses demonstrate applied capability but are not interchangeable with a professional certification."
+        ],
+        "notice": "For early-career professionals, ECBA is typically a sensible general BA credential to explore. Specialty certificates may also be suitable depending on role and preparation.",
+        "rulesVersion": "2026.11.2"
+      }
+    },
+    "advisor: lt2, goal data (both)": {
+      "value": {
+        "title": "Your recommended path: Business Data Analytics",
+        "intro": "Combine business problem framing with analytics capability and evidence-based decision-making.",
+        "reason": "CBDA is designed around business data analytics competencies, while Techcanvass Data Analytics & AI is a practical, tool-focused learning option.",
+        "roadmap": [
+          "Translate business problems into research questions and measurable KPIs.",
+          "Learn to source, clean and assess data quality.",
+          "Build practical SQL, reporting and Power BI skills.",
+          "Present actionable recommendations with a portfolio analytics project.",
+          "If pursuing CBDA, prepare against the IIBA business data analytics domains."
+        ],
+        "courses": [
+          {
+            "key": "analytics",
+            "name": "Data Analytics & AI Certification Training",
+            "desc": "Hands-on SQL, Power BI, analytics and applied AI skills.",
+            "url": "https://www.techcanvass.com/Courses/data-analytics-certification-course",
+            "role": "primary"
+          },
+          {
+            "key": "cbda",
+            "name": "IIBA CBDA Certification Training",
+            "desc": "Business data analytics competencies and CBDA exam preparation.",
+            "url": "https://www.techcanvass.com/Courses/Certification-Business-Data-Analytics-CBDA-Training",
+            "role": "also"
+          },
+          {
+            "key": "ecba",
+            "name": "BA Skills + ECBA Certification Training",
+            "desc": "BA fundamentals, practical tools, project work and ECBA exam preparation.",
+            "url": "https://www.techcanvass.com/Courses/business-analyst-training",
+            "role": "optional"
+          }
+        ],
+        "why": [
+          "Market demand: Employers value professionals who can turn business questions into measurable insights, communicate findings and work with data tools such as SQL and reporting platforms.",
+          "Credibility: IIBA-CBDA is an issuer-backed business data analytics certification; practical analytics courses demonstrate applied capability but are not interchangeable with a professional certification."
+        ],
+        "notice": "For early-career professionals, ECBA is typically a sensible general BA credential to explore. Specialty certificates may also be suitable depending on role and preparation.",
+        "rulesVersion": "2026.11.2"
+      }
+    },
+    "advisor: 2to4, goal cyber (securityba)": {
+      "value": {
+        "title": "Your recommended path: Cybersecurity-aware Business Analyst",
+        "intro": "Develop BA skills for security-focused initiatives; technical systems training can provide a useful foundation.",
+        "reason": "The verified Techcanvass catalogue includes Technical BA training but does not establish a dedicated cybersecurity certification. We therefore suggest transferable skills rather than claim a Techcanvass cybersecurity credential.",
+        "roadmap": [
+          "Understand security-related BA responsibilities, stakeholders and control requirements.",
+          "Learn fundamentals of access control, privacy, risk assessment and secure system design.",
+          "Practice documenting security requirements, risk scenarios and acceptance criteria.",
+          "Build a portfolio case study for a security-focused change initiative.",
+          "Evaluate independently verified security-specific credentials based on your target job."
+        ],
+        "courses": [
+          {
+            "key": "technical",
+            "name": "Technical Business Analyst Course",
+            "desc": "APIs, SQL, systems, cloud fundamentals and AI-enabled technical BA work.",
+            "url": "https://www.techcanvass.com/Courses/technical-business-analyst-course",
+            "role": "primary"
+          },
+          {
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "optional"
+          }
+        ],
+        "why": [
+          "Market demand: Systems integration, APIs, data flows and technical requirements are recurring capabilities for technology-facing BA roles; demonstrable project work supports job readiness.",
+          "Credibility: Technical BA training is a practical skills pathway rather than a separately issued IIBA credential. Pair it with an appropriate BA certification if external credential recognition is your priority."
+        ],
+        "notice": "For a cybersecurity-specific certification, review the current requirements from the relevant certification body. Technical BA training is not a substitute for specialist cybersecurity certification.",
+        "rulesVersion": "2026.11.2"
+      }
+    },
+    "advisor: 2to4, goal cyber (transition)": {
+      "value": {
+        "title": "Your recommended path: Cybersecurity-aware Business Analyst",
+        "intro": "Develop BA skills for security-focused initiatives; technical systems training can provide a useful foundation.",
+        "reason": "The verified Techcanvass catalogue includes Technical BA training but does not establish a dedicated cybersecurity certification. We therefore suggest transferable skills rather than claim a Techcanvass cybersecurity credential.",
+        "roadmap": [
+          "Understand security-related BA responsibilities, stakeholders and control requirements.",
+          "Learn fundamentals of access control, privacy, risk assessment and secure system design.",
+          "Practice documenting security requirements, risk scenarios and acceptance criteria.",
+          "Build a portfolio case study for a security-focused change initiative.",
+          "Evaluate independently verified security-specific credentials based on your target job."
+        ],
+        "courses": [
+          {
+            "key": "technical",
+            "name": "Technical Business Analyst Course",
+            "desc": "APIs, SQL, systems, cloud fundamentals and AI-enabled technical BA work.",
+            "url": "https://www.techcanvass.com/Courses/technical-business-analyst-course",
+            "role": "primary"
+          },
+          {
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "optional"
+          }
+        ],
+        "why": [
+          "Market demand: Systems integration, APIs, data flows and technical requirements are recurring capabilities for technology-facing BA roles; demonstrable project work supports job readiness.",
+          "Credibility: Technical BA training is a practical skills pathway rather than a separately issued IIBA credential. Pair it with an appropriate BA certification if external credential recognition is your priority."
+        ],
+        "notice": "For a cybersecurity-specific certification, review the current requirements from the relevant certification body. Technical BA training is not a substitute for specialist cybersecurity certification.",
+        "rulesVersion": "2026.11.2"
+      }
+    },
+    "advisor: 2to4, goal ai (productivity)": {
+      "value": {
+        "title": "Your recommended path: AI-enabled Business Analyst",
+        "intro": "Use AI responsibly to improve your day-to-day BA productivity, with an optional deeper path into agent development.",
+        "reason": "The Techcanvass AI BA course focuses on BA productivity and AI opportunities; its AI Agents course develops implementation skills.",
+        "roadmap": [
+          "Learn generative AI basics, strengths, limitations and data handling requirements.",
+          "Practice AI-assisted requirements, user stories, workshops and documentation.",
+          "Validate outputs, maintain human review and protect confidential information.",
+          "Complete an AI-supported BA case study."
+        ],
+        "courses": [
+          {
+            "key": "aiba",
+            "name": "AI Certification for Business Analysts",
+            "desc": "Use GenAI and AI tools across analysis, elicitation and documentation.",
+            "url": "https://www.techcanvass.com/Courses/AI-Certification-for-Business-Analysts",
+            "role": "primary"
+          },
+          {
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "optional"
+          }
+        ],
+        "why": [
+          "Market demand: AI-assisted research, requirements drafting and workflow automation are emerging skills, while employers still expect validation, security awareness and business judgment.",
+          "Credibility: These Techcanvass programs develop applied AI skills. Their course completion should not be confused with an IIBA-issued professional certification; a portfolio helps demonstrate capability."
+        ],
+        "notice": "CCBA requires at least 3,750 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Two years of employment alone does not establish eligibility. If you are not yet eligible, build experience and consider ECBA or specialty learning in the meantime.",
+        "rulesVersion": "2026.11.2"
+      }
+    },
+    "advisor: 2to4, goal ai (agents)": {
+      "value": {
+        "title": "Your recommended path: AI-enabled Business Analyst",
+        "intro": "Use AI responsibly to improve your day-to-day BA productivity, with an optional deeper path into agent development.",
+        "reason": "The Techcanvass AI BA course focuses on BA productivity and AI opportunities; its AI Agents course develops implementation skills.",
+        "roadmap": [
+          "Learn generative AI basics, strengths, limitations and data handling requirements.",
+          "Practice AI-assisted requirements, user stories, workshops and documentation.",
+          "Validate outputs, maintain human review and protect confidential information.",
+          "Complete an AI-supported BA case study.",
+          "Prototype a low-code AI agent for a real business workflow."
+        ],
+        "courses": [
+          {
+            "key": "agents",
+            "name": "AI Agents Course for Business Analysts",
+            "desc": "Design, build and deploy low-code AI agents and multi-agent workflows.",
+            "url": "https://techcanvass.com/Courses/ai-agents-course",
+            "role": "primary"
+          },
+          {
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "optional"
+          }
+        ],
+        "why": [
+          "Market demand: AI-assisted research, requirements drafting and workflow automation are emerging skills, while employers still expect validation, security awareness and business judgment.",
+          "Credibility: These Techcanvass programs develop applied AI skills. Their course completion should not be confused with an IIBA-issued professional certification; a portfolio helps demonstrate capability."
+        ],
+        "notice": "CCBA requires at least 3,750 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Two years of employment alone does not establish eligibility. If you are not yet eligible, build experience and consider ECBA or specialty learning in the meantime.",
+        "rulesVersion": "2026.11.2"
+      }
+    },
+    "advisor: 2to4, goal ai (both)": {
+      "value": {
+        "title": "Your recommended path: AI-enabled Business Analyst",
+        "intro": "Use AI responsibly to improve your day-to-day BA productivity, with an optional deeper path into agent development.",
+        "reason": "The Techcanvass AI BA course focuses on BA productivity and AI opportunities; its AI Agents course develops implementation skills.",
+        "roadmap": [
+          "Learn generative AI basics, strengths, limitations and data handling requirements.",
+          "Practice AI-assisted requirements, user stories, workshops and documentation.",
+          "Validate outputs, maintain human review and protect confidential information.",
+          "Complete an AI-supported BA case study.",
+          "Prototype a low-code AI agent for a real business workflow."
+        ],
+        "courses": [
+          {
+            "key": "aiba",
+            "name": "AI Certification for Business Analysts",
+            "desc": "Use GenAI and AI tools across analysis, elicitation and documentation.",
+            "url": "https://www.techcanvass.com/Courses/AI-Certification-for-Business-Analysts",
+            "role": "primary"
+          },
+          {
+            "key": "agents",
+            "name": "AI Agents Course for Business Analysts",
+            "desc": "Design, build and deploy low-code AI agents and multi-agent workflows.",
+            "url": "https://techcanvass.com/Courses/ai-agents-course",
+            "role": "also"
+          },
+          {
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "optional"
+          }
+        ],
+        "why": [
+          "Market demand: AI-assisted research, requirements drafting and workflow automation are emerging skills, while employers still expect validation, security awareness and business judgment.",
+          "Credibility: These Techcanvass programs develop applied AI skills. Their course completion should not be confused with an IIBA-issued professional certification; a portfolio helps demonstrate capability."
+        ],
+        "notice": "CCBA requires at least 3,750 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Two years of employment alone does not establish eligibility. If you are not yet eligible, build experience and consider ECBA or specialty learning in the meantime.",
+        "rulesVersion": "2026.11.2"
+      }
+    },
+    "advisor: 2to4, goal agents (productivity)": {
+      "value": {
+        "title": "Your recommended path: AI Agents and Solutions",
+        "intro": "Move from describing AI use cases to prototyping low-code AI agents and workflows.",
+        "reason": "Techcanvass has a dedicated AI Agents course for Business Analysts, Managers and Product Owners.",
+        "roadmap": [
+          "Map a business process and identify a high-value agent use case.",
+          "Learn AI agent fundamentals, prompts, tools, workflows and guardrails.",
+          "Build a low-code single-agent prototype.",
+          "Extend it to an orchestrated workflow and test failure cases.",
+          "Demonstrate an end-to-end AI solution with human oversight and success metrics."
+        ],
+        "courses": [
+          {
+            "key": "aiba",
+            "name": "AI Certification for Business Analysts",
+            "desc": "Use GenAI and AI tools across analysis, elicitation and documentation.",
+            "url": "https://www.techcanvass.com/Courses/AI-Certification-for-Business-Analysts",
+            "role": "primary"
+          },
+          {
+            "key": "agents",
+            "name": "AI Agents Course for Business Analysts",
+            "desc": "Design, build and deploy low-code AI agents and multi-agent workflows.",
+            "url": "https://techcanvass.com/Courses/ai-agents-course",
+            "role": "also"
+          },
+          {
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "optional"
+          }
+        ],
+        "why": [
+          "Market demand: AI-assisted research, requirements drafting and workflow automation are emerging skills, while employers still expect validation, security awareness and business judgment.",
+          "Credibility: These Techcanvass programs develop applied AI skills. Their course completion should not be confused with an IIBA-issued professional certification; a portfolio helps demonstrate capability."
+        ],
+        "notice": "CCBA requires at least 3,750 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Two years of employment alone does not establish eligibility. If you are not yet eligible, build experience and consider ECBA or specialty learning in the meantime.",
+        "rulesVersion": "2026.11.2"
+      }
+    },
+    "advisor: 2to4, goal agents (agents)": {
+      "value": {
+        "title": "Your recommended path: AI Agents and Solutions",
+        "intro": "Move from describing AI use cases to prototyping low-code AI agents and workflows.",
+        "reason": "Techcanvass has a dedicated AI Agents course for Business Analysts, Managers and Product Owners.",
+        "roadmap": [
+          "Map a business process and identify a high-value agent use case.",
+          "Learn AI agent fundamentals, prompts, tools, workflows and guardrails.",
+          "Build a low-code single-agent prototype.",
+          "Extend it to an orchestrated workflow and test failure cases.",
+          "Demonstrate an end-to-end AI solution with human oversight and success metrics."
+        ],
+        "courses": [
+          {
+            "key": "agents",
+            "name": "AI Agents Course for Business Analysts",
+            "desc": "Design, build and deploy low-code AI agents and multi-agent workflows.",
+            "url": "https://techcanvass.com/Courses/ai-agents-course",
+            "role": "primary"
+          },
+          {
+            "key": "aiba",
+            "name": "AI Certification for Business Analysts",
+            "desc": "Use GenAI and AI tools across analysis, elicitation and documentation.",
+            "url": "https://www.techcanvass.com/Courses/AI-Certification-for-Business-Analysts",
+            "role": "also"
+          },
+          {
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "optional"
+          }
+        ],
+        "why": [
+          "Market demand: AI-assisted research, requirements drafting and workflow automation are emerging skills, while employers still expect validation, security awareness and business judgment.",
+          "Credibility: These Techcanvass programs develop applied AI skills. Their course completion should not be confused with an IIBA-issued professional certification; a portfolio helps demonstrate capability."
+        ],
+        "notice": "CCBA requires at least 3,750 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Two years of employment alone does not establish eligibility. If you are not yet eligible, build experience and consider ECBA or specialty learning in the meantime.",
+        "rulesVersion": "2026.11.2"
+      }
+    },
+    "advisor: 2to4, goal agents (both)": {
+      "value": {
+        "title": "Your recommended path: AI Agents and Solutions",
+        "intro": "Move from describing AI use cases to prototyping low-code AI agents and workflows.",
+        "reason": "Techcanvass has a dedicated AI Agents course for Business Analysts, Managers and Product Owners.",
+        "roadmap": [
+          "Map a business process and identify a high-value agent use case.",
+          "Learn AI agent fundamentals, prompts, tools, workflows and guardrails.",
+          "Build a low-code single-agent prototype.",
+          "Extend it to an orchestrated workflow and test failure cases.",
+          "Demonstrate an end-to-end AI solution with human oversight and success metrics."
+        ],
+        "courses": [
+          {
+            "key": "agents",
+            "name": "AI Agents Course for Business Analysts",
+            "desc": "Design, build and deploy low-code AI agents and multi-agent workflows.",
+            "url": "https://techcanvass.com/Courses/ai-agents-course",
+            "role": "primary"
+          },
+          {
+            "key": "aiba",
+            "name": "AI Certification for Business Analysts",
+            "desc": "Use GenAI and AI tools across analysis, elicitation and documentation.",
+            "url": "https://www.techcanvass.com/Courses/AI-Certification-for-Business-Analysts",
+            "role": "also"
+          },
+          {
+            "key": "ccba",
+            "name": "IIBA CCBA Certification Training",
+            "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course",
+            "role": "optional"
+          }
+        ],
+        "why": [
+          "Market demand: AI-assisted research, requirements drafting and workflow automation are emerging skills, while employers still expect validation, security awareness and business judgment.",
+          "Credibility: These Techcanvass programs develop applied AI skills. Their course completion should not be confused with an IIBA-issued professional certification; a portfolio helps demonstrate capability."
+        ],
+        "notice": "CCBA requires at least 3,750 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Two years of employment alone does not establish eligibility. If you are not yet eligible, build experience and consider ECBA or specialty learning in the meantime.",
+        "rulesVersion": "2026.11.2"
+      }
+    },
+    "advisor: 5plus, goal agile product": {
+      "value": {
+        "title": "Your recommended path: Product Ownership (CPOA)",
+        "intro": "Build confidence in Agile delivery and/or product ownership with a focused IIBA specialty path.",
+        "reason": "AAC aligns to Agile analysis; CPOA aligns to product ownership and value delivery. The best one depends on your desired role.",
+        "roadmap": [
+          "Learn Agile principles, Scrum roles, ceremonies and iterative delivery.",
+          "Practice writing user stories, acceptance criteria and managing a backlog.",
+          "Practice customer discovery, prioritization, product vision and roadmap decisions.",
+          "Use the learning in a cross-functional project or simulated product.",
+          "Compare CPOA, CSPO and PSPO I by learning style and career goals, then prepare for your chosen certification."
+        ],
+        "courses": [
+          {
+            "key": "cpoa",
+            "name": "CPOA Certification Training",
+            "desc": "Product discovery, backlog, stakeholder alignment and product ownership analysis.",
+            "url": "https://techcanvass.com/Courses/product-owner-course",
+            "issuer": "IIBA",
+            "issuerUrl": "https://www.iiba.org/business-analysis-certifications/certificate-in-product-ownership-analysis-iiba-cpoa/",
+            "role": "primary"
+          },
+          {
+            "key": "cspo",
+            "name": "Certified Scrum Product Owner (CSPO)",
+            "desc": "Scrum Alliance credential: trainer-led Scrum Product Owner learning and certification.",
+            "url": "https://www.scrumalliance.org/get-certified/product-owner-track/certified-Scrum-product-owner",
+            "external": true,
+            "issuer": "Scrum Alliance",
+            "role": "optional"
+          },
+          {
+            "key": "pspo",
+            "name": "Professional Scrum Product Owner I (PSPO I)",
+            "desc": "Scrum.org credential: assessment-based validation of Scrum and Product Owner knowledge.",
+            "url": "https://www.scrum.org/assessments/professional-scrum-product-owner-i-certification",
+            "external": true,
+            "issuer": "Scrum.org",
+            "role": "optional"
+          },
+          {
+            "key": "cbap",
+            "name": "IIBA CBAP Certification Training",
+            "desc": "Advanced BA certification preparation for experienced practitioners.",
+            "url": "https://www.techcanvass.com/Courses/IIBA-CBAP-Certification-training",
+            "role": "optional"
+          }
+        ],
+        "why": [
+          "Market demand: Product Owner roles emphasize Agile/Scrum delivery, backlog prioritization, customer value and stakeholder alignment. Recent job-posting datasets identify Agile as a frequent requirement; hands-on product examples remain important.",
+          "Credibility: IIBA-CPOA is issued by IIBA and focuses on product ownership analysis. CSPO is issued by Scrum Alliance through an approved trainer-led course; PSPO I is issued by Scrum.org through a knowledge assessment. These are established issuer-led credentials, but employer preference varies."
+        ],
+        "notice": "CBAP requires at least 7,500 qualifying BA work hours within the specified lookback period plus additional IIBA criteria. Five calendar years by itself does not prove eligibility; consider CCBA if your verified hours better align.",
+        "rulesVersion": "2026.11.2"
+      }
+    },
+    "advisor: invalid: nothing answered": {
       "error": {
-        "name": "FinderInputError",
-        "message": "Please select your experience.; Please select your background.",
+        "name": "AdvisorInputError",
+        "message": "Please choose an answer.",
         "errors": [
           {
-            "field": "totalYears",
-            "message": "Please select your experience."
-          },
-          {
-            "field": "background",
-            "message": "Please select your background."
+            "field": "experience",
+            "message": "Please choose an answer."
           }
         ]
       }
     },
-    "finder error: 7yr > 10yr": {
+    "advisor: invalid: goal hidden for this experience": {
       "error": {
-        "name": "FinderInputError",
-        "message": "7-year hours cannot exceed 10-year hours.",
+        "name": "AdvisorInputError",
+        "message": "\"data\" is not an allowed answer.",
         "errors": [
           {
-            "field": "CCBA.total",
-            "message": "7-year hours cannot exceed 10-year hours."
+            "field": "goal",
+            "message": "\"data\" is not an allowed answer."
           }
         ]
       }
     },
-    "finder error: negative hours": {
+    "advisor: invalid: follow-up missing": {
       "error": {
-        "name": "FinderInputError",
-        "message": "Please enter valid non-negative hours.",
+        "name": "AdvisorInputError",
+        "message": "Please choose an answer.",
         "errors": [
           {
-            "field": "CCBA.total",
-            "message": "Please enter valid non-negative hours."
+            "field": "agile",
+            "message": "Please choose an answer."
           }
         ]
       }
@@ -1475,7 +1323,7 @@
     "quick: ECBA only": {
       "value": {
         "asOf": "2026-10-31",
-        "rulesVersion": "2026.11.1",
+        "rulesVersion": "2026.11.2",
         "results": [
           {
             "code": "ECBA",
@@ -1597,7 +1445,7 @@
     "quick: CCBA exact thresholds": {
       "value": {
         "asOf": "2026-10-31",
-        "rulesVersion": "2026.11.1",
+        "rulesVersion": "2026.11.2",
         "results": [
           {
             "code": "ECBA",
@@ -1719,7 +1567,7 @@
     "quick: CBAP ready": {
       "value": {
         "asOf": "2026-10-31",
-        "rulesVersion": "2026.11.1",
+        "rulesVersion": "2026.11.2",
         "results": [
           {
             "code": "ECBA",
@@ -1841,7 +1689,7 @@
     "quick: no ethics": {
       "value": {
         "asOf": "2026-10-31",
-        "rulesVersion": "2026.11.1",
+        "rulesVersion": "2026.11.2",
         "results": [
           {
             "code": "ECBA",
@@ -1963,7 +1811,7 @@
     "quick: references gated": {
       "value": {
         "asOf": "2026-10-31",
-        "rulesVersion": "2026.11.1",
+        "rulesVersion": "2026.11.2",
         "results": [
           {
             "code": "ECBA",
@@ -2101,7 +1949,7 @@
     "quick: job history + projection": {
       "value": {
         "asOf": "2026-10-31",
-        "rulesVersion": "2026.11.1",
+        "rulesVersion": "2026.11.2",
         "results": [
           {
             "code": "ECBA",
@@ -2225,7 +2073,7 @@
     "quick: PD entries with exclusions": {
       "value": {
         "asOf": "2026-10-31",
-        "rulesVersion": "2026.11.1",
+        "rulesVersion": "2026.11.2",
         "results": [
           {
             "code": "ECBA",

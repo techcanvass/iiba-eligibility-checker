@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       BA Certification Finder
- * Description:       Guided finder that suggests ECBA, CCBA, CBAP, CBDA, AAC, CCA or PMI-PBA from a visitor's background and work. Shortcode: [ba_certification_finder].
+ * Description:       Guided advisor that recommends a Business Analysis certification path, skills roadmap and courses from a visitor's experience and career goal. Shortcode: [ba_certification_finder].
  * Version:           1.0.0
  * Requires at least: 6.0
  * Requires PHP:      7.4

@@ -1,6 +1,6 @@
-# BA Certification Finder (IIBA Eligibility Checker)
+# BA Certification Advisor (IIBA Eligibility Checker)
 
-Finds the right Business Analyst certification (ECBA, CCBA, CBAP, CBDA, AAC, CCA, PMI-PBA). The
+Recommends a Business Analysis career path: certification, skills roadmap and Techcanvass courses. The
 logic is written **once** and shipped to every platform:
 
 | Platform | Folder | Output |
@@ -16,7 +16,7 @@ logic is written **once** and shipped to every platform:
 ## Where the logic lives (the one rule)
 
 ```
-packages/core/rules/iiba-rules.json   ← questions, options, activities, certifications, IIBA/PMI rules
+packages/core/rules/iiba-rules.json   ← advisor questions, goals, courses, and the IIBA hour rules
 packages/core/src/*.ts                ← matching logic
 packages/ui/src/*                     ← screens and styles
         │
@@ -66,28 +66,25 @@ pnpm build         # tests → typecheck → core bundle → web, extension, Wor
 
 ## What it does
 
-**Web app, browser extension and WordPress plugin** show a guided 3-step *BA Certification Finder*
-(Techcanvass design v3):
+**Web app, browser extension and WordPress plugin** show the guided *BA Certification Advisor*
+(Techcanvass design v3), which asks two or three questions:
 
-1. **About you**: experience, background, education, interest.
-2. **Your work**: 10 everyday activities (mapped to the 6 BABOK knowledge areas), years, share of time,
-   career breaks and how recently the person did this work.
-3. **Matches**: 7 certifications (ECBA, CCBA, CBAP, CBDA, AAC, CCA, PMI-PBA), ordered by interest, each with
-   a status pill and next steps. An optional section takes exact CCBA/CBAP hours and per-area hours for a
-   precise check.
+1. **Experience**: how much hands-on BA work (none, under 2 years, 2–4, 5+). Counts work even when the
+   job title is not "Business Analyst".
+2. **Background** (only if no experience: non-IT, IT, student) **or career goal** (certification, Agile / product,
+   data, technical BA, AI, AI agents, cybersecurity, domain, not sure). Data and technical goals are hidden for
+   people with 5+ years; data is hidden from 2–4 years.
+3. **Follow-up** (only for some goals): Agile vs product owner, industry, analytics route, AI priority.
 
-| | ECBA | CCBA | CBAP | PMI-PBA |
-|---|---|---|---|---|
-| Experience | none | 3,750 hrs in last 7 yrs | 7,500 hrs in last 10 yrs | 24 / 36 / 60 months in last 8 yrs (GAC / bachelor's / secondary) |
-| Knowledge areas | — | 900+ in 2 **or** 500+ in 4 | 900+ in 4 of 6 | — |
-| Application stage | — | 21 PD hrs + 2 references | 35 PD hrs + 2 references | 35 contact hours |
+The result is a pathway: a roadmap, recommended certification and courses (primary / also / optional), why,
+and an eligibility note. Hour figures in that note (CCBA, CBAP) are read from the rules file, not typed into the
+code. Cybersecurity deliberately suggests transferable skills and never claims a Techcanvass security credential.
 
-CBDA, AAC and CCA are knowledge-based (no experience threshold).
-
-How the indicative estimate works: years of activity × share of time × 1,600 hrs/year, **counting only the
-years that can fall inside each certification's window**. For example, someone who stopped BA work 2–7 years
-ago can't have more than 5 years inside CCBA's 7-year window. Exact hours entered in the optional section
-always take precedence over the estimate.
+| | ECBA | CCBA | CBAP |
+|---|---|---|---|
+| Experience | none | 3,750 hrs in last 7 yrs | 7,500 hrs in last 10 yrs |
+| Knowledge areas | — | 900+ in 2 **or** 500+ in 4 | 900+ in 4 of 6 |
+| Application stage | — | 21 PD hrs + 2 references | 35 PD hrs + 2 references |
 
 **Discord** keeps the quick hours-based check (`/iiba-eligibility`), which uses the same rules file.
 
@@ -234,7 +231,7 @@ manually: `twine upload --repository testpypi dist/*`.
 ## Google Workspace add-on (Sheets, Docs, Slides)
 
 This is an editor add-on that adds **Extensions → BA Certification Finder → Open**, which shows
-the same finder screens in a sidebar. In Google Sheets it also adds two formulas:
+the same advisor screens in a sidebar. In Google Sheets it also adds two formulas:
 
 | Formula | Result |
 |---|---|
@@ -318,9 +315,9 @@ app verification and a privacy policy / terms URL (use `PRIVACY.md`).
 iiba-eligibility-checker/
 ├── packages/                      ★ the only place to edit logic, wording and design
 │   ├── core/
-│   │   ├── rules/iiba-rules.json  questions, options, activities, certifications, rules
-│   │   ├── src/                   finder.ts, eligibility.ts, calculator.ts, validation.ts …
-│   │   ├── tests/conformance/     28 shared cases + expected answers (all platforms)
+│   │   ├── rules/iiba-rules.json  advisor questions, goals, courses, IIBA hour rules
+│   │   ├── src/                   advisor.ts, eligibility.ts, calculator.ts, validation.ts …
+│   │   ├── tests/conformance/     43 shared cases + expected answers (all platforms)
 │   │   └── dist/ba-core.js        built standalone core (for Python and Apps Script)
 │   └── ui/src/                    CertificationFinder.tsx, styles.css
 ├── apps/                          thin wrappers, no logic

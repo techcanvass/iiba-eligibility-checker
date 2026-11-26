@@ -1,6 +1,6 @@
 {
-  "version": "2026.11.1",
-  "lastVerified": "2026-11-05",
+  "version": "2026.11.2",
+  "lastVerified": "2026-11-25",
   "source": "https://www.iiba.org/business-analysis-certifications/certification-handbooks/",
   "note": "VERIFY against the current IIBA Core BA Certification Handbook and PMI-PBA Handbook before each release. Values in 'toVerify' differ between third-party sources.",
   "toVerify": [
@@ -96,369 +96,279 @@
     "reading",
     "work-experience"
   ],
-  "finder": {
-    "annualHoursEstimate": 1600,
-    "kaPlainNames": {
-      "planning": "Planning analysis work and coordinating with people",
-      "elicitation": "Talking to people to understand their needs",
-      "lifecycle": "Managing changes and keeping requirements up to date",
-      "strategy": "Understanding business problems and recommending approaches",
-      "radd": "Detailing requirements and comparing solution options",
-      "evaluation": "Checking whether a solution delivers the expected results"
-    },
-    "activities": [
-      {
-        "label": "Plan analysis work, coordinate tasks and engage stakeholders",
-        "ka": "planning"
-      },
-      {
-        "label": "Interview users, run workshops or gather feedback",
-        "ka": "elicitation"
-      },
-      {
-        "label": "Document business needs or clarify requirements",
-        "ka": "elicitation"
-      },
-      {
-        "label": "Review changes, trace requirements or prioritize a backlog",
-        "ka": "lifecycle"
-      },
-      {
-        "label": "Study business problems, processes or opportunities",
-        "ka": "strategy"
-      },
-      {
-        "label": "Build business cases, compare options or recommend improvements",
-        "ka": "strategy"
-      },
-      {
-        "label": "Write user stories, acceptance criteria, process models or specifications",
-        "ka": "radd"
-      },
-      {
-        "label": "Review proposed designs or validate requirements with users",
-        "ka": "radd"
-      },
-      {
-        "label": "Test whether a solution meets business needs or measure its benefits",
-        "ka": "evaluation"
-      },
-      {
-        "label": "Track outcomes, user adoption or suggest improvements after delivery",
-        "ka": "evaluation"
-      }
-    ],
-    "certifications": [
-      {
-        "code": "ECBA",
-        "kind": "open",
-        "name": "Entry Certificate in Business Analysis",
-        "description": "A strong starting point for people entering business analysis, including career changers and experienced professionals transitioning into BA.",
-        "url": "https://www.iiba.org/business-analysis-certifications/ecba/"
-      },
-      {
-        "code": "CCBA",
-        "kind": "hours",
-        "name": "Certification of Capability in Business Analysis",
-        "description": "Requires 3,750 BA work hours in the last 7 years, with specified knowledge-area distribution.",
-        "url": "https://www.iiba.org/business-analysis-certifications/ccba/"
-      },
-      {
-        "code": "CBAP",
-        "kind": "hours",
-        "name": "Certified Business Analysis Professional",
-        "description": "Requires 7,500 BA work hours in the last 10 years, including at least 900 hours in each of 4 BABOK areas.",
-        "url": "https://www.iiba.org/business-analysis-certifications/cbap"
-      },
-      {
-        "code": "CBDA",
-        "kind": "knowledge",
-        "name": "Certification in Business Data Analytics",
-        "description": "For professionals using data to inform business decisions; no mandatory work-experience threshold.",
-        "url": "https://www.iiba.org/business-analysis-certifications/business-data-analytics-certification/"
-      },
-      {
-        "code": "AAC",
-        "kind": "knowledge",
-        "name": "Agile Analysis Certification",
-        "description": "For professionals interested in Agile and product delivery; no mandatory work-experience threshold.",
-        "url": "https://www.iiba.org/business-analysis-certifications/agile-analysis/"
-      },
-      {
-        "code": "CCA",
-        "kind": "knowledge",
-        "name": "Certificate in Cybersecurity Analysis",
-        "description": "For professionals interested in cybersecurity analysis; no mandatory work-experience threshold.",
-        "url": "https://www.iiba.org/business-analysis-certifications/cybersecurity-analysis/"
-      },
-      {
-        "code": "PMI-PBA",
-        "kind": "months",
-        "name": "PMI Professional in Business Analysis",
-        "description": "Requires 24, 36 or 60 non-overlapping months of BA experience within the last 8 years, depending on education. Exact months need checking.",
-        "url": "https://www.pmi.org/certifications/business-analysis-pba",
-        "monthsByEducation": {
-          "gac": 24,
-          "bachelor": 36,
-          "secondary": 60
-        },
-        "windowYears": 8,
-        "contactHours": 35
-      }
-    ],
-    "interestPriority": {
-      "general": [
-        "CCBA",
-        "CBAP",
-        "ECBA"
-      ],
-      "agile": [
-        "AAC",
-        "ECBA"
-      ],
-      "data": [
-        "CBDA",
-        "ECBA"
-      ],
-      "cyber": [
-        "CCA",
-        "ECBA"
-      ],
-      "project": [
-        "PMI-PBA",
-        "ECBA"
-      ],
-      "unsure": [
-        "ECBA",
-        "CCBA",
-        "CBAP"
-      ]
-    },
+  "advisor": {
     "questions": {
-      "totalYears": {
-        "label": "Total professional work experience",
-        "placeholder": "Select your experience",
+      "experience": {
+        "title": "How much hands-on Business Analysis experience do you have?",
+        "helper": "Count work involving understanding problems, needs or requirements; managing clients or stakeholders; business processes; or solution evaluation—even if your job title is not “Business Analyst”.",
         "options": [
           {
-            "value": 0,
-            "label": "Just starting / no experience"
+            "value": "none",
+            "label": "No hands-on BA experience"
           },
           {
-            "value": 1,
-            "label": "Less than 1 year"
+            "value": "lt2",
+            "label": "Less than 2 years"
           },
           {
-            "value": 2,
-            "label": "1–2 years"
+            "value": "2to4",
+            "label": "2–4 years"
           },
           {
-            "value": 4,
-            "label": "3–4 years"
-          },
-          {
-            "value": 6,
-            "label": "5–7 years"
-          },
-          {
-            "value": 9,
-            "label": "8–10 years"
-          },
-          {
-            "value": 12,
-            "label": "More than 10 years"
+            "value": "5plus",
+            "label": "5 or more years"
           }
         ]
       },
       "background": {
-        "label": "Which best describes your background?",
-        "placeholder": "Select your background",
+        "title": "What best describes your professional background?",
+        "helper": "This helps us tailor the transition roadmap to the skills you may already have.",
         "options": [
           {
-            "value": "ba",
-            "label": "Working as a Business Analyst"
+            "value": "nonit",
+            "label": "Non-IT professional (banking, finance, operations, healthcare, etc.)"
           },
           {
             "value": "it",
-            "label": "IT / Software / Testing / Product"
-          },
-          {
-            "value": "domain",
-            "label": "Non-IT / Operations / Banking / Sales / Other domain"
-          },
-          {
-            "value": "project",
-            "label": "Project Management / Consulting"
+            "label": "IT professional (development, testing, support, implementation)"
           },
           {
             "value": "student",
-            "label": "Student / Fresher / Career break"
-          },
-          {
-            "value": "other",
-            "label": "Other / Not sure"
+            "label": "Student / fresher"
           }
         ]
       },
-      "education": {
-        "label": "Highest completed education",
-        "default": "bachelor",
+      "agile": {
+        "title": "Which Agile / product career direction interests you more?",
+        "helper": "Agile analysis and product ownership have different day-to-day priorities.",
         "options": [
           {
-            "value": "secondary",
-            "label": "School / Diploma / Associate degree"
+            "value": "agile",
+            "label": "Agile Business Analyst — Agile analysis, Scrum teams and delivery"
           },
           {
-            "value": "bachelor",
-            "label": "Bachelor's degree or higher"
+            "value": "product",
+            "label": "Product Owner — product discovery, backlog and value prioritization"
           },
           {
-            "value": "gac",
-            "label": "Degree from PMI GAC-accredited program"
-          },
-          {
-            "value": "other",
-            "label": "Other / Not sure"
+            "value": "both",
+            "label": "I want to explore both"
           }
         ]
       },
-      "interest": {
-        "label": "What interests you most?",
-        "default": "unsure",
+      "domain": {
+        "title": "Which industry domain would you like to strengthen?",
+        "helper": "Choose the domain that most closely matches your current or target BA role.",
         "options": [
+          {
+            "value": "banking",
+            "label": "Banking, payments or capital markets"
+          },
+          {
+            "value": "insurance",
+            "label": "Insurance"
+          },
+          {
+            "value": "health",
+            "label": "US healthcare"
+          },
+          {
+            "value": "supply",
+            "label": "Supply chain / logistics"
+          },
+          {
+            "value": "telecom",
+            "label": "Telecom / CRM / e-commerce"
+          },
           {
             "value": "unsure",
             "label": "Not sure yet"
-          },
-          {
-            "value": "general",
-            "label": "Business Analysis"
-          },
-          {
-            "value": "agile",
-            "label": "Agile / Product"
-          },
-          {
-            "value": "data",
-            "label": "Data Analytics"
-          },
-          {
-            "value": "cyber",
-            "label": "Cybersecurity"
-          },
-          {
-            "value": "project",
-            "label": "Projects / PMI-PBA"
           }
         ]
       },
-      "baYears": {
-        "label": "About how many years have you done these types of activities?",
-        "placeholder": "Select an estimate",
-        "hint": "This is for guidance only; formal applications use documented hours and dates.",
+      "analytics": {
+        "title": "What is your main analytics objective?",
+        "helper": "Select a route focused on business analytics certification or practical data tools.",
         "options": [
           {
-            "value": 0,
-            "label": "I haven't done them yet"
+            "value": "cert",
+            "label": "Validate business data analytics expertise (CBDA)"
           },
           {
-            "value": 0.5,
-            "label": "Less than 1 year"
+            "value": "hands",
+            "label": "Build hands-on SQL, Power BI and analytics skills"
           },
           {
-            "value": 1.5,
-            "label": "1–2 years"
-          },
-          {
-            "value": 3.5,
-            "label": "3–4 years"
-          },
-          {
-            "value": 6,
-            "label": "5–7 years"
-          },
-          {
-            "value": 9,
-            "label": "8–10 years"
-          },
-          {
-            "value": 11,
-            "label": "More than 10 years"
+            "value": "both",
+            "label": "Both certification and practical tools"
           }
         ]
       },
-      "baShare": {
-        "label": "About how much of your working time involved these activities?",
-        "placeholder": "Select an estimate",
-        "hint": "We use this to estimate relevant experience, not to automatically credit certification hours.",
+      "cyber": {
+        "title": "How would you like to work with cybersecurity?",
+        "helper": "This advisor can recommend transferable BA skills, but does not assert a dedicated Techcanvass cybersecurity credential.",
         "options": [
           {
-            "value": 0.2,
-            "label": "Occasionally (under 25%)"
+            "value": "securityba",
+            "label": "Analyze security requirements and processes as a BA"
           },
           {
-            "value": 0.4,
-            "label": "Part of my role (25–50%)"
-          },
-          {
-            "value": 0.7,
-            "label": "Most of my role (50–80%)"
-          },
-          {
-            "value": 0.9,
-            "label": "Almost all my role (over 80%)"
+            "value": "transition",
+            "label": "Explore a career transition into cybersecurity"
           }
         ]
       },
-      "continuity": {
-        "label": "Was this work continuous, or did you have career breaks?",
-        "placeholder": "Please select",
-        "hint": "Career breaks do not disqualify you. We only count relevant work done within the required period.",
+      "ai": {
+        "title": "What is your AI learning priority?",
+        "helper": "Choose between improving existing BA workflows and building new AI-based solutions.",
         "options": [
           {
-            "value": "continuous",
-            "label": "Continuous, without significant breaks"
+            "value": "productivity",
+            "label": "Use AI to improve BA deliverables and productivity"
           },
           {
-            "value": "breaks",
-            "label": "With one or more breaks"
+            "value": "agents",
+            "label": "Design and build AI agents and workflows"
           },
           {
-            "value": "parttime",
-            "label": "Part-time, freelance or varying hours"
-          }
-        ]
-      },
-      "recent": {
-        "label": "When did you last do these activities?",
-        "placeholder": "Please select",
-        "hint": "Recent experience matters for CCBA (7 years), CBAP (10 years), and PMI-PBA (8 years).",
-        "options": [
-          {
-            "value": "current",
-            "label": "I still do them"
-          },
-          {
-            "value": "lt2",
-            "label": "Within the last 2 years"
-          },
-          {
-            "value": "2to7",
-            "label": "2–7 years ago"
-          },
-          {
-            "value": "7to10",
-            "label": "7–10 years ago"
-          },
-          {
-            "value": "over10",
-            "label": "More than 10 years ago"
-          },
-          {
-            "value": "never",
-            "label": "I haven't done these activities"
+            "value": "both",
+            "label": "Both"
           }
         ]
       }
-    }
+    },
+    "goals": [
+      {
+        "value": "career",
+        "label": "Advance my BA career / get certified"
+      },
+      {
+        "value": "agile",
+        "label": "Move into Agile BA or Product Ownership"
+      },
+      {
+        "value": "data",
+        "label": "Specialize in Data Analytics",
+        "hideFor": [
+          "2to4",
+          "5plus"
+        ]
+      },
+      {
+        "value": "technical",
+        "label": "Build Technical BA skills",
+        "hideFor": [
+          "5plus"
+        ]
+      },
+      {
+        "value": "ai",
+        "label": "Use AI to become a more effective Business Analyst"
+      },
+      {
+        "value": "agents",
+        "label": "Become an AI-powered BA — build AI solutions and agents"
+      },
+      {
+        "value": "cyber",
+        "label": "Specialize in Cybersecurity"
+      },
+      {
+        "value": "domain",
+        "label": "Build domain expertise"
+      },
+      {
+        "value": "unsure",
+        "label": "I am not sure"
+      }
+    ],
+    "courses": {
+      "ecba": {
+        "name": "BA Skills + ECBA Certification Training",
+        "desc": "BA fundamentals, practical tools, project work and ECBA exam preparation.",
+        "url": "https://www.techcanvass.com/Courses/business-analyst-training"
+      },
+      "ccba": {
+        "name": "IIBA CCBA Certification Training",
+        "desc": "Intermediate BABOK-based certification preparation for practicing analysts.",
+        "url": "https://www.techcanvass.com/Courses/IIBA-CCBA-Certification-course"
+      },
+      "cbap": {
+        "name": "IIBA CBAP Certification Training",
+        "desc": "Advanced BA certification preparation for experienced practitioners.",
+        "url": "https://www.techcanvass.com/Courses/IIBA-CBAP-Certification-training"
+      },
+      "aac": {
+        "name": "IIBA Agile Analysis Certification (AAC) Training",
+        "desc": "Agile analysis practices, horizons, and AAC exam preparation.",
+        "url": "https://www.techcanvass.com/Courses/Agile-Analysis-Certification-Course-IIBA"
+      },
+      "cpoa": {
+        "name": "CPOA Certification Training",
+        "desc": "Product discovery, backlog, stakeholder alignment and product ownership analysis.",
+        "url": "https://techcanvass.com/Courses/product-owner-course",
+        "issuer": "IIBA",
+        "issuerUrl": "https://www.iiba.org/business-analysis-certifications/certificate-in-product-ownership-analysis-iiba-cpoa/"
+      },
+      "cbda": {
+        "name": "IIBA CBDA Certification Training",
+        "desc": "Business data analytics competencies and CBDA exam preparation.",
+        "url": "https://www.techcanvass.com/Courses/Certification-Business-Data-Analytics-CBDA-Training"
+      },
+      "analytics": {
+        "name": "Data Analytics & AI Certification Training",
+        "desc": "Hands-on SQL, Power BI, analytics and applied AI skills.",
+        "url": "https://www.techcanvass.com/Courses/data-analytics-certification-course"
+      },
+      "technical": {
+        "name": "Technical Business Analyst Course",
+        "desc": "APIs, SQL, systems, cloud fundamentals and AI-enabled technical BA work.",
+        "url": "https://www.techcanvass.com/Courses/technical-business-analyst-course"
+      },
+      "aiba": {
+        "name": "AI Certification for Business Analysts",
+        "desc": "Use GenAI and AI tools across analysis, elicitation and documentation.",
+        "url": "https://www.techcanvass.com/Courses/AI-Certification-for-Business-Analysts"
+      },
+      "agents": {
+        "name": "AI Agents Course for Business Analysts",
+        "desc": "Design, build and deploy low-code AI agents and multi-agent workflows.",
+        "url": "https://techcanvass.com/Courses/ai-agents-course"
+      },
+      "domain": {
+        "name": "Domain Training Courses",
+        "desc": "Banking, payments, insurance, healthcare, capital markets, supply chain and more.",
+        "url": "https://techcanvass.com/Courses/domain-training-courses"
+      },
+      "cspo": {
+        "name": "Certified Scrum Product Owner (CSPO)",
+        "desc": "Scrum Alliance credential: trainer-led Scrum Product Owner learning and certification.",
+        "url": "https://www.scrumalliance.org/get-certified/product-owner-track/certified-Scrum-product-owner",
+        "external": true,
+        "issuer": "Scrum Alliance"
+      },
+      "pspo": {
+        "name": "Professional Scrum Product Owner I (PSPO I)",
+        "desc": "Scrum.org credential: assessment-based validation of Scrum and Product Owner knowledge.",
+        "url": "https://www.scrum.org/assessments/professional-scrum-product-owner-i-certification",
+        "external": true,
+        "issuer": "Scrum.org"
+      },
+      "catalog": {
+        "name": "Explore all Business Analyst Courses",
+        "desc": "Compare available Techcanvass BA learning paths.",
+        "url": "https://www.techcanvass.com/Courses/Courses-for-Business-Analysts"
+      }
+    },
+    "sourceLinks": [
+      {
+        "label": "Product Owner job skills data",
+        "url": "https://online-distance.ncsu.edu/career/product-owner/"
+      },
+      {
+        "label": "IIBA credentials",
+        "url": "https://www.iiba.org/business-analysis-certifications/iiba-certifications/"
+      }
+    ]
   }
 }

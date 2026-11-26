@@ -2,453 +2,304 @@
   "_note": "Shared test cases. Every platform (TypeScript, Python, Apps Script) must produce exactly `expected`. Regenerate after an intentional logic change: pnpm golden",
   "cases": [
     {
-      "name": "finder: fresh starter",
-      "fn": "buildFinderReport",
+      "name": "advisor: no experience, nonit",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": 0,
-        "background": "student",
-        "education": "bachelor",
-        "interest": "unsure",
-        "activities": [],
-        "baYears": null,
-        "baShare": null,
-        "continuity": null,
-        "recent": null
+        "experience": "none",
+        "background": "nonit"
       }
     },
     {
-      "name": "finder: experienced current BA, general interest",
-      "fn": "buildFinderReport",
+      "name": "advisor: no experience, it",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": 12,
-        "background": "ba",
-        "education": "bachelor",
-        "interest": "general",
-        "activities": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8,
-          9
-        ],
-        "baYears": 11,
-        "baShare": 0.9,
-        "continuity": "continuous",
-        "recent": "current"
+        "experience": "none",
+        "background": "it"
       }
     },
     {
-      "name": "finder: years capped by window (stopped 2-7 yrs ago)",
-      "fn": "buildFinderReport",
+      "name": "advisor: no experience, student",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": 12,
-        "background": "ba",
-        "education": "bachelor",
-        "interest": "unsure",
-        "activities": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8,
-          9
-        ],
-        "baYears": 11,
-        "baShare": 0.4,
-        "continuity": null,
-        "recent": "2to7"
+        "experience": "none",
+        "background": "student"
       }
     },
     {
-      "name": "finder: last BA work 7-10 years ago",
-      "fn": "buildFinderReport",
+      "name": "advisor: lt2, goal career",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": 12,
-        "background": "ba",
-        "education": "bachelor",
-        "interest": "unsure",
-        "activities": [
-          0,
-          1,
-          4
-        ],
-        "baYears": 11,
-        "baShare": 0.9,
-        "continuity": null,
-        "recent": "7to10"
+        "experience": "lt2",
+        "goal": "career"
       }
     },
     {
-      "name": "finder: career breaks + data interest",
-      "fn": "buildFinderReport",
+      "name": "advisor: lt2, goal technical",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": 6,
-        "background": "ba",
-        "education": "bachelor",
-        "interest": "data",
-        "activities": [
-          1,
-          2
-        ],
-        "baYears": 1.5,
-        "baShare": 0.4,
-        "continuity": "breaks",
-        "recent": "lt2"
+        "experience": "lt2",
+        "goal": "technical"
       }
     },
     {
-      "name": "finder: agile interest, part-time",
-      "fn": "buildFinderReport",
+      "name": "advisor: lt2, goal unsure",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": 6,
-        "background": "ba",
-        "education": "bachelor",
-        "interest": "agile",
-        "activities": [
-          3,
-          6,
-          7
-        ],
-        "baYears": 3.5,
-        "baShare": 0.7,
-        "continuity": "parttime",
-        "recent": "current"
+        "experience": "lt2",
+        "goal": "unsure"
       }
     },
     {
-      "name": "finder: cyber interest",
-      "fn": "buildFinderReport",
+      "name": "advisor: 2to4, goal career",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": 6,
-        "background": "ba",
-        "education": "bachelor",
-        "interest": "cyber",
-        "activities": [],
-        "baYears": null,
-        "baShare": null,
-        "continuity": null,
-        "recent": null
+        "experience": "2to4",
+        "goal": "career"
       }
     },
     {
-      "name": "finder: PMI-PBA, GAC degree",
-      "fn": "buildFinderReport",
+      "name": "advisor: 2to4, goal technical",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": 6,
-        "background": "ba",
-        "education": "gac",
-        "interest": "project",
-        "activities": [],
-        "baYears": null,
-        "baShare": null,
-        "continuity": null,
-        "recent": null
+        "experience": "2to4",
+        "goal": "technical"
       }
     },
     {
-      "name": "finder: PMI-PBA, secondary",
-      "fn": "buildFinderReport",
+      "name": "advisor: 2to4, goal unsure",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": 6,
-        "background": "ba",
-        "education": "secondary",
-        "interest": "project",
-        "activities": [],
-        "baYears": null,
-        "baShare": null,
-        "continuity": null,
-        "recent": null
+        "experience": "2to4",
+        "goal": "unsure"
       }
     },
     {
-      "name": "finder: PMI-PBA, other education",
-      "fn": "buildFinderReport",
+      "name": "advisor: 5plus, goal career",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": 6,
-        "background": "ba",
-        "education": "other",
-        "interest": "project",
-        "activities": [],
-        "baYears": null,
-        "baShare": null,
-        "continuity": null,
-        "recent": null
+        "experience": "5plus",
+        "goal": "career"
       }
     },
     {
-      "name": "finder: warnings (BA years > total, never)",
-      "fn": "buildFinderReport",
+      "name": "advisor: 5plus, goal unsure",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": 2,
-        "background": "ba",
-        "education": "bachelor",
-        "interest": "unsure",
-        "activities": [
-          0
-        ],
-        "baYears": 6,
-        "baShare": null,
-        "continuity": null,
-        "recent": "never"
+        "experience": "5plus",
+        "goal": "unsure"
       }
     },
     {
-      "name": "finder: precise CCBA hours gap",
-      "fn": "buildFinderReport",
+      "name": "advisor: 2to4, goal agile (agile)",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": 6,
-        "background": "ba",
-        "education": "bachelor",
-        "interest": "unsure",
-        "activities": [],
-        "baYears": null,
-        "baShare": null,
-        "continuity": null,
-        "recent": null,
-        "precise": {
-          "CCBA": {
-            "total": 3000,
-            "ka": [
-              null,
-              null,
-              null,
-              null,
-              null,
-              null
-            ]
-          }
-        }
+        "experience": "2to4",
+        "goal": "agile",
+        "agile": "agile"
       }
     },
     {
-      "name": "finder: precise CBAP KA blank",
-      "fn": "buildFinderReport",
+      "name": "advisor: 2to4, goal agile (product)",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": 6,
-        "background": "ba",
-        "education": "bachelor",
-        "interest": "unsure",
-        "activities": [],
-        "baYears": null,
-        "baShare": null,
-        "continuity": null,
-        "recent": null,
-        "precise": {
-          "CBAP": {
-            "total": 8000,
-            "ka": [
-              null,
-              null,
-              null,
-              null,
-              null,
-              null
-            ]
-          }
-        }
+        "experience": "2to4",
+        "goal": "agile",
+        "agile": "product"
       }
     },
     {
-      "name": "finder: precise CBAP met",
-      "fn": "buildFinderReport",
+      "name": "advisor: 2to4, goal agile (both)",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": 6,
-        "background": "ba",
-        "education": "bachelor",
-        "interest": "unsure",
-        "activities": [],
-        "baYears": null,
-        "baShare": null,
-        "continuity": null,
-        "recent": null,
-        "precise": {
-          "CBAP": {
-            "total": 8000,
-            "ka": [
-              1000,
-              1000,
-              1000,
-              1000,
-              0,
-              0
-            ]
-          }
-        }
+        "experience": "2to4",
+        "goal": "agile",
+        "agile": "both"
       }
     },
     {
-      "name": "finder: precise CBAP KA gap",
-      "fn": "buildFinderReport",
+      "name": "advisor: 2to4, goal domain (banking)",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": 6,
-        "background": "ba",
-        "education": "bachelor",
-        "interest": "unsure",
-        "activities": [],
-        "baYears": null,
-        "baShare": null,
-        "continuity": null,
-        "recent": null,
-        "precise": {
-          "CBAP": {
-            "total": 8000,
-            "ka": [
-              2000,
-              2000,
-              2000,
-              500,
-              0,
-              0
-            ]
-          }
-        }
+        "experience": "2to4",
+        "goal": "domain",
+        "domain": "banking"
       }
     },
     {
-      "name": "finder: precise CCBA alt rule 500x4",
-      "fn": "buildFinderReport",
+      "name": "advisor: 2to4, goal domain (insurance)",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": 6,
-        "background": "ba",
-        "education": "bachelor",
-        "interest": "unsure",
-        "activities": [],
-        "baYears": null,
-        "baShare": null,
-        "continuity": null,
-        "recent": null,
-        "precise": {
-          "CCBA": {
-            "total": 3750,
-            "ka": [
-              600,
-              600,
-              600,
-              600,
-              0,
-              0
-            ]
-          }
-        }
+        "experience": "2to4",
+        "goal": "domain",
+        "domain": "insurance"
       }
     },
     {
-      "name": "finder: large numbers format (1,00,000)",
-      "fn": "buildFinderReport",
+      "name": "advisor: 2to4, goal domain (health)",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": 6,
-        "background": "ba",
-        "education": "bachelor",
-        "interest": "unsure",
-        "activities": [],
-        "baYears": null,
-        "baShare": null,
-        "continuity": null,
-        "recent": null,
-        "precise": {
-          "CBAP": {
-            "total": 0,
-            "ka": [
-              null,
-              null,
-              null,
-              null,
-              null,
-              null
-            ]
-          }
-        }
+        "experience": "2to4",
+        "goal": "domain",
+        "domain": "health"
       }
     },
     {
-      "name": "finder error: step 1 missing",
-      "fn": "buildFinderReport",
+      "name": "advisor: 2to4, goal domain (supply)",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": null,
-        "background": null,
-        "education": "bachelor",
-        "interest": "unsure",
-        "activities": [],
-        "baYears": null,
-        "baShare": null,
-        "continuity": null,
-        "recent": null
+        "experience": "2to4",
+        "goal": "domain",
+        "domain": "supply"
       }
     },
     {
-      "name": "finder error: 7yr > 10yr",
-      "fn": "buildFinderReport",
+      "name": "advisor: 2to4, goal domain (telecom)",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": 6,
-        "background": "ba",
-        "education": "bachelor",
-        "interest": "unsure",
-        "activities": [],
-        "baYears": null,
-        "baShare": null,
-        "continuity": null,
-        "recent": null,
-        "precise": {
-          "CCBA": {
-            "total": 5000,
-            "ka": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          },
-          "CBAP": {
-            "total": 4000,
-            "ka": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          }
-        }
+        "experience": "2to4",
+        "goal": "domain",
+        "domain": "telecom"
       }
     },
     {
-      "name": "finder error: negative hours",
-      "fn": "buildFinderReport",
+      "name": "advisor: 2to4, goal domain (unsure)",
+      "fn": "buildAdvisorReport",
       "input": {
-        "totalYears": 6,
-        "background": "ba",
-        "education": "bachelor",
-        "interest": "unsure",
-        "activities": [],
-        "baYears": null,
-        "baShare": null,
-        "continuity": null,
-        "recent": null,
-        "precise": {
-          "CCBA": {
-            "total": -1,
-            "ka": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ]
-          }
-        }
+        "experience": "2to4",
+        "goal": "domain",
+        "domain": "unsure"
+      }
+    },
+    {
+      "name": "advisor: lt2, goal data (cert)",
+      "fn": "buildAdvisorReport",
+      "input": {
+        "experience": "lt2",
+        "goal": "data",
+        "analytics": "cert"
+      }
+    },
+    {
+      "name": "advisor: lt2, goal data (hands)",
+      "fn": "buildAdvisorReport",
+      "input": {
+        "experience": "lt2",
+        "goal": "data",
+        "analytics": "hands"
+      }
+    },
+    {
+      "name": "advisor: lt2, goal data (both)",
+      "fn": "buildAdvisorReport",
+      "input": {
+        "experience": "lt2",
+        "goal": "data",
+        "analytics": "both"
+      }
+    },
+    {
+      "name": "advisor: 2to4, goal cyber (securityba)",
+      "fn": "buildAdvisorReport",
+      "input": {
+        "experience": "2to4",
+        "goal": "cyber",
+        "cyber": "securityba"
+      }
+    },
+    {
+      "name": "advisor: 2to4, goal cyber (transition)",
+      "fn": "buildAdvisorReport",
+      "input": {
+        "experience": "2to4",
+        "goal": "cyber",
+        "cyber": "transition"
+      }
+    },
+    {
+      "name": "advisor: 2to4, goal ai (productivity)",
+      "fn": "buildAdvisorReport",
+      "input": {
+        "experience": "2to4",
+        "goal": "ai",
+        "ai": "productivity"
+      }
+    },
+    {
+      "name": "advisor: 2to4, goal ai (agents)",
+      "fn": "buildAdvisorReport",
+      "input": {
+        "experience": "2to4",
+        "goal": "ai",
+        "ai": "agents"
+      }
+    },
+    {
+      "name": "advisor: 2to4, goal ai (both)",
+      "fn": "buildAdvisorReport",
+      "input": {
+        "experience": "2to4",
+        "goal": "ai",
+        "ai": "both"
+      }
+    },
+    {
+      "name": "advisor: 2to4, goal agents (productivity)",
+      "fn": "buildAdvisorReport",
+      "input": {
+        "experience": "2to4",
+        "goal": "agents",
+        "ai": "productivity"
+      }
+    },
+    {
+      "name": "advisor: 2to4, goal agents (agents)",
+      "fn": "buildAdvisorReport",
+      "input": {
+        "experience": "2to4",
+        "goal": "agents",
+        "ai": "agents"
+      }
+    },
+    {
+      "name": "advisor: 2to4, goal agents (both)",
+      "fn": "buildAdvisorReport",
+      "input": {
+        "experience": "2to4",
+        "goal": "agents",
+        "ai": "both"
+      }
+    },
+    {
+      "name": "advisor: 5plus, goal agile product",
+      "fn": "buildAdvisorReport",
+      "input": {
+        "experience": "5plus",
+        "goal": "agile",
+        "agile": "product"
+      }
+    },
+    {
+      "name": "advisor: invalid: nothing answered",
+      "fn": "buildAdvisorReport",
+      "input": {
+        "experience": null
+      }
+    },
+    {
+      "name": "advisor: invalid: goal hidden for this experience",
+      "fn": "buildAdvisorReport",
+      "input": {
+        "experience": "5plus",
+        "goal": "data",
+        "analytics": "cert"
+      }
+    },
+    {
+      "name": "advisor: invalid: follow-up missing",
+      "fn": "buildAdvisorReport",
+      "input": {
+        "experience": "2to4",
+        "goal": "agile"
       }
     },
     {

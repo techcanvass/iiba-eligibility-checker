@@ -31,42 +31,56 @@ def test_check_invalid_returns_2(capsys):
 
 
 def test_find_from_stdin_json():
-    answers = {"totalYears": 0, "background": "student", "education": "bachelor", "interest": "data",
-               "activities": [], "baYears": None, "baShare": None, "continuity": None, "recent": None}
-    code, out = run(["find", "-", "--json"], stdin=json.dumps(answers))
-    assert code == 0 and json.loads(out)["matches"][0]["code"] == "CBDA"
+    code, out = run(["find", "-", "--json"], stdin=json.dumps({"experience": "lt2", "goal": "data", "analytics": "cert"}))
+    assert code == 0 and json.loads(out)["courses"][0]["key"] == "cbda"
+
+
+def test_find_text_report():
+    code, out = run(["find", "-"], stdin=json.dumps({"experience": "5plus", "goal": "career"}))
+    assert code == 0
+    assert "BABOK" in out or "roadmap" in out
+    assert "[PRIMARY RECOMMENDATION] IIBA CBAP Certification Training" in out
+    assert "7,500 qualifying BA work hours" in out
+
+
+def test_find_invalid_answers_return_2(capsys):
+    code, _ = run(["find", "-"], stdin=json.dumps({"experience": "2to4"}))
+    assert code == 2 and "goal: Please choose an answer." in capsys.readouterr().err
 
 
 def test_questions_come_from_shared_rules():
     code, out = run(["questions"])
     data = json.loads(out)
-    assert code == 0 and len(data["activities"]) == 10
-    assert data["questions"]["totalYears"]["label"] == "Total professional work experience"
+    assert code == 0 and len(data["goals"]) == 9
+    assert data["questions"]["experience"]["title"].startswith("How much hands-on Business Analysis experience")
 
 
-def test_interactive_guided_finder():
-    # Step 1: 5–7 yrs, BA, Enter (default edu), 2 = Business Analysis
-    # Step 2: activities 1,2,5,7; 5–7 yrs; 50–80%; continuous; still do them; no precise check
-    script = "\n".join(["5", "1", "", "2", "1,2,5,7", "5", "3", "1", "1", "n"]) + "\n"
-    code, out = run([], stdin=script)
+def test_interactive_beginner_path():
+    # experience: 1 = none, background: 2 = IT
+    code, out = run([], stdin="1\n2\n")
     assert code == 0
-    assert "You selected 4 everyday work activities spanning 4 of 6 analysis areas" in out
-    assert out.index("CCBA —") < out.index("CBAP —") < out.index("ECBA —")
+    assert "BA foundation + ECBA" in out and "[OPTIONAL / COMPLEMENTARY] Domain Training Courses" in out
+
+
+def test_interactive_agile_path_asks_a_follow_up():
+    # experience 3 = 2-4 yrs; goal 2 = Agile BA / Product Owner; follow-up 3 = both
+    code, out = run([], stdin="3\n2\n3\n")
+    assert code == 0
+    assert "Which Agile / product career direction interests you more?" in out
+    assert "Agile Analysis + Product Ownership" in out
+
+
+def test_interactive_goal_list_is_filtered_by_experience():
+    # 5+ years: data and technical are not offered, so 9 goals become 7
+    code, out = run([], stdin="4\n1\n")
+    assert code == 0
+    assert "Specialize in Data Analytics" not in out and "Build Technical BA skills" not in out
 
 
 def test_interactive_reprompts_required_and_bad_input():
-    script = "\n".join(["", "99", "1", "1", "", "", "", "", "", "", "", "", "n"]) + "\n"
-    code, out = run([], stdin=script)
+    code, out = run([], stdin="\n99\n1\n1\n")
     assert code == 0
     assert "This question is required." in out and "Please enter one of the numbers above." in out
-
-
-def test_interactive_precise_check():
-    steps = ["6", "1", "", "", "1,2,3,4,5,6,7,8,9,10", "7", "4", "1", "1", "y"]
-    steps += ["4000", "900", "900", "0", "0", "0", "0"]        # CCBA: 7-year total + 6 areas
-    steps += ["8000", "1000", "1000", "1000", "1000", "0", "0"]  # CBAP: 10-year total + 6 areas
-    code, out = run([], stdin="\n".join(steps) + "\n")
-    assert code == 0 and out.count("Experience thresholds indicated") == 2
 
 
 def test_interactive_end_of_input_exits_cleanly():

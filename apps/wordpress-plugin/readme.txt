@@ -8,21 +8,20 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Help visitors find the right Business Analyst certification with a guided 3-step finder.
+Help visitors find the right Business Analysis path with a short guided advisor.
 
 == Description ==
 
-Add a guided finder that suggests ECBA, CCBA, CBAP, CBDA, AAC, CCA or PMI-PBA from a visitor's background and everyday work activities. No certification jargon needed.
+Add a guided advisor that gives each visitor a personalized Business Analysis career path: a recommended certification, a step-by-step skills roadmap and matching courses. No certification jargon needed.
 
-* Plain-language questions about experience, background, education and interests.
-* 10 everyday work activities mapped to the six BABOK® Guide knowledge areas.
-* Counts experience only inside each certification's time window (CCBA 7 years, CBAP 10, PMI-PBA 8).
-* Optional precise CCBA/CBAP check with exact hours per knowledge area.
-* Shows PD hours, references and contact hours needed at application time, with links to the official certification pages.
+* Two or three plain-language questions about experience and career goal (a shorter path for people with no BA experience yet).
+* Goal-based recommendations: certification, Agile and product ownership, data analytics, technical BA, AI, domain expertise.
+* A step-by-step learning roadmap, a "why this recommendation" explanation and an eligibility and scope note.
+* Course links with clear labels for primary, also-recommended and optional courses, and links to the official credential issuer where it is not IIBA.
 * Loads its script only on pages that use the shortcode, and works with caching/optimisation plugins.
 * Mobile-friendly; print/save results.
 
-This tool is an independent guide and is not affiliated with or endorsed by IIBA or PMI. Final eligibility is determined by the certification body.
+This tool is an independent guide and is not affiliated with or endorsed by IIBA, Scrum Alliance or Scrum.org. Final eligibility is determined by the certification body.
 
 = Usage =
 
@@ -63,9 +62,9 @@ Third-party libraries bundled into the compiled file (all MIT licensed):
 
 == Frequently Asked Questions ==
 
-= Is this an official IIBA or PMI tool? =
+= Is this an official IIBA tool? =
 
-No. IIBA®, BABOK®, ECBA™, CCBA®, CBAP®, CBDA®, AAC® and CCA® are trademarks of the International Institute of Business Analysis. PMI-PBA® is a mark of the Project Management Institute. This plugin is an independent guide.
+No. IIBA®, BABOK®, ECBA™, CCBA®, CBAP®, CBDA®, AAC® and CPOA are trademarks of the International Institute of Business Analysis. CSPO® is a mark of Scrum Alliance and PSPO is a mark of Scrum.org. This plugin is an independent guide.
 
 = Does it store visitor data? =
 
@@ -77,9 +76,9 @@ Yes. Host a copy of `iiba-rules.json` and enter its URL in Settings → BA Certi
 
 == Screenshots ==
 
-1. Step 1 — questions about the visitor's background.
-2. Step 2 — everyday work activities and experience.
-3. Certification matches with status and next steps.
+1. Question about the visitor's experience.
+2. Question about their career goal.
+3. Personalized pathway: roadmap, recommended courses and why.
 
 == Changelog ==
 

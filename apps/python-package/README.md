@@ -1,9 +1,10 @@
-# BA Certification Finder
+# BA Certification Advisor
 
-Find the right Business Analyst certification (**ECBA, CCBA, CBAP, CBDA, AAC, CCA or PMI-PBA**) from
-someone's background and the work they actually do. You don't need to know certification terminology.
+Get a personalized Business Analysis career path: the right certification (**ECBA, CCBA, CBAP, AAC,
+CBDA, CPOA**), a step-by-step skills roadmap and matching Techcanvass courses, based on experience
+and career goal. You don't need to know certification terminology.
 
-This is the same rules engine that powers the Techcanvass BA Certification Finder browser extension
+This is the same rules engine that powers the Techcanvass BA Certification Advisor browser extension
 and WordPress plugin, so it gives identical results everywhere.
 
 ```bash
@@ -18,7 +19,7 @@ Requires Python 3.10+. Works on Windows, macOS and Linux.
 ba-cert-finder
 ```
 
-This opens a guided questionnaire: about you, your work activities, then your matches.
+This opens a guided questionnaire (2 or 3 questions, depending on your answers) and prints your pathway.
 
 Other commands:
 
@@ -42,18 +43,16 @@ Knowledge areas for `--ka`: `planning`, `elicitation`, `lifecycle`, `strategy`, 
 from ba_cert_finder import find_certifications, check_eligibility
 
 report = find_certifications({
-    "totalYears": 6,            # values: see `ba-cert-finder questions`
-    "background": "ba",
-    "education": "bachelor",
-    "interest": "general",
-    "activities": [0, 1, 4, 6], # indices of everyday work activities
-    "baYears": 6,
-    "baShare": 0.7,
-    "continuity": "continuous",
-    "recent": "current",
+    "experience": "2to4",   # none | lt2 | 2to4 | 5plus
+    "goal": "agile",        # career | agile | data | technical | ai | agents | cyber | domain | unsure
+    "agile": "both",        # follow-up for the goal, see below
 })
-for m in report["matches"]:
-    print(m["code"], "-", m["status"])
+print(report["title"])
+for c in report["courses"]:
+    print(c["role"], "-", c["name"], c["url"])
+
+# No BA experience yet? Ask for a background instead of a goal:
+find_certifications({"experience": "none", "background": "it"})   # nonit | it | student
 
 result = check_eligibility({
     "baHours": 5000, "pdHours": 35, "agreesToEthics": True,
@@ -61,6 +60,11 @@ result = check_eligibility({
 })
 print(result["recommended"])   # "CCBA"
 ```
+
+Follow-up answers: goal `agile` → `agile` (`agile`/`product`/`both`); `domain` → `domain`; `data` →
+`analytics` (`cert`/`hands`/`both`); `cyber` → `cyber`; `ai` or `agents` → `ai`
+(`productivity`/`agents`/`both`). Goals `career`, `technical` and `unsure` need no follow-up.
+Run `ba-cert-finder questions` for every allowed value.
 
 Invalid input raises `FinderInputError` or `EligibilityInputError` (both `ValueError`). Each has an
 `.errors` list of `{"field", "message"}`.
